@@ -1,52 +1,63 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7et7qoy10th6"]
+[gd_scene load_steps=5 format=3 uid="uid://b7et7qoy10th6"]
 
+[ext_resource type="PackedScene" uid="uid://b2lneewn72je3" path="res://cube.blend" id="1_3253y"]
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://character_body_3d.gd" id="1_ulcgi"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nxogm"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_3253y"]
-sky_material = SubResource("ProceduralSkyMaterial_nxogm")
-
-[sub_resource type="Environment" id="Environment_u3cyc"]
-background_mode = 2
-sky = SubResource("Sky_3253y")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ulcgi"]
+[ext_resource type="Texture2D" uid="uid://cui32l8hworq0" path="res://mira.png" id="2_nxogm"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m7jmp"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_u3cyc")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="cube" parent="." instance=ExtResource("1_3253y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.212368, 2.8221612, 0.0066400766)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="cube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.993997, 3.1312733, -4.0134873)
+light_indirect_energy = 1.205
+light_size = 1.155
+spot_range = 4096.0
+spot_attenuation = 0.22
+spot_angle = 122.1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="cube/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, 0.11953044, 0.9928305, 0, -0.9928305, 0.11953044, -3.8616772, -0.019956112, 6.0385857)
+light_indirect_energy = 1.205
+light_size = 1.155
+spot_range = 4096.0
+spot_attenuation = 0.22
+spot_angle = 122.1
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0438843, 4.184935, -3.9877424)
 script = ExtResource("1_ulcgi")
 
 [node name="head" type="Node3D" parent="CharacterBody3D"]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9479799, -0.044962406)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5758762, -0.044962525)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0243518, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_ulcgi")
+[node name="TextureRect" type="TextureRect" parent="CharacterBody3D/head/Camera3D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_nxogm")
+expand_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0243518, 0)
+transform = Transform3D(0.612684, 0, 0, 0, 0.9165557, 0, 0, 0, 0.6431235, 0, 0.94802094, 0)
 shape = SubResource("ConvexPolygonShape3D_m7jmp")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.99999666, 0.0020614045, -0.0015700685, -0.0020621556, 0.9999978, -0.00047907772, 0.001569082, 0.00048229922, 0.9999987, 1.8259277, -0.42504883, -2)
-use_collision = true
-size = Vector3(20.564941, 0.14990234, 13)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6523542, -6.9115834)
-use_collision = true

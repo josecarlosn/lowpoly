@@ -2,10 +2,10 @@ extends CharacterBody3D
 
 @export_category("Player Settings")
 @export var SPEED := 4.0
-@export var JUMP_VELOCITY := 3.5
+#@export var JUMP_VELOCITY := 3.5
 
 @export_category("Mouse Settings")
-@export var mouse_sense := 0.1
+@export var mouse_sense := 0.2
 
 @export_category("Camera Limits")
 @export var cam_limit_down := -80.0
@@ -27,12 +27,12 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		##velocity.y = JUMP_VELOCITY
 
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
