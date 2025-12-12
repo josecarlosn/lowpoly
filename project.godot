@@ -26,7 +26,6 @@ window/size/viewport_height=480
 window/size/mode=3
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
-window/stretch/scale=0.77
 window/vsync/vsync_mode=0
 
 [filesystem]
