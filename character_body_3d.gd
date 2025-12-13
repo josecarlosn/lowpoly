@@ -1,11 +1,12 @@
 extends CharacterBody3D
 
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 5.0
+@export var SPRINT_SPEED := 4.0
 @export var DEFAULT_SPEED := 2.5
 @export var CROUCH_SPEED := 1
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
+@export var ZOOM_SPEED = 4.0
 
 @export_category("Mouse Settings")
 @export var mouse_sense := 0.2
@@ -14,8 +15,9 @@ var SPEED := DEFAULT_SPEED
 @export var cam_limit_down := -80.0
 @export var cam_limit_up := 60.0
 var cam_ver = 0.0
-var bob_freq = 3.0
-var bob_amp = 0.08
+@export_category("Bob Settings")
+var bob_freq = 4.0
+var bob_amp = 0.05
 var bob_on_time = 0.0
 
 @export var ANIMATION_PLAYER: AnimationPlayer
@@ -33,6 +35,12 @@ func _input(event: InputEvent) -> void:
 		head.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 		camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
+	#Camera Zoom
+	if Input.is_action_just_pressed("right_click") == true:
+		ANIMATION_PLAYER.play("camera_zoom",-1, ZOOM_SPEED)
+	if Input.is_action_just_released("right_click") == true:
+		ANIMATION_PLAYER.play("camera_zoom",-1, -ZOOM_SPEED, true)
+	
 	#Esc 
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -43,7 +51,6 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_released("crouch") == true:
 		toggle_crouch()
 		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
-
 	#Srpint
 	if Input.is_action_pressed("sprint") == true:
 		_is_sprinting = true
@@ -52,7 +59,6 @@ func _input(event: InputEvent) -> void:
 	else: 
 		_is_sprinting = false
 		toggle_sprint()	
-
 
 func _process(delta: float) -> void:
 	
