@@ -1,12 +1,11 @@
 extends CharacterBody3D
 
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 6.0
-@export var DEFAULT_SPEED := 3
+@export var SPRINT_SPEED := 5.0
+@export var DEFAULT_SPEED := 2.5
 @export var CROUCH_SPEED := 1
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
-#@export var JUMP_VELOCITY := 3.5
 
 @export_category("Mouse Settings")
 @export var mouse_sense := 0.2
@@ -15,20 +14,19 @@ var SPEED := DEFAULT_SPEED
 @export var cam_limit_down := -80.0
 @export var cam_limit_up := 60.0
 var cam_ver = 0.0
+var bob_freq = 3.0
+var bob_amp = 0.08
+var bob_on_time = 0.0
 
 @export var ANIMATION_PLAYER: AnimationPlayer
-
 @onready var camera = $head/Camera3D
 @onready var head = $head
 
-
-var _is_crouching : bool = false #Ele vai entender q vc está agachado (por mais que não esteja) e vai soltar a animação correta primeiro
+var _is_crouching : bool = false 
 var _is_sprinting : bool = false
 var _can_sprint : bool = true
-
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 func _input(event: InputEvent) -> void:
 	#Mouse movement
 	if event is InputEventMouseMotion:
@@ -39,19 +37,13 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Crouch	
-	
 	if Input.is_action_just_pressed("crouch") == true:
 		toggle_crouch()
 		ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
 	if Input.is_action_just_released("crouch") == true:
 		toggle_crouch()
 		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
-		
-		
-		
-		#toggle_crouch()
-	
-	
+
 	#Srpint
 	if Input.is_action_pressed("sprint") == true:
 		_is_sprinting = true
@@ -63,10 +55,11 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
-	#Gravity
+	
+	#Gravity-------------------------------------------------------------------------------------------
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	#Player Movement
+	#Player Movement-----------------------------------------------------------------------------------
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() #adicionei o head na frente do transform pra andar na direção da camera
 	if direction:
@@ -76,6 +69,17 @@ func _process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	move_and_slide()
+	
+	##BOB Camera---------------------------------------------------------------------------------------
+	if _is_crouching == false:
+		bob_on_time += delta * velocity.length() * float(is_on_floor())
+		head.transform.origin = handle_bob(bob_on_time)
+	
+#Bob func
+func handle_bob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * bob_freq) * bob_amp
+	return pos
 #Crouch func		
 func toggle_crouch():
 	_is_crouching = !_is_crouching	
@@ -88,7 +92,6 @@ func toggle_crouch():
 		_can_sprint = true
 		
 		SPEED = DEFAULT_SPEED
-	
 #Sprint func		
 func toggle_sprint():
 	if _is_sprinting == true:	
