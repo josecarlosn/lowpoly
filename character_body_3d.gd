@@ -39,9 +39,17 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Crouch	
-	if Input.is_action_just_pressed("crouch"):
-		
+	
+	if Input.is_action_just_pressed("crouch") == true:
 		toggle_crouch()
+		ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
+	if Input.is_action_just_released("crouch") == true:
+		toggle_crouch()
+		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
+		
+		
+		
+		#toggle_crouch()
 	
 	
 	#Srpint
@@ -75,10 +83,10 @@ func toggle_crouch():
 		_can_sprint = false
 		_is_sprinting = false
 		SPEED = CROUCH_SPEED
-		ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
+		
 	else:
 		_can_sprint = true
-		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
+		
 		SPEED = DEFAULT_SPEED
 	
 #Sprint func		
