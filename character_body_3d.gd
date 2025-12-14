@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var CROUCH_SPEED := 1
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
-@export var ZOOM_SPEED = 4.0
+@export var ZOOM_SPEED = 5.0
 
 @export_category("Mouse Settings")
 @export var mouse_sense := 0.2
@@ -45,12 +45,14 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#Crouch	
-	if Input.is_action_just_pressed("crouch") == true:
+	if Input.is_action_just_pressed("crouch"):
 		toggle_crouch()
-		ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
-	if Input.is_action_just_released("crouch") == true:
-		toggle_crouch()
-		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
+	#if Input.is_action_just_pressed("crouch") == true:
+		#toggle_crouch()
+		#ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
+	#if Input.is_action_just_released("crouch") == true:
+		#toggle_crouch()
+		#ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
 	#Srpint
 	if Input.is_action_pressed("sprint") == true:
 		_is_sprinting = true
@@ -93,10 +95,10 @@ func toggle_crouch():
 		_can_sprint = false
 		_is_sprinting = false
 		SPEED = CROUCH_SPEED
-		
+		ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
 	else:
 		_can_sprint = true
-		
+		ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
 		SPEED = DEFAULT_SPEED
 #Sprint func		
 func toggle_sprint():
