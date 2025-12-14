@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqm54fm401dpl"]
-
-[ext_resource type="PackedScene" uid="uid://ljit3wffrmgb" path="res://rg.blend" id="1_mj70b"]
-
-[node name="Document" type="StaticBody3D"]
-
-[node name="rg" parent="." instance=ExtResource("1_mj70b")]
-transform = Transform3D(-0.68328637, 0, 0.73015046, 0, 1, 0, -0.73015046, 0, -0.68328637, 0, 0, 0)

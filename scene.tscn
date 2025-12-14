@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dtcsv1qtnv5ao" path="res://desk.blend" id="4_u3cyc"]
 [ext_resource type="Script" uid="uid://dk083rovs37oc" path="res://interact_ray.gd" id="4_xlvrw"]
 [ext_resource type="PackedScene" uid="uid://bppwhvaela8fu" path="res://carta.blend" id="7_ni31j"]
-[ext_resource type="PackedScene" uid="uid://dqm54fm401dpl" path="res://document.tscn" id="8_xlvrw"]
+[ext_resource type="Script" uid="uid://oird00f6f1p7" path="res://Interactable.gd" id="7_xlvrw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,7 +19,6 @@ sky_material = SubResource("ProceduralSkyMaterial_3253y")
 [sub_resource type="Environment" id="Environment_m7jmp"]
 background_mode = 1
 background_color = Color(0.32502767, 0.2811836, 0.2610884, 1)
-background_energy_multiplier = 0.1
 sky = SubResource("Sky_u3cyc")
 tonemap_mode = 2
 glow_enabled = true
@@ -189,6 +188,10 @@ metadata/_edit_group_ = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_m7jmp")
 
+[node name="carta" parent="WorldEnvironment" instance=ExtResource("7_ni31j")]
+transform = Transform3D(-0.023976177, -1.3322676e-16, 0.29904035, -0.2647466, 0.13949434, -0.021226605, -0.13904813, -0.26559615, -0.01114847, 0.58868825, 4.9256134, -2.8265245)
+script = ExtResource("7_xlvrw")
+
 [node name="house" parent="." instance=ExtResource("1_3253y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
 
@@ -253,10 +256,11 @@ libraries = {
 
 [node name="desk" parent="." instance=ExtResource("4_u3cyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86139166, 4.6619706, -3.0454006)
+script = ExtResource("7_xlvrw")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="desk"]
+[node name="Mesa" type="StaticBody3D" parent="desk"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="desk/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="desk/Mesa"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0049858093, -0.43133545, -0.0005187988)
 shape = SubResource("BoxShape3D_y2354")
 
@@ -267,9 +271,3 @@ transform = Transform3D(-0.24948843, 0, 0.015985046, 0, 0.25, 0, -0.015985046, 0
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.8519, 0)
 light_color = Color(1.051, 0.9290963, 0.4387049, 1)
 omni_range = 1.768
-
-[node name="carta" parent="." instance=ExtResource("7_ni31j")]
-transform = Transform3D(-0.017341062, 0, 0.1063728, 0, 0.10777702, 0, -0.1063728, 0, -0.017341062, 0.8243141, 4.6349874, -3.1658072)
-
-[node name="Document" parent="." instance=ExtResource("8_xlvrw")]
-transform = Transform3D(-0.017341062, 0, 0.1063728, 0, 0.10777702, 0, -0.1063728, 0, -0.017341062, 0.64906883, 4.646312, -3.1658072)

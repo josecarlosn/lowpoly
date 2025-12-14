@@ -11,5 +11,6 @@ func _process(delta: float) -> void:
 	dot.text = ""
 	if is_colliding():
 		var detected = get_collider()
-		if detected is Interactable:
-			dot.text = detected.name
+	
+		if detected.is_in_group("Interactable") == true:
+			dot.text = "detected.name"
