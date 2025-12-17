@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbloksat817ni"]
+
+[ext_resource type="PackedScene" uid="uid://b2dsflrxxaond" path="res://cube.blend" id="1_3253y"]
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://scenes/player.tscn" id="2_1kc1q"]
+[ext_resource type="PackedScene" uid="uid://dc2xlxgf4ky4a" path="res://assets/blender_models/table.blend" id="3_4msxo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_u3cyc"]
+sky_material = SubResource("ProceduralSkyMaterial_3253y")
+
+[sub_resource type="Environment" id="Environment_m7jmp"]
+background_mode = 1
+background_color = Color(0.99848133, 0.8748278, 0.70450383, 1)
+background_energy_multiplier = 0.5
+sky = SubResource("Sky_u3cyc")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m7jmp")
+
+[node name="house" parent="." instance=ExtResource("1_3253y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
+
+[node name="Player" parent="." instance=ExtResource("2_1kc1q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3585607, 3.9378257, -5.0399837)
+
+[node name="table" parent="." instance=ExtResource("3_4msxo")]
+transform = Transform3D(0.9996068, 0, -0.028043767, 0, 1, 0, 0.028043767, 0, 0.9996068, 0.5767362, 3.870408, -4.590243)
