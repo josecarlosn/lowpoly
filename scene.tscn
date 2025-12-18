@@ -1,13 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7et7qoy10th6"]
+[gd_scene load_steps=13 format=3 uid="uid://b7et7qoy10th6"]
 
-[ext_resource type="PackedScene" uid="uid://b2lneewn72je3" path="res://cube.blend" id="1_3253y"]
-[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://character_body_3d.gd" id="1_ulcgi"]
-[ext_resource type="Texture2D" uid="uid://cui32l8hworq0" path="res://mira.png" id="2_nxogm"]
-[ext_resource type="PackedScene" uid="uid://dgm2kmn8x0hh" path="res://abajour.blend" id="4_m7jmp"]
-[ext_resource type="PackedScene" uid="uid://dtcsv1qtnv5ao" path="res://desk.blend" id="4_u3cyc"]
-[ext_resource type="Script" uid="uid://dk083rovs37oc" path="res://interact_ray.gd" id="4_xlvrw"]
-[ext_resource type="PackedScene" uid="uid://bppwhvaela8fu" path="res://carta.blend" id="7_ni31j"]
-[ext_resource type="Script" uid="uid://oird00f6f1p7" path="res://Interactable.gd" id="7_xlvrw"]
+[ext_resource type="PackedScene" uid="uid://b2dsflrxxaond" path="res://Entities/House/house.blend" id="1_3253y"]
+[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="2_nxogm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -188,16 +182,12 @@ metadata/_edit_group_ = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_m7jmp")
 
-[node name="carta" parent="WorldEnvironment" instance=ExtResource("7_ni31j")]
-transform = Transform3D(-0.023976177, -1.3322676e-16, 0.29904035, -0.2647466, 0.13949434, -0.021226605, -0.13904813, -0.26559615, -0.01114847, 0.58868825, 4.9256134, -2.8265245)
-script = ExtResource("7_xlvrw")
-
 [node name="house" parent="." instance=ExtResource("1_3253y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYER")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3585607, 3.9378257, -5.0399837)
-script = ExtResource("1_ulcgi")
+script = ExtResource("2_nxogm")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 
 [node name="head" type="Node3D" parent="CharacterBody3D"]
@@ -219,13 +209,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_nxogm")
 expand_mode = 1
 
 [node name="interactRay" type="RayCast3D" parent="CharacterBody3D/head/Camera3D"]
 transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, 0, 0.02448225, 0.044962406)
 target_position = Vector3(0, 0, 1)
-script = ExtResource("4_xlvrw")
 
 [node name="Label" type="Label" parent="CharacterBody3D/head/Camera3D/interactRay"]
 anchors_preset = 8
@@ -254,20 +242,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_m7jmp")
 }
 
-[node name="desk" parent="." instance=ExtResource("4_u3cyc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86139166, 4.6619706, -3.0454006)
-script = ExtResource("7_xlvrw")
+[node name="desk#Mesa" type="StaticBody3D" parent="."]
 
-[node name="Mesa" type="StaticBody3D" parent="desk"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="desk/Mesa"]
+[node name="desk_Mesa#CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0049858093, -0.43133545, -0.0005187988)
 shape = SubResource("BoxShape3D_y2354")
 
-[node name="abajour" parent="." instance=ExtResource("4_m7jmp")]
-transform = Transform3D(-0.24948843, 0, 0.015985046, 0, 0.25, 0, -0.015985046, 0, -0.24948843, 1.1901283, 4.63481, -2.963591)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="abajour"]
+[node name="abajour#OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 2.8519, 0)
 light_color = Color(1.051, 0.9290963, 0.4387049, 1)
 omni_range = 1.768
