@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp7mbojse4kkk"]
 
-[ext_resource type="PackedScene" uid="uid://76k0ggbk1kxj" path="res://Assets/blender_models/othertable.blend" id="1_670du"]
-[ext_resource type="PackedScene" uid="uid://b1wbx00l3bdk7" path="res://Assets/blender_models/lamp.blend" id="2_hn3ok"]
-[ext_resource type="PackedScene" uid="uid://b3fbmg0662cy0" path="res://Assets/blender_models/rg.blend" id="3_6uti2"]
+[ext_resource type="PackedScene" uid="uid://76k0ggbk1kxj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend" id="1_670du"]
+[ext_resource type="PackedScene" uid="uid://b1wbx00l3bdk7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.blend" id="2_hn3ok"]
+[ext_resource type="PackedScene" uid="uid://b3fbmg0662cy0" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend" id="3_6uti2"]
 [ext_resource type="Script" uid="uid://dd6lyxf7cyom4" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/lv_identity_card.gd" id="4_6nuho"]
-[ext_resource type="PackedScene" uid="uid://1r0fp83e01h7" path="res://Assets/blender_models/carta.blend" id="5_bpgm6"]
+[ext_resource type="PackedScene" uid="uid://1r0fp83e01h7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend" id="5_bpgm6"]
 [ext_resource type="Script" uid="uid://ch8flt6oexqtj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/lv_note.gd" id="6_b6raq"]
 
 [node name="LivingRoomDesk" type="Node3D"]
@@ -13,23 +13,14 @@
 transform = Transform3D(0.9996068, 0, -0.028043767, 0, 1, 0, 0.028043767, 0, 0.9996068, 2.2742834, 4.5850697, -5.013711)
 
 [node name="Lamp" parent="Table" instance=ExtResource("2_hn3ok")]
-transform = Transform3D(0.15, 0, -4.6566123e-10, 0, 0.15, 0, 4.6566123e-10, 0, 0.15, 0.043956757, -0.018654823, -0.05573702)
+transform = Transform3D(0.15, 0, -4.656613e-10, 0, 0.15, 0, 4.656613e-10, 0, 0.15, 0.04395747, -0.021578312, -0.05573702)
 
 [node name="bloom" type="OmniLight3D" parent="Table/Lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5209732, 0)
 light_color = Color(0.57996243, 0.57996243, 0.33213767, 1)
 light_size = 1.03
 shadow_bias = 1.16
-omni_range = 0.58827245
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Table/Lamp"]
-transform = Transform3D(1, 0, 0, 0, 0.0018674879, 0.9999983, 0, -0.9999983, 0.0018674879, 0, 2.0818262, -0.0047950614)
-visible = false
-light_color = Color(1, 1, 0.8, 1)
-light_bake_mode = 0
-shadow_enabled = true
-shadow_bias = 1.886
-spot_angle = 34.51
+omni_range = 1.1006398
 
 [node name="IdentityCard" parent="Table" instance=ExtResource("3_6uti2")]
 transform = Transform3D(-0.971994, 0, -0.2350065, 0, 1, 0, 0.2350065, 0, -0.971994, -0.17969882, 0.0076265335, -0.05705881)

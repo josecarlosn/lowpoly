@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://76k0ggbk1kxj"
-path="res://.godot/imported/othertable.blend-1ebcfd61c1556306b75d68c1f075ea6a.scn"
+uid="uid://1r0fp83e01h7"
+path="res://.godot/imported/carta.blend-9a398d69d481603b41bf928f42bc7af9.scn"
 
 [deps]
 
-source_file="res://Assets/blender_models/othertable.blend"
-dest_files=["res://.godot/imported/othertable.blend-1ebcfd61c1556306b75d68c1f075ea6a.scn"]
+source_file="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend"
+dest_files=["res://.godot/imported/carta.blend-9a398d69d481603b41bf928f42bc7af9.scn"]
 
 [params]
 

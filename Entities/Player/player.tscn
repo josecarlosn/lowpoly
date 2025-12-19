@@ -193,7 +193,7 @@ theme_override_fonts/font = SubResource("SystemFont_gjmho")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="head/Camera3D"]
+[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -203,6 +203,48 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_fjrip")
+
+[node name="NoteLayer" type="CanvasLayer" parent="head/Camera3D"]
+
+[node name="NoteControl" type="Control" parent="head/Camera3D/NoteLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteTexture" type="TextureRect" parent="head/Camera3D/NoteLayer/NoteControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.5
+offset_top = -166.5
+offset_right = 123.5
+offset_bottom = 166.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -150.5
+offset_right = 108.5
+offset_bottom = 150.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "texto teste"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b1wbx00l3bdk7"
-path="res://.godot/imported/lamp.blend-7e87050a4476ddaa0119dd569c7134eb.scn"
+uid="uid://b3fbmg0662cy0"
+path="res://.godot/imported/rg.blend-052fc8b7c87ae53a99e6e0de0549089f.scn"
 
 [deps]
 
-source_file="res://Assets/blender_models/lamp.blend"
-dest_files=["res://.godot/imported/lamp.blend-7e87050a4476ddaa0119dd569c7134eb.scn"]
+source_file="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend"
+dest_files=["res://.godot/imported/rg.blend-052fc8b7c87ae53a99e6e0de0549089f.scn"]
 
 [params]
 
