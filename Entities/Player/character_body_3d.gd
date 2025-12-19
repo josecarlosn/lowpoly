@@ -32,11 +32,7 @@ func _input(event: InputEvent) -> void:
 			head.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 			camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
-		#Camera Zoom
-		if Input.is_action_just_pressed("right_click") == true:
-			ANIMATION_PLAYER.play("camera_zoom",-1, ZOOM_SPEED)
-		if Input.is_action_just_released("right_click") == true:
-			ANIMATION_PLAYER.play("camera_zoom",-1, -ZOOM_SPEED, true)
+		
 		#Crouch	
 		if Input.is_action_just_pressed("crouch"):
 			toggle_crouch()
@@ -63,6 +59,11 @@ func _input(event: InputEvent) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 	else: pass
+	#Camera Zoom
+	if Input.is_action_just_pressed("right_click") == true:
+		ANIMATION_PLAYER.play("camera_zoom",-1, ZOOM_SPEED)
+	if Input.is_action_just_released("right_click") == true:
+		ANIMATION_PLAYER.play("camera_zoom",-1, -ZOOM_SPEED, true)
 	#Esc 
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

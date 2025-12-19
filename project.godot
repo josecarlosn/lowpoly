@@ -33,6 +33,10 @@ import/size/viewport_height=480
 import/size/viewport_width=640
 import/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="uid://bq6dryyc22hp"
+
 [importer_defaults]
 
 texture={
