@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbloksat817ni"]
+[gd_scene load_steps=11 format=3 uid="uid://cbloksat817ni"]
 
 [ext_resource type="PackedScene" uid="uid://b2dsflrxxaond" path="res://Entities/House/house.blend" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://cit375uf1vpxy" path="res://Scenes/ToggleLivingRoomLight.gd" id="2_kry3j"]
+[ext_resource type="Script" uid="uid://bodhj45ih1m47" path="res://Scenes/ToggleHallLight.gd" id="3_21xkr"]
 [ext_resource type="PackedScene" uid="uid://cp7mbojse4kkk" path="res://Entities/Stages/LivingRoom/LivingRoomTable/living_room_table.tscn" id="3_kry3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
@@ -13,10 +15,19 @@ sky_material = SubResource("ProceduralSkyMaterial_3253y")
 
 [sub_resource type="Environment" id="Environment_m7jmp"]
 background_mode = 1
-background_color = Color(0.12260539, 0.12930433, 0.3168744, 1)
+background_color = Color(0.06843269, 0.10251033, 0.26542884, 1)
+background_energy_multiplier = 0.1
 sky = SubResource("Sky_u3cyc")
+glow_enabled = true
 glow_bloom = 0.41
-fog_light_color = Color(0.5586292, 0.5484055, 0.5344584, 1)
+fog_enabled = true
+fog_light_color = Color(0.33252168, 0.45044175, 0.67785895, 1)
+fog_light_energy = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jjvhh"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
@@ -27,7 +38,43 @@ environment = SubResource("Environment_m7jmp")
 [node name="house" parent="." instance=ExtResource("1_8gbba")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
 
+[node name="LivingRoomLight" type="OmniLight3D" parent="house"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -9.850707, 4.093131, -4.6519685)
+visible = false
+light_color = Color(1, 1, 0.7921569, 1)
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="ToggleLivingRoomLight" type="MeshInstance3D" parent="house"]
+transform = Transform3D(0.100000106, 0, -4.656613e-10, 0, 0.1, 0, 4.656613e-10, 0, 0.100000106, -9.337741, 2.3217478, -8.172693)
+mesh = SubResource("BoxMesh_8gbba")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="house/ToggleLivingRoomLight"]
+script = ExtResource("2_kry3j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="house/ToggleLivingRoomLight/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jjvhh")
+
+[node name="HallLight" type="OmniLight3D" parent="house"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.249388, 4.093131, 1.2985334)
+visible = false
+light_color = Color(1, 1, 0.7921569, 1)
+shadow_enabled = true
+omni_range = 10.0
+
+[node name="ToggleHallLight2" type="MeshInstance3D" parent="house"]
+transform = Transform3D(0.10000003, 0, 0, 0, 0.1, 0, 0, 0, 0.10000003, -11.528544, 2.3217478, -1.5525528)
+mesh = SubResource("BoxMesh_8gbba")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="house/ToggleHallLight2"]
+script = ExtResource("3_21xkr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="house/ToggleHallLight2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_jjvhh")
+
 [node name="Player" parent="." instance=ExtResource("2_jjvhh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3585607, 3.9378257, -5.0399837)
 
 [node name="LivingRoomDesk" parent="." instance=ExtResource("3_kry3j")]
+
+[editable path="house"]

@@ -205,7 +205,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = SubResource("SystemFont_gjmho")
 theme_override_font_sizes/font_size = 12
-text = "teste"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -244,7 +243,7 @@ size_flags_vertical = 3
 
 [node name="NoteTexture" type="TextureRect" parent="head/Camera3D/NoteLayer/NoteControl"]
 unique_name_in_owner = true
-modulate = Color(0.4738877, 0.4738877, 0.4738877, 1)
+modulate = Color(0.2647818, 0.2647818, 0.2647818, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -261,27 +260,6 @@ texture = ExtResource("4_tekja")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -181.75
-offset_top = -150.5
-offset_right = 181.75
-offset_bottom = 150.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "texto test eaa aaaa aaaaaaaaaaaaaaatexto atesteaaaaaaaaaaaaaaaaaaaaa  texto testeaaaaaaaaa aaa aaaaa aaaa texto testeaaaa aa aaa a aaaa aaaaaa"
-horizontal_alignment = 3
-vertical_alignment = 1
-justification_flags = 171
-
 [node name="CloseLabel" type="Label" parent="head/Camera3D/NoteLayer/NoteControl"]
 layout_mode = 1
 anchors_preset = 7
@@ -290,13 +268,58 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -58.5
-offset_top = -86.0
+offset_top = -62.0
 offset_right = 58.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "[E] Voltar"
 horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="head/Camera3D/NoteLayer/NoteControl"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4627451)
+
+[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -150.5
+offset_right = 234.0
+offset_bottom = 150.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "texto test eaa aaaa aaaaaaaaaaaaaaatexto atesteaaaaaaaaaaaaaaaaaaaaa  texto testeaaaaaaaaa aaa aaaaa aaaa texto testeaaaa aa aaa a aaaa aaaaaa"
+horizontal_alignment = 3
+vertical_alignment = 1
+justification_flags = 171
+
+[node name="NoteTitle" type="Label" parent="head/Camera3D/NoteLayer/NoteControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -21.0
+offset_top = 73.5
+offset_right = 21.0
+offset_bottom = 92.5
+grow_horizontal = 2
+text = "teste"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 physics_interpolation_mode = 1

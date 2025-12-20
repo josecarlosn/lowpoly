@@ -1,8 +1,8 @@
 extends CharacterBody3D
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 4.0
-@export var DEFAULT_SPEED := 1.5
-@export var CROUCH_SPEED := 0.75
+@export var DEFAULT_SPEED := 2
+@export var CROUCH_SPEED := 1
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
 @export var ZOOM_SPEED = 5.0
@@ -13,9 +13,9 @@ var SPEED := DEFAULT_SPEED
 @export var cam_limit_up := 60.0
 var cam_ver = 0.0
 @export_category("Bob Settings")
-var bob_freq = 4.0
-var bob_amp = 0.05
-var bob_on_time = 0.0
+@export var bob_freq = 4.0
+@export var bob_amp = 0.05
+@export var bob_on_time = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D
 @onready var head = $head
@@ -23,6 +23,8 @@ var _is_crouching : bool = false
 var _is_sprinting : bool = false
 var _can_sprint : bool = true
 var can_move : bool = true
+var is_paused = false
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event: InputEvent) -> void:
@@ -66,21 +68,28 @@ func _input(event: InputEvent) -> void:
 		ANIMATION_PLAYER.play("camera_zoom",-1, -ZOOM_SPEED, true)
 	#Esc 
 	if Input.is_action_just_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		is_paused = !is_paused
+		if is_paused:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _process(delta: float) -> void:
 	#Gravity-------------------------------------------------------------------------------------------
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	#Player Movement-----------------------------------------------------------------------------------
-	move_and_slide()
+	if can_move:
+		move_and_slide()
 	
 	##BOB Camera---------------------------------------------------------------------------------------
 	if _is_crouching == false:
-		bob_on_time += delta * velocity.length() * float(is_on_floor())
-		head.transform.origin = handle_bob(bob_on_time)
+		if can_move:
+			bob_on_time += delta * velocity.length() * float(is_on_floor())
+			head.transform.origin = handle_bob(bob_on_time)
 	
 #Bob func
 func handle_bob(time) -> Vector3:
+	
 	var pos = Vector3.ZERO
 	pos.y = sin(time * bob_freq) * bob_amp
 	return pos

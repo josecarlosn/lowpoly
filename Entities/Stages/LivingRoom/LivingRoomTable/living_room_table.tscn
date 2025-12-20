@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp7mbojse4kkk"]
+[gd_scene load_steps=8 format=3 uid="uid://cp7mbojse4kkk"]
 
 [ext_resource type="PackedScene" uid="uid://76k0ggbk1kxj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend" id="1_670du"]
 [ext_resource type="PackedScene" uid="uid://b1wbx00l3bdk7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.blend" id="2_hn3ok"]
 [ext_resource type="PackedScene" uid="uid://b3fbmg0662cy0" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend" id="3_6uti2"]
+[ext_resource type="Script" uid="uid://b4ef1alfca1sk" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.gd" id="3_tjaqw"]
 [ext_resource type="Script" uid="uid://dd6lyxf7cyom4" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/lv_identity_card.gd" id="4_6nuho"]
 [ext_resource type="PackedScene" uid="uid://1r0fp83e01h7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend" id="5_bpgm6"]
 [ext_resource type="Script" uid="uid://ch8flt6oexqtj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/lv_note.gd" id="6_b6raq"]
@@ -15,26 +16,33 @@ transform = Transform3D(0.9996068, 0, -0.028043767, 0, 1, 0, 0.028043767, 0, 0.9
 [node name="Lamp" parent="Table" instance=ExtResource("2_hn3ok")]
 transform = Transform3D(0.15, 0, -4.656613e-10, 0, 0.15, 0, 4.656613e-10, 0, 0.15, 0.04395747, -0.021578312, -0.05573702)
 
+[node name="StaticBody3D" parent="Table/Lamp/Abajour" index="0"]
+script = ExtResource("3_tjaqw")
+
 [node name="bloom" type="OmniLight3D" parent="Table/Lamp"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5209732, 0)
-light_color = Color(0.57996243, 0.57996243, 0.33213767, 1)
-light_size = 1.03
+transform = Transform3D(6.6666656, 0, 2.9802322e-08, 0, 6.666666, 0, -2.9802322e-08, 0, 6.6666656, -0.1882906, 2.5079021, 0.0052833557)
+visible = false
+light_color = Color(1, 0.90588236, 0.3647059, 1)
+light_energy = 0.333
+light_size = 3.205
 shadow_enabled = true
-shadow_bias = 1.16
-omni_range = 1.1006398
+shadow_bias = 10.0
+shadow_normal_bias = 10.0
+omni_range = 0.702
 
 [node name="IdentityCard" parent="Table" instance=ExtResource("3_6uti2")]
-transform = Transform3D(-0.971994, 0, -0.2350065, 0, 1, 0, 0.2350065, 0, -0.971994, -0.17969882, 0.0076265335, -0.05705881)
+transform = Transform3D(-1.9439876, 0, -0.4700129, 0, 2, 0, 0.4700129, 0, -1.9439876, -0.17969882, 0.0076265335, -0.05705881)
 
 [node name="StaticBody3D" parent="Table/IdentityCard/rg" index="0"]
 script = ExtResource("4_6nuho")
 
 [node name="Note" parent="Table" instance=ExtResource("5_bpgm6")]
-transform = Transform3D(0.09024176, 0, -0.6941586, 0, 0.7, 0, 0.6941586, 0, 0.09024176, -0.17742813, 0.0040459633, -0.2896719)
+transform = Transform3D(0.15470016, 0, -1.1899866, 0, 1.2, 0, 1.1899866, 0, 0.15470016, -0.17742813, 0.0040459633, -0.2896719)
 
 [node name="StaticBody3D" parent="Table/Note/carta" index="0"]
 script = ExtResource("6_b6raq")
 
 [editable path="Table"]
+[editable path="Table/Lamp"]
 [editable path="Table/IdentityCard"]
 [editable path="Table/Note"]
