@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3efs8ifbmvv2"]
+[gd_scene load_steps=19 format=3 uid="uid://b3efs8ifbmvv2"]
 
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://elp5h1kao7rq" path="res://Entities/Player/RayCast/interact_ray.gd" id="3_tuyoq"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/state_machine.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/walking_player_state.gd" id="7_01a4e"]
+[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/sprinting_player_state.gd" id="7_7a1se"]
+[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/idle_crouching_player_state.gd" id="9_lub02"]
+[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/walking_crouching_player_state.gd" id="10_x1y6q"]
 
 [sub_resource type="SystemFont" id="SystemFont_gjmho"]
 subpixel_positioning = 0
@@ -372,5 +375,14 @@ CURRENT_STATE = NodePath("IdlePlayerState")
 [node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_4wf4l")
 
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_7a1se")
+
 [node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("7_01a4e")
+
+[node name="IdleCrouchingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_lub02")
+
+[node name="WalkingCrouchingPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_x1y6q")
