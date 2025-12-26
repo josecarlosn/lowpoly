@@ -15,6 +15,10 @@ run/main_scene="uid://cbloksat817ni"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Globals/Scripts/Global.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -32,10 +36,6 @@ enabled=PackedStringArray()
 import/size/viewport_height=480
 import/size/viewport_width=640
 import/stretch/mode="viewport"
-
-[gui]
-
-theme/custom_font="uid://bq6dryyc22hp"
 
 [importer_defaults]
 

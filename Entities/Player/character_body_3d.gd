@@ -1,4 +1,7 @@
 extends CharacterBody3D
+
+class_name Player
+
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 4.0
 @export var DEFAULT_SPEED := 2
@@ -19,6 +22,9 @@ var cam_ver = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D
 @onready var head = $head
+@onready var debug_label: Label = $Debug/Panel/Label
+
+
 var _is_crouching : bool = false 
 var _is_sprinting : bool = false
 var _can_sprint : bool = true
@@ -26,6 +32,8 @@ var can_move : bool = true
 var is_paused = false
 
 func _ready() -> void:
+	
+	Global.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event: InputEvent) -> void:
 	if can_move:
@@ -34,7 +42,6 @@ func _input(event: InputEvent) -> void:
 			head.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
 			camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
-		
 		#Crouch	
 		if Input.is_action_just_pressed("crouch"):
 			toggle_crouch()
@@ -86,6 +93,8 @@ func _process(delta: float) -> void:
 		if can_move:
 			bob_on_time += delta * velocity.length() * float(is_on_floor())
 			head.transform.origin = handle_bob(bob_on_time)
+	
+	
 	
 #Bob func
 func handle_bob(time) -> Vector3:
