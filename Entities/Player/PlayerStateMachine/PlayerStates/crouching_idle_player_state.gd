@@ -1,5 +1,6 @@
 class_name IdleCrouchingPlayerState extends State
-
+func enter():
+	pass
 func update(_delta: float) -> void:
 	if !Global.player._is_crouching and Global.player.velocity.length() == 0.0:
 		transition.emit("IdlePlayerState")
@@ -8,4 +9,4 @@ func update(_delta: float) -> void:
 	elif !Global.player._is_crouching and Global.player.velocity.length() > 3:
 		transition.emit("SprintingPlayerState")
 	elif Global.player._is_crouching and Global.player.velocity.length() > 0.0:
-		transition.emit("WalkingCrouchingPlayerState")
+		transition.emit("CrouchingWalkingPlayerState")

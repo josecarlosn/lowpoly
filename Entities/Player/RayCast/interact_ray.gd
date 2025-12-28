@@ -9,7 +9,7 @@ extends RayCast3D
 @onready var cross_hair_action_label: Label = $Label/CrossHairActionLabel
 @onready var note_title: Label = $"../NoteLayer/NoteControl/NoteTitle"
 
-
+@onready var state_machine: StateMachine = $"../../../PlayerStateMachine"
 
 
 func _ready() -> void:
@@ -29,30 +29,38 @@ func _process(delta: float) -> void:
 				crosshair.visible = false
 				label.text = detected.label
 				cross_hair_action_label.text = detected.action
-				if Input.is_action_just_pressed("use"):
-					player.can_move = false
-					label.visible = false
-					if note_control.visible == false:
-						note_texture.texture = load(detected.texture_content)
-						note_control.visible = true
-						note_label.text = detected.content
-						note_title.text = detected.title
-					else: 
-						label.visible = true
-						player.can_move = true
-						note_control.visible = false	
-						
-			elif detected.action == "Lamp":
-				cross_hair_action_label.text = detected.action
-				crosshair.visible = false
-				if detected.is_on == true:
-					label.text = detected.label_on
-				elif detected.is_on == false:
-					label.text = detected.label_off
-				if Input.is_action_just_pressed("use"):
-					detected.is_on = !detected.is_on
-					if detected.is_on:
-						detected.light.visible = true
-					else:
-						detected.light.visible = false
-						
+				if Input.is_action_just_pressed("use") and state_machine.CURRENT_STATE.can_interact:
+					state_machine.on_child_transition("ReadingPlayerState")
+					
+					
+					
+					
+					
+					
+					
+					#player.can_move = false
+					#label.visible = false
+					#if note_control.visible == false:
+						#note_texture.texture = load(detected.texture_content)
+						#note_control.visible = true
+						#note_label.text = detected.content
+						#note_title.text = detected.title
+					#else: 
+						#label.visible = true
+						#player.can_move = true
+						#note_control.visible = false	
+						#
+			#elif detected.action == "Lamp":
+				#cross_hair_action_label.text = detected.action
+				#crosshair.visible = false
+				#if detected.is_on == true:
+					#label.text = detected.label_on
+				#elif detected.is_on == false:
+					#label.text = detected.label_off
+				#if Input.is_action_just_pressed("use"):
+					#detected.is_on = !detected.is_on
+					#if detected.is_on:
+						#detected.light.visible = true
+					#else:
+						#detected.light.visible = false
+						#

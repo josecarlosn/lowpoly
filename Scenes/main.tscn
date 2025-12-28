@@ -40,7 +40,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.2315596
 
 [node name="LivingRoomLight" type="OmniLight3D" parent="house"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -9.850707, 4.093131, -4.6519685)
-visible = false
 light_color = Color(1, 1, 0.7921569, 1)
 shadow_enabled = true
 omni_range = 10.0

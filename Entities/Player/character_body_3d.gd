@@ -22,7 +22,8 @@ var cam_ver = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D
 @onready var head = $head
-@onready var debug_label: Label = $Debug/Panel/Label
+
+var is_reading: bool = false
 
 
 var _is_crouching : bool = false 
@@ -31,9 +32,12 @@ var _can_sprint : bool = true
 var can_move : bool = true
 var is_paused = false
 
+@onready var state_machine: StateMachine = $StateMachine
+
 func _ready() -> void:
-	
+
 	Global.player = self
+	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event: InputEvent) -> void:
 	if can_move:
@@ -43,14 +47,8 @@ func _input(event: InputEvent) -> void:
 			camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
 		#Crouch	
-		if Input.is_action_just_pressed("crouch"):
+		if Input.is_action_just_pressed("crouch"):			
 			toggle_crouch()
-		#if Input.is_action_just_pressed("crouch") == true:
-			#toggle_crouch()
-			#ANIMATION_PLAYER.play("crouch",-1, CROUCH_ANIMATION_SPEED)
-		#if Input.is_action_just_released("crouch") == true:
-			#toggle_crouch()
-			#ANIMATION_PLAYER.play("crouch",-1, -CROUCH_ANIMATION_SPEED, true)
 		#Srpint
 		if Input.is_action_pressed("sprint") == true:
 			_is_sprinting = true
