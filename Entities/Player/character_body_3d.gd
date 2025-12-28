@@ -22,15 +22,13 @@ var cam_ver = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D
 @onready var head = $head
-
-var is_reading: bool = false
-
-
 var _is_crouching : bool = false 
 var _is_sprinting : bool = false
 var _can_sprint : bool = true
 var can_move : bool = true
 var is_paused = false
+
+@onready var detected = null
 
 @onready var state_machine: StateMachine = $StateMachine
 

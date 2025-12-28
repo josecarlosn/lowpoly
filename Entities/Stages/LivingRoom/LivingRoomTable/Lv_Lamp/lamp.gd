@@ -6,4 +6,4 @@ extends Interactable
 @export var label_off := "Ligar"
 @export var title := ""
 @export var content := ""
-@export var action := "Lamp"
+@export var type := "Lamp"

@@ -1,9 +1,8 @@
 extends Interactable
-
-@export var is_on := false
-@onready var light: OmniLight3D = $"../../LivingRoomLight"
-@export var label_on := "Desligar"
-@export var label_off := "Ligar"
+@onready var light: OmniLight3D = %LivingRoomLight
+@export var is_on := true
+@export var label_on := "Desligar[E]"
+@export var label_off := "Ligar[E]"
 @export var title := ""
 @export var content := ""
-@export var action := "Lamp"
+@export var type := "Lamp"

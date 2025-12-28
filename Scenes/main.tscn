@@ -39,6 +39,7 @@ environment = SubResource("Environment_m7jmp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
 
 [node name="LivingRoomLight" type="OmniLight3D" parent="house"]
+unique_name_in_owner = true
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -9.850707, 4.093131, -4.6519685)
 light_color = Color(1, 1, 0.7921569, 1)
 shadow_enabled = true
@@ -55,6 +56,7 @@ script = ExtResource("2_kry3j")
 shape = SubResource("ConvexPolygonShape3D_jjvhh")
 
 [node name="HallLight" type="OmniLight3D" parent="house"]
+unique_name_in_owner = true
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.249388, 4.093131, 1.2985334)
 visible = false
 light_color = Color(1, 1, 0.7921569, 1)

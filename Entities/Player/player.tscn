@@ -200,7 +200,6 @@ grow_vertical = 2
 script = ExtResource("4_fjrip")
 
 [node name="Label" type="Label" parent="head/Camera3D/interactRay"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -218,7 +217,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CrossHairActionLabel" type="Label" parent="head/Camera3D/interactRay/Label"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -238,10 +236,10 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="NoteLayer" type="CanvasLayer" parent="head/Camera3D"]
-visible = false
 
 [node name="NoteControl" type="Control" parent="head/Camera3D/NoteLayer"]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_tekja")
 layout_mode = 3
 anchors_preset = 15

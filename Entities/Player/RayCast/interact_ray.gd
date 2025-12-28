@@ -25,13 +25,28 @@ func _process(delta: float) -> void:
 	if is_colliding():
 		var detected = get_collider()
 		if detected is Interactable:
-			if detected.action == "Read":
+			
+			if detected.type == "Read":
+				label.text = detected.label
 				crosshair.visible = false
 				label.text = detected.label
-				cross_hair_action_label.text = detected.action
 				if Input.is_action_just_pressed("use") and state_machine.CURRENT_STATE.can_interact:
+					Global.player.detected = detected
 					state_machine.on_child_transition("ReadingPlayerState")
 					
+			elif detected.type == "Lamp":
+				crosshair.visible = false
+				if detected.is_on == true:
+					label.text = detected.label_on
+				elif detected.is_on == false:
+					label.text = detected.label_off
+				if Input.is_action_just_pressed("use"):
+					detected.is_on = !detected.is_on
+					if detected.is_on:
+						detected.light.visible = true
+					else:
+						detected.light.visible = false
+							
 					
 					
 					
