@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b3efs8ifbmvv2"]
+[gd_scene format=3 uid="uid://b3efs8ifbmvv2"]
 
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://elp5h1kao7rq" path="res://Entities/Player/RayCast/interact_ray.gd" id="3_tuyoq"]
@@ -174,21 +174,21 @@ _data = {
 &"standup": SubResource("Animation_m7jmp")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("ANIMATION_PLAYER")]
+[node name="Player" type="CharacterBody3D" unique_id=418249368 node_paths=PackedStringArray("ANIMATION_PLAYER")]
 script = ExtResource("1_dqkch")
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 
-[node name="head" type="Node3D" parent="."]
+[node name="head" type="Node3D" parent="." unique_id=1886020297]
 
-[node name="Camera3D" type="Camera3D" parent="head"]
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5758762, -0.044962525)
 
-[node name="interactRay" type="RayCast3D" parent="head/Camera3D"]
+[node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 1.5)
 script = ExtResource("3_tuyoq")
 
-[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay"]
+[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -198,8 +198,9 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_fjrip")
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="head/Camera3D/interactRay"]
+[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=1441135316]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -215,8 +216,9 @@ theme_override_fonts/font = SubResource("SystemFont_gjmho")
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="CrossHairActionLabel" type="Label" parent="head/Camera3D/interactRay/Label"]
+[node name="CrossHairActionLabel" type="Label" parent="head/Camera3D/interactRay/Label" unique_id=145936556]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -234,10 +236,11 @@ theme_override_font_sizes/font_size = 10
 text = "teste"
 horizontal_alignment = 1
 vertical_alignment = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="NoteLayer" type="CanvasLayer" parent="head/Camera3D"]
+[node name="NoteLayer" type="CanvasLayer" parent="head/Camera3D" unique_id=2031119320]
 
-[node name="NoteControl" type="Control" parent="head/Camera3D/NoteLayer"]
+[node name="NoteControl" type="Control" parent="head/Camera3D/NoteLayer" unique_id=1611879838]
 unique_name_in_owner = true
 visible = false
 material = SubResource("ShaderMaterial_tekja")
@@ -251,7 +254,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("4_iplt1")
 
-[node name="NoteTexture" type="TextureRect" parent="head/Camera3D/NoteLayer/NoteControl"]
+[node name="NoteTexture" type="TextureRect" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1741862862]
 unique_name_in_owner = true
 modulate = Color(0.2647818, 0.2647818, 0.2647818, 1)
 layout_mode = 1
@@ -270,7 +273,7 @@ texture = ExtResource("4_tekja")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CloseLabel" type="Label" parent="head/Camera3D/NoteLayer/NoteControl"]
+[node name="CloseLabel" type="Label" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1986237622]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -286,7 +289,7 @@ theme_override_font_sizes/font_size = 12
 text = "[E] Voltar"
 horizontal_alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="head/Camera3D/NoteLayer/NoteControl"]
+[node name="ColorRect" type="ColorRect" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=87708002]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -296,7 +299,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.4627451)
 
-[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl"]
+[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=2012380933]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -319,7 +322,7 @@ horizontal_alignment = 3
 vertical_alignment = 1
 justification_flags = 171
 
-[node name="NoteTitle" type="Label" parent="head/Camera3D/NoteLayer/NoteControl"]
+[node name="NoteTitle" type="Label" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1330589662]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -331,38 +334,36 @@ offset_bottom = 92.5
 grow_horizontal = 2
 text = "teste"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1387597552]
 physics_interpolation_mode = 1
 transform = Transform3D(0.612684, 0, 0, 0, 0.9165557, 0, 0, 0, 0.6431235, 0, 0.94802094, 0)
 shape = SubResource("BoxShape3D_u3cyc")
 debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_m7jmp")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=806651215]
+libraries/ = SubResource("AnimationLibrary_m7jmp")
 
-[node name="Debug" type="CanvasLayer" parent="."]
+[node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="DebugPanel" type="PanelContainer" parent="Debug"]
+[node name="DebugPanel" type="PanelContainer" parent="Debug" unique_id=67110041]
 offset_right = 211.0
 offset_bottom = 103.0
 
-[node name="Title" type="Label" parent="Debug/DebugPanel"]
+[node name="Title" type="Label" parent="Debug/DebugPanel" unique_id=131475504]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "Debug Center:"
 
-[node name="Panel" type="Panel" parent="Debug"]
+[node name="Panel" type="Panel" parent="Debug" unique_id=1551793451]
 offset_top = 17.0
 offset_right = 211.0
 offset_bottom = 103.0
 
-[node name="Label" type="Label" parent="Debug/Panel"]
+[node name="Label" type="Label" parent="Debug/Panel" unique_id=917073445]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -371,25 +372,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 9
 
-[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=186113698 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
 script = ExtResource("5_5c2io")
 CURRENT_STATE = NodePath("IdlePlayerState")
 PREVIOUS_STATE = NodePath("IdlePlayerState")
 
-[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1401070449]
 script = ExtResource("6_4wf4l")
 
-[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1492343580]
 script = ExtResource("7_7a1se")
 
-[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=150470411]
 script = ExtResource("7_01a4e")
 
-[node name="CrouchingIdlePlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="CrouchingIdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=656496806]
 script = ExtResource("9_lub02")
 
-[node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
 script = ExtResource("10_x1y6q")
 
-[node name="ReadingPlayerState" type="Node" parent="PlayerStateMachine"]
+[node name="ReadingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1944368075]
 script = ExtResource("11_ap3xn")

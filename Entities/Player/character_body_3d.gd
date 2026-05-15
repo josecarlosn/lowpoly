@@ -3,9 +3,9 @@ extends CharacterBody3D
 class_name Player
 
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 4.0
-@export var DEFAULT_SPEED := 2
-@export var CROUCH_SPEED := 1
+@export var SPRINT_SPEED := 6.0
+@export var DEFAULT_SPEED := 4
+@export var CROUCH_SPEED := 2
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
 @export var ZOOM_SPEED = 5.0
@@ -16,8 +16,8 @@ var SPEED := DEFAULT_SPEED
 @export var cam_limit_up := 60.0
 var cam_ver = 0.0
 @export_category("Bob Settings")
-@export var bob_freq = 4.0
-@export var bob_amp = 0.05
+@export var bob_freq = 2.0
+@export var bob_amp = 0.025
 @export var bob_on_time = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D

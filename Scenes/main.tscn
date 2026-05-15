@@ -2,32 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cionivnbkxw32" path="res://Terrains/Textures/Snow/Snow_002_OCC.jpg" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="2_jjvhh"]
-[ext_resource type="Texture2D" uid="uid://bi86avxwulwbf" path="res://Terrains/Textures/Snow/Snow_002_NORM.jpg" id="3_jjvhh"]
+[ext_resource type="Texture2D" uid="uid://bi86avxwulwbf" path="res://Terrains/Textures/Snow/Snow_002_NORM.jpg" id="3_8gbba"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
-sky_top_color = Color(0.7967984, 0.83478826, 0.8857611, 1)
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-sky_energy_multiplier = 2.05
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_u3cyc"]
-sky_material = SubResource("ProceduralSkyMaterial_3253y")
-
-[sub_resource type="Environment" id="Environment_m7jmp"]
-background_mode = 2
-background_color = Color(0.06843269, 0.10251033, 0.26542884, 1)
-sky = SubResource("Sky_u3cyc")
-glow_enabled = true
-glow_bloom = 0.41
-fog_enabled = true
-fog_light_color = Color(0.33252168, 0.45044175, 0.67785895, 1)
-fog_light_energy = 0.3
-
-[sub_resource type="Gradient" id="Gradient_jjgbg"]
+[sub_resource type="Gradient" id="Gradient_bo1nx"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bo1nx"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8gbba"]
 noise_type = 2
 frequency = 0.03
 cellular_jitter = 3.0
@@ -39,9 +20,9 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8gbba"]
-noise = SubResource("FastNoiseLite_bo1nx")
-color_ramp = SubResource("Gradient_jjgbg")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_jjvhh"]
+noise = SubResource("FastNoiseLite_8gbba")
+color_ramp = SubResource("Gradient_bo1nx")
 seamless = true
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jjvhh"]
@@ -61,12 +42,13 @@ _shader_parameters = {
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
 &"noise3_scale": 0.225,
-&"noise_texture": SubResource("NoiseTexture2D_8gbba"),
+&"noise_texture": SubResource("NoiseTexture2D_jjvhh"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
 &"world_space_normal_blend": true
 }
 world_background = 0
+texture_filtering = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kry3j"]
 transparency = 4
@@ -86,37 +68,53 @@ last_lod = 0
 last_shadow_lod = 0
 lod0_range = 128.0
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_kry3j"]
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_jjvhh"]
 name = "Snow_002_OCC"
-albedo_color = Color(0.42239866, 0.4702251, 0.6071562, 1)
+albedo_color = Color(0.1476717, 0.14767185, 0.1476717, 1)
 albedo_texture = ExtResource("2_8gbba")
-normal_texture = ExtResource("3_jjvhh")
-normal_depth = 0.053
-roughness = -1.0
-uv_scale = 0.223
-detiling_rotation = 0.14
-detiling_shift = 0.055
+normal_texture = ExtResource("3_8gbba")
+normal_depth = 0.412
+uv_scale = 1.204
+detiling_rotation = 0.132
+detiling_shift = 0.095
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_6bp64"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_21xkr")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_kry3j")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_jjvhh")])
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kry3j"]
+
+[sub_resource type="Sky" id="Sky_21xkr"]
+sky_material = SubResource("ProceduralSkyMaterial_kry3j")
+
+[sub_resource type="Environment" id="Environment_6bp64"]
+background_mode = 2
+background_color = Color(0.79040265, 0.8153003, 0.8997827, 1)
+sky = SubResource("Sky_21xkr")
+sky_custom_fov = 122.5
+fog_enabled = true
+fog_light_color = Color(0.37976363, 0.45079947, 0.70199776, 1)
+fog_density = 0.0512
 
 [node name="Node3D" type="Node3D" unique_id=1943210807]
 transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1266761532]
-environment = SubResource("Environment_m7jmp")
-
 [node name="Player" parent="." unique_id=1529643800 instance=ExtResource("2_jjvhh")]
-transform = Transform3D(1.0000006, 0, 0, 0, 1, 0, 0, 0, 1.0000006, 23.193558, 7.158994, -8.17939)
+transform = Transform3D(1.0000014, 0, 0, 0, 1, 0, 0, 0, 1.0000014, 162.24387, 136.58237, -120.03281)
 
-[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1171767057]
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1315910933]
 data_directory = "res://Terrains"
 material = SubResource("Terrain3DMaterial_jjvhh")
 assets = SubResource("Terrain3DAssets_6bp64")
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1448249599]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 31.230612, 13.288628, -32.908295)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052038417]
+transform = Transform3D(0.45904043, 0.85988235, -0.22334832, -0.1054002, 0.30233604, 0.94735616, 0.88214123, -0.41133383, 0.2294162, 44.20227, 108.156, -94.956894)
+light_energy = 4.01
 shadow_enabled = true
+shadow_bias = 9.605
+shadow_normal_bias = 7.545
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1619806329]
+environment = SubResource("Environment_6bp64")
