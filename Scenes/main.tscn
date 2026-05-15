@@ -1,22 +1,21 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbloksat817ni"]
+[gd_scene format=3 uid="uid://cbloksat817ni"]
 
-[ext_resource type="PackedScene" uid="uid://b2dsflrxxaond" path="res://Entities/House/house.blend" id="1_8gbba"]
+[ext_resource type="Texture2D" uid="uid://cionivnbkxw32" path="res://Terrains/Textures/Snow/Snow_002_OCC.jpg" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="2_jjvhh"]
-[ext_resource type="Script" uid="uid://cit375uf1vpxy" path="res://Scenes/ToggleLivingRoomLight.gd" id="2_kry3j"]
-[ext_resource type="Script" uid="uid://bodhj45ih1m47" path="res://Scenes/ToggleHallLight.gd" id="3_21xkr"]
-[ext_resource type="PackedScene" uid="uid://cp7mbojse4kkk" path="res://Entities/Stages/LivingRoom/LivingRoomTable/living_room_table.tscn" id="3_kry3j"]
+[ext_resource type="Texture2D" uid="uid://bi86avxwulwbf" path="res://Terrains/Textures/Snow/Snow_002_NORM.jpg" id="3_jjvhh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3253y"]
+sky_top_color = Color(0.7967984, 0.83478826, 0.8857611, 1)
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_energy_multiplier = 2.05
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
 [sub_resource type="Sky" id="Sky_u3cyc"]
 sky_material = SubResource("ProceduralSkyMaterial_3253y")
 
 [sub_resource type="Environment" id="Environment_m7jmp"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.06843269, 0.10251033, 0.26542884, 1)
-background_energy_multiplier = 0.1
 sky = SubResource("Sky_u3cyc")
 glow_enabled = true
 glow_bloom = 0.41
@@ -24,58 +23,100 @@ fog_enabled = true
 fog_light_color = Color(0.33252168, 0.45044175, 0.67785895, 1)
 fog_light_energy = 0.3
 
-[sub_resource type="BoxMesh" id="BoxMesh_8gbba"]
+[sub_resource type="Gradient" id="Gradient_jjgbg"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jjvhh"]
-points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bo1nx"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8gbba"]
+noise = SubResource("FastNoiseLite_bo1nx")
+color_ramp = SubResource("Gradient_jjgbg")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jjvhh"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.87,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_8gbba"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+world_background = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kry3j"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_21xkr"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_kry3j")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_kry3j"]
+name = "Snow_002_OCC"
+albedo_color = Color(0.42239866, 0.4702251, 0.6071562, 1)
+albedo_texture = ExtResource("2_8gbba")
+normal_texture = ExtResource("3_jjvhh")
+normal_depth = 0.053
+roughness = -1.0
+uv_scale = 0.223
+detiling_rotation = 0.14
+detiling_shift = 0.055
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_6bp64"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_21xkr")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_kry3j")])
+
+[node name="Node3D" type="Node3D" unique_id=1943210807]
 transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1266761532]
 environment = SubResource("Environment_m7jmp")
 
-[node name="house" parent="." instance=ExtResource("1_8gbba")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.044031, 2.996365, 0.23155963)
+[node name="Player" parent="." unique_id=1529643800 instance=ExtResource("2_jjvhh")]
+transform = Transform3D(1.0000006, 0, 0, 0, 1, 0, 0, 0, 1.0000006, 23.193558, 7.158994, -8.17939)
 
-[node name="LivingRoomLight" type="OmniLight3D" parent="house"]
-unique_name_in_owner = true
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -9.850707, 4.093131, -4.6519685)
-light_color = Color(1, 1, 0.7921569, 1)
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=1171767057]
+data_directory = "res://Terrains"
+material = SubResource("Terrain3DMaterial_jjvhh")
+assets = SubResource("Terrain3DAssets_6bp64")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1448249599]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 31.230612, 13.288628, -32.908295)
 shadow_enabled = true
-omni_range = 10.0
-
-[node name="ToggleLivingRoomLight" type="MeshInstance3D" parent="house"]
-transform = Transform3D(0.100000106, 0, -4.656613e-10, 0, 0.1, 0, 4.656613e-10, 0, 0.100000106, -9.337741, 2.3217478, -8.172693)
-mesh = SubResource("BoxMesh_8gbba")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="house/ToggleLivingRoomLight"]
-script = ExtResource("2_kry3j")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="house/ToggleLivingRoomLight/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_jjvhh")
-
-[node name="HallLight" type="OmniLight3D" parent="house"]
-unique_name_in_owner = true
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.249388, 4.093131, 1.2985334)
-visible = false
-light_color = Color(1, 1, 0.7921569, 1)
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="ToggleHallLight2" type="MeshInstance3D" parent="house"]
-transform = Transform3D(0.10000003, 0, 0, 0, 0.1, 0, 0, 0, 0.10000003, -11.528544, 2.3217478, -1.5525528)
-mesh = SubResource("BoxMesh_8gbba")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="house/ToggleHallLight2"]
-script = ExtResource("3_21xkr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="house/ToggleHallLight2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_jjvhh")
-
-[node name="Player" parent="." instance=ExtResource("2_jjvhh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3585607, 3.9378257, -5.0399837)
-
-[node name="LivingRoomDesk" parent="." instance=ExtResource("3_kry3j")]
-
-[editable path="house"]

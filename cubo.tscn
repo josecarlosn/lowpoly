@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dab30dgfu2n8y"]
-
-[ext_resource type="PackedScene" uid="uid://cydv24fsra4q7" path="res://packed_scenes/teste.blend" id="1_xvd08"]
-[ext_resource type="Script" uid="uid://oird00f6f1p7" path="res://Interactable.gd" id="2_smx6m"]
-
-[node name="teste" instance=ExtResource("1_xvd08")]
-
-[node name="StaticBody3D" parent="Cube" index="0"]
-script = ExtResource("2_smx6m")
