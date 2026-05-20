@@ -1,6 +1,7 @@
 extends Control
 
-@export var radius := 1
+@export var radius := 3
+
 @export var color := Color.WHITE
 
 func _draw():

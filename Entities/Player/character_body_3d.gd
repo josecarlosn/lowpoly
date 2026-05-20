@@ -17,7 +17,7 @@ var SPEED := DEFAULT_SPEED
 var cam_ver = 0.0
 @export_category("Bob Settings")
 @export var bob_freq = 2.0
-@export var bob_amp = 0.025
+@export var bob_amp = 0.1
 @export var bob_on_time = 0.0
 @export var ANIMATION_PLAYER: AnimationPlayer
 @onready var camera = $head/Camera3D
