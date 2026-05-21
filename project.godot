@@ -115,3 +115,4 @@ global_illumination/directional_shadow/16_bits=true
 global_illumination/stretch/scale=1.0
 global_illumination/size/resizable=true
 global_illumination/size/initial_position_type=1
+rendering_device/enabled=false

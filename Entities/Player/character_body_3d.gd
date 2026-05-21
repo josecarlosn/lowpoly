@@ -14,6 +14,12 @@ var SPEED := DEFAULT_SPEED
 @export_category("Camera Limits")
 @export var cam_limit_down := -80.0
 @export var cam_limit_up := 60.0
+@export_category("Camera Smoothing Settings")
+@export var camera_smooth_speed := 20.0
+@export var head_smooth_speed := 20.0
+
+var target_head_rotation_y := 0.0
+var target_camera_rotation_x := 0.0
 var cam_ver = 0.0
 @export_category("Bob Settings")
 @export var bob_freq = 2.0
@@ -33,6 +39,8 @@ var is_paused = false
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
+	target_head_rotation_y = head.rotation.y
+	target_camera_rotation_x = camera.rotation.x
 	floor_snap_length = 0.3
 	floor_max_angle = deg_to_rad(55)
 	safe_margin = 0.005
@@ -42,9 +50,9 @@ func _input(event: InputEvent) -> void:
 	if can_move:
 		#Mouse movement
 		if event is InputEventMouseMotion:
-			head.rotate_y(deg_to_rad(-event.relative.x * mouse_sense))
-			camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sense))
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
+				target_head_rotation_y -= deg_to_rad(event.relative.x * mouse_sense)
+				target_camera_rotation_x -= deg_to_rad(event.relative.y * mouse_sense)
+				target_camera_rotation_x = clamp(target_camera_rotation_x, deg_to_rad(cam_limit_down), deg_to_rad(cam_limit_up))
 		#Crouch	
 		if Input.is_action_just_pressed("crouch"):			
 			toggle_crouch()
@@ -77,6 +85,11 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+func _process(delta: float) -> void:
+	# Smooth camera movement
+	head.rotation.y = lerp_angle(head.rotation.y, target_head_rotation_y, delta * head_smooth_speed)
+	camera.rotation.x = lerp_angle(camera.rotation.x, target_camera_rotation_x, delta * camera_smooth_speed)
+
 func _physics_process(delta):
 	#Gravity-------------------------------------------------------------------------------------------
 	if not is_on_floor():
