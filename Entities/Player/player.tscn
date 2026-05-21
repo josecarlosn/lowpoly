@@ -18,8 +18,12 @@ subpixel_positioning = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u3cyc"]
-size = Vector3(0.48199463, 1.8, 0.36273193)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iplt1"]
+margin = 1.0
+radius = 0.25
+height = 1.7
 
 [sub_resource type="Animation" id="Animation_u3cyc"]
 length = 0.001
@@ -335,19 +339,25 @@ grow_horizontal = 2
 text = "teste"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=468286749]
-spot_range = 7.702
-spot_angle = 19.75602
+light_color = Color(0.9182153, 0.74834204, 0.58313245, 1)
+shadow_enabled = true
+shadow_normal_bias = 10.0
+spot_angle = 24.23
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
+transform = Transform3D(0.5, 0, 0, 0, 0.9, 0, 0, 0, 0.5, 0, 0.8912473, 0)
+mesh = SubResource("CapsuleMesh_iplt1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1387597552]
-physics_interpolation_mode = 1
 transform = Transform3D(0.612684, 0, 0, 0, 0.9165557, 0, 0, 0, 0.6431235, 0, 0.94802094, 0)
-shape = SubResource("BoxShape3D_u3cyc")
+shape = SubResource("CapsuleShape3D_iplt1")
 debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=806651215]
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 

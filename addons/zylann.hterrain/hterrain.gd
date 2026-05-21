@@ -1663,3 +1663,5 @@ class HT_SetCastShadowSettingAction:
 		setting = s
 	func exec(chunk):
 		chunk.set_cast_shadow_setting(setting)
+		
+		

@@ -28,6 +28,7 @@ Global="*res://Globals/Scripts/Global.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=760
 window/size/mode=3
+window/size/initial_position_type=3
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"

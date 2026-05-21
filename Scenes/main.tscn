@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bu4bb2p5vq33h" path="res://addons/zylann.hterrain/hterrain.gd" id="2_kry3j"]
 [ext_resource type="Resource" uid="uid://otyhc44apjaf" path="res://Terrains/data.hterrain" id="3_21xkr"]
 [ext_resource type="Script" uid="uid://bgee330qjjofq" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_6bp64"]
+[ext_resource type="Shader" uid="uid://dfmcxa5y7n1fa" path="res://addons/zylann.hterrain/shaders/psx_terrain.gdshader" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://dfg3dby5fjufm" path="res://Terrains/Textures/Snow/snow_ground.png" id="5_kry3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kry3j"]
@@ -14,11 +15,11 @@ sky_material = SubResource("ProceduralSkyMaterial_kry3j")
 [sub_resource type="Environment" id="Environment_6bp64"]
 background_mode = 1
 background_color = Color(0.5106049, 0.5072609, 0.6620647, 1)
-background_energy_multiplier = 0.1
+background_energy_multiplier = 1.3
 sky = SubResource("Sky_21xkr")
-fog_light_color = Color(0.7685271, 0.8304222, 0.93574286, 1)
+fog_light_color = Color(0.43856215, 0.6106985, 0.92227745, 1)
 fog_light_energy = 0.58
-fog_density = 0.075
+fog_density = 0.0561
 adjustment_enabled = true
 adjustment_brightness = 0.8
 
@@ -27,16 +28,19 @@ script = ExtResource("4_6bp64")
 mode = 0
 textures = [[ExtResource("5_kry3j")], [null]]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_kry3j"]
+size = Vector3(600, 50, 11.016)
+
 [node name="Node3D" type="Node3D" unique_id=1943210807]
 transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
 
 [node name="Player" parent="." unique_id=1529643800 instance=ExtResource("2_jjvhh")]
-transform = Transform3D(1.0000029, 0, -1.8626451e-09, 0, 1, 0, 1.8626451e-09, 0, 1.0000029, -40.95894, 4.1441517, 24.715925)
-SPRINT_SPEED = 7.0
+transform = Transform3D(1.0000042, 0, -3.7252903e-09, 0, 1, 0, 3.7252903e-09, 0, 1.0000042, 15.288782, 10.960148, 125.1079)
 ZOOM_SPEED = 2.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052038417]
 transform = Transform3D(0.81222814, -0.44975337, -0.3714939, -0.31532618, -0.8742869, 0.36904162, -0.49076995, -0.18260418, -0.85193944, 0.46360493, 0, -3.0766048)
+visible = false
 light_color = Color(0.8802483, 0.8737948, 0.9817347, 1)
 light_energy = 1.039
 light_angular_distance = 35.47
@@ -51,21 +55,44 @@ shadow_blur = 10.0
 environment = SubResource("Environment_6bp64")
 
 [node name="HTerrain" type="Node3D" parent="." unique_id=336095767]
+transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 1.0000004, 0, 0, 0)
 script = ExtResource("2_kry3j")
 centered = true
 _terrain_data = ExtResource("3_21xkr")
-chunk_size = 32
+chunk_size = 64
 collision_enabled = true
 collision_layer = 1
 collision_mask = 1
-shader_type = "Classic4Lite"
-custom_shader = null
+shader_type = "Custom"
+custom_shader = ExtResource("4_21xkr")
 custom_globalmap_shader = null
 texture_set = SubResource("Resource_344ge")
 render_layers = 1
 cast_shadow = 1
-shader_params/u_ground_uv_scale = 20
+shader_params/u_ground_uv_scale = 15.0
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
+shader_params/u_jitter_resolution = null
+shader_params/u_affine_intensity = null
+shader_params/u_affine_z_bias = null
 metadata/_custom_type_script = "uid://bu4bb2p5vq33h"
+
+[node name="InvisibleWall" type="StaticBody3D" parent="." unique_id=923470702]
+transform = Transform3D(1.0000006, 0, 0, 0, 1, 0, 0, 0, 1.0000006, 11.207558, 6.361952, 133.77826)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall" unique_id=1686060698]
+transform = Transform3D(0.9999939, 0, -3.7252903e-09, 0, 1, 0, 3.7252903e-09, 0, 0.9999939, 6.8013716, 3.722249, 6.1653137)
+shape = SubResource("BoxShape3D_kry3j")
+debug_color = Color(0.68753874, 0.0014371842, 0.83336824, 1)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1422677734]
+transform = Transform3D(0.99999934, -0.0011983454, 2.5590882e-05, 0.0011983432, 0.9990866, -0.042712122, 2.5622547e-05, 0.042712167, 0.9990874, 16.15353, 14.380013, 118.79622)
+light_color = Color(2.6869981, 0.40734795, 0.40734795, 1)
+light_energy = 1.846
+light_specular = 16.0
+shadow_enabled = true
+shadow_normal_bias = 10.0
+shadow_reverse_cull_face = true
+spot_range = 40.640312
+spot_angle = 40.674717

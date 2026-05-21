@@ -3,8 +3,8 @@ extends CharacterBody3D
 class_name Player
 
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 6.0
-@export var DEFAULT_SPEED := 4
+@export var SPRINT_SPEED := 8.0
+@export var DEFAULT_SPEED := 5
 @export var CROUCH_SPEED := 2
 var SPEED := DEFAULT_SPEED
 @export_range(5, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
@@ -33,9 +33,10 @@ var is_paused = false
 @onready var state_machine: StateMachine = $StateMachine
 
 func _ready() -> void:
-
+	floor_snap_length = 0.3
+	floor_max_angle = deg_to_rad(55)
+	safe_margin = 0.005
 	Global.player = self
-	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event: InputEvent) -> void:
 	if can_move:
@@ -76,7 +77,7 @@ func _input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-func _process(delta: float) -> void:
+func _physics_process(delta):
 	#Gravity-------------------------------------------------------------------------------------------
 	if not is_on_floor():
 		velocity += get_gravity() * delta
