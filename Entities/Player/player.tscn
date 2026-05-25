@@ -20,11 +20,12 @@ subpixel_positioning = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
+radius = 0.3
+height = 2.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iplt1"]
-margin = 1.0
-radius = 0.25
-height = 1.7
+radius = 0.3
+height = 1.75
 
 [sub_resource type="Animation" id="Animation_u3cyc"]
 length = 0.001
@@ -105,7 +106,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.612684, 0.9165557, 0.6431235), Vector3(0.613, 0.55, 0.643)]
+"values": [Vector3(0.612684, 0.9165557, 0.6431235), Vector3(0.556, 0.5, 0.585)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -117,7 +118,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.94802094, 0), Vector3(0, 0.55, 0)]
+"values": [Vector3(0, 0.94802094, 0), Vector3(0, 0.5, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -129,7 +130,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.7, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_m7jmp"]
@@ -181,12 +182,21 @@ _data = {
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 node_paths=PackedStringArray("ANIMATION_PLAYER")]
 script = ExtResource("1_dqkch")
+SPRINT_SPEED = 4.0
+DEFAULT_SPEED = 2.0
+JUMP_VELOCITY = 3.0
+CROUCH_ANIMATION_SPEED = 1.5
+ZOOM_SPEED = 2.0
+cam_limit_up = 80.0
+bob_freq = 2.5
+bob_amp = 0.05
+bob_on_time = 1.0
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 
 [node name="head" type="Node3D" parent="." unique_id=1886020297]
 
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5758762, -0.044962525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, -0.044962525)
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
@@ -340,13 +350,18 @@ grow_horizontal = 2
 text = "teste"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=468286749]
+visible = false
 light_color = Color(0.9182153, 0.74834204, 0.58313245, 1)
 shadow_enabled = true
 shadow_normal_bias = 10.0
-spot_angle = 24.23
+spot_range = 10.65
+spot_attenuation = 1.17
+spot_angle = 37.56
+spot_angle_attenuation = 1.7411014
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
-transform = Transform3D(0.5, 0, 0, 0, 0.9, 0, 0, 0, 0.5, 0, 0.8912473, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_iplt1")
 
 [node name="SnowParticles" parent="head" unique_id=487372938 instance=ExtResource("13_owvpp")]
@@ -362,6 +377,7 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 

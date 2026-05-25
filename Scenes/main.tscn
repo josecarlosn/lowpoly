@@ -16,7 +16,7 @@ sky_material = SubResource("ProceduralSkyMaterial_kry3j")
 [sub_resource type="Environment" id="Environment_6bp64"]
 background_mode = 1
 background_color = Color(0.5106049, 0.5072609, 0.6620647, 1)
-background_energy_multiplier = 0.0
+background_energy_multiplier = 1.99
 sky = SubResource("Sky_21xkr")
 fog_enabled = true
 fog_light_color = Color(0.9059084, 0.9365958, 0.98957616, 1)
@@ -37,8 +37,7 @@ size = Vector3(600, 50, 11.016)
 transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
 
 [node name="Player" parent="." unique_id=1529643800 instance=ExtResource("2_jjvhh")]
-transform = Transform3D(1.0000042, 0, -3.7252903e-09, 0, 1, 0, 3.7252903e-09, 0, 1.0000042, 15.288782, 10.960148, 125.1079)
-ZOOM_SPEED = 2.0
+transform = Transform3D(1.0000043, 0, -3.7252903e-09, 0, 1, 0, 3.7252903e-09, 0, 1.0000043, 15.288784, 13.514172, 125.10791)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052038417]
 transform = Transform3D(0.81222814, -0.44975337, -0.3714939, -0.31532618, -0.8742869, 0.36904162, -0.49076995, -0.18260418, -0.85193944, 0.46360493, 0, -3.0766048)
@@ -75,9 +74,9 @@ shader_params/u_ground_uv_scale = 15.0
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
-shader_params/u_jitter_resolution = null
-shader_params/u_affine_intensity = null
-shader_params/u_affine_z_bias = null
+shader_params/u_jitter_resolution = 192.0
+shader_params/u_affine_intensity = 0.00999999977648
+shader_params/u_affine_z_bias = 0.10000000149012
 metadata/_custom_type_script = "uid://bu4bb2p5vq33h"
 
 [node name="InvisibleWall" type="StaticBody3D" parent="." unique_id=923470702]
