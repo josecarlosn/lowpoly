@@ -183,13 +183,13 @@ _data = {
 [node name="Player" type="CharacterBody3D" unique_id=418249368 node_paths=PackedStringArray("ANIMATION_PLAYER")]
 script = ExtResource("1_dqkch")
 SPRINT_SPEED = 4.0
-DEFAULT_SPEED = 2.0
+DEFAULT_SPEED = 2.5
 JUMP_VELOCITY = 3.0
 CROUCH_ANIMATION_SPEED = 1.5
 ZOOM_SPEED = 2.0
 cam_limit_up = 80.0
 bob_freq = 2.5
-bob_amp = 0.05
+bob_amp = 0.075
 bob_on_time = 1.0
 ANIMATION_PLAYER = NodePath("AnimationPlayer")
 
@@ -377,7 +377,6 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
-visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
