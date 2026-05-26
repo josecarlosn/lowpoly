@@ -184,6 +184,7 @@ _data = {
 script = ExtResource("1_dqkch")
 SPRINT_SPEED = 4.0
 DEFAULT_SPEED = 2.5
+CROUCH_SPEED = 1
 JUMP_VELOCITY = 3.0
 CROUCH_ANIMATION_SPEED = 1.5
 ZOOM_SPEED = 2.0
@@ -350,13 +351,12 @@ grow_horizontal = 2
 text = "teste"
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=468286749]
-visible = false
 light_color = Color(0.9182153, 0.74834204, 0.58313245, 1)
 shadow_enabled = true
 shadow_normal_bias = 10.0
 spot_range = 10.65
 spot_attenuation = 1.17
-spot_angle = 37.56
+spot_angle = 16.18
 spot_angle_attenuation = 1.7411014
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
