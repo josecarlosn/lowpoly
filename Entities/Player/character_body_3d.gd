@@ -1,11 +1,11 @@
 extends CharacterBody3D
 
 class_name Player
-
+const FORCA_EMPURRAO = 1.0  # força aplicada no objeto
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 6.0
 @export var DEFAULT_SPEED := 3.5
-@export var CROUCH_SPEED := 2
+@export var CROUCH_SPEED := 1
 @export var JUMP_VELOCITY := 2.5
 var SPEED := DEFAULT_SPEED
 @export_range(1, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
@@ -109,7 +109,13 @@ func _physics_process(delta):
 		if can_move:
 			bob_on_time += delta * velocity.length() * float(is_on_floor())
 			head.transform.origin = handle_bob(bob_on_time)
-
+	# Empurrar objetos
+	for i in get_slide_collision_count():
+		var colisao = get_slide_collision(i)
+		var objeto = colisao.get_collider()
+		if objeto is RigidBody3D:  # ← era RigidBody2D, agora 3D
+			var direcao_empurrao = colisao.get_normal() * -1
+			objeto.apply_central_impulse(direcao_empurrao * FORCA_EMPURRAO)
 # Bob func
 func handle_bob(time) -> Vector3:
 	var pos = Vector3.ZERO

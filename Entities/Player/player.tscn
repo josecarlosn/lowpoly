@@ -181,10 +181,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 node_paths=PackedStringArray("ANIMATION_PLAYER")]
+collision_layer = 2049
 script = ExtResource("1_dqkch")
 SPRINT_SPEED = 4.0
 DEFAULT_SPEED = 2.5
-CROUCH_SPEED = 1
 JUMP_VELOCITY = 3.0
 CROUCH_ANIMATION_SPEED = 1.5
 ZOOM_SPEED = 2.0

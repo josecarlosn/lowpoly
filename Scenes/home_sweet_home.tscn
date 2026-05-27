@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_wb02u"]
 [ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://object_ps1_shader.gdshader" id="2_6lvfm"]
 [ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="3_dfwkk"]
-[ext_resource type="PackedScene" uid="uid://lq6cpl84x32b" path="res://teste.glb" id="4_dfwkk"]
+[ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfwkk"]
 render_priority = 0
@@ -29,10 +29,12 @@ shader_parameter/normal_scale = 1.0
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
+[sub_resource type="Environment" id="Environment_dfwkk"]
+
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81692696, 1.3892765, 14.280345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.751103, -0.6107235, 4.280345)
 visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
@@ -186,11 +188,14 @@ size = Vector3(1.3016505, 0.03967285, 2.3602905)
 material = SubResource("ShaderMaterial_dfwkk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=401452856]
-transform = Transform3D(1, 0, 0, 0, 0.54661363, -0.837385, 0, 0.837385, 0.54661363, -3.1321454, 4.548073, 12.249838)
+transform = Transform3D(1, 0, 0, 0, 0.54661363, -0.837385, 0, 0.837385, 0.54661363, -12.81246, 1.5480728, 1.9399433)
 light_color = Color(0.99704367, 1, 0.79365075, 1)
 light_specular = 16.0
 shadow_enabled = true
-omni_range = 13.95972
+omni_range = 30.0
 
-[node name="teste" parent="." unique_id=517261667 instance=ExtResource("4_dfwkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6939602, 0, 11.745831)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
+environment = SubResource("Environment_dfwkk")
+
+[node name="teste" parent="." unique_id=1560026623 instance=ExtResource("4_dfwkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 1)
