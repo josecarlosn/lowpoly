@@ -183,7 +183,6 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368]
-collision_layer = 2049
 script = ExtResource("1_dqkch")
 
 [node name="head" type="Node3D" parent="." unique_id=1886020297]
@@ -191,6 +190,8 @@ script = ExtResource("1_dqkch")
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, -0.044962525)
 script = ExtResource("2_r8fok")
+bob_freq = 5.0
+bob_amp = 0.025
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)

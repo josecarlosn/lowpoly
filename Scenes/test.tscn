@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://b2ve5djpn5e0g"]
+
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_lc1oi"]
+
+[sub_resource type="Environment" id="Environment_lc1oi"]
+background_energy_multiplier = 1.86
+
+[sub_resource type="SphereMesh" id="SphereMesh_lc1oi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8od7v"]
+
+[node name="Test" type="Node3D" unique_id=1448848696]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1101693040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+use_collision = true
+size = Vector3(4, 0.001, 4)
+
+[node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_lc1oi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+SPRINT_SPEED = null
+DEFAULT_SPEED = null
+CROUCH_SPEED = null
+JUMP_VELOCITY = null
+CROUCH_ANIMATION_SPEED = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1197587641]
+environment = SubResource("Environment_lc1oi")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1128870619]
+transform = Transform3D(1, 0, 0, 0, 0.25881907, 0.9659258, 0, -0.9659258, 0.25881907, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=238298480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 2, -1)
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=1096488599]
+mesh = SubResource("SphereMesh_lc1oi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1826744352]
+shape = SubResource("SphereShape3D_8od7v")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1662440937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.4989999, -1.2141113)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(1, 1, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1453438580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.49949998, -3.8044434)
+use_collision = true
+size = Vector3(1, 1, 0.39111328)

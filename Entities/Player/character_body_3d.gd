@@ -87,7 +87,6 @@ func toggle_crouch():
 		_can_jump = true
 		camera.ANIMATION_PLAYER.play("crouch", -1, -CROUCH_ANIMATION_SPEED, true)
 		SPEED = DEFAULT_SPEED
-
 func handle_sprint():
 	if _is_sprinting == true and _can_sprint == true:
 		SPEED = SPRINT_SPEED
@@ -96,7 +95,6 @@ func handle_sprint():
 			SPEED = CROUCH_SPEED
 		else:
 			SPEED = DEFAULT_SPEED
-
 func toggle_jump():
 	if is_on_floor() and _can_jump:
 		velocity.y = JUMP_VELOCITY

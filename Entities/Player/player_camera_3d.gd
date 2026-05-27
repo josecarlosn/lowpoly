@@ -35,7 +35,25 @@ func handle_zoom() -> void:
 	if Input.is_action_just_released("right_click"):
 		ANIMATION_PLAYER.play("camera_zoom", -1, -ZOOM_SPEED, true)
 
+var _prev_bob_y: float = 0.0
+var _was_descending: bool = false
+var _step_count: int = 0  # <- aqui fora
+
+
 func handle_bob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * bob_freq) * bob_amp
+
+	var descending = pos.y < _prev_bob_y
+	if _was_descending and not descending:
+		_step_count += 1
+		print("step", _step_count)
+
+	_was_descending = descending
+	_prev_bob_y = pos.y
 	return pos
+
+
+func _reset_bob_state() -> void:
+	_prev_bob_y = 0.0
+	_was_descending = false

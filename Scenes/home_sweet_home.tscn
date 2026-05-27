@@ -188,7 +188,7 @@ size = Vector3(1.3016505, 0.03967285, 2.3602905)
 material = SubResource("ShaderMaterial_dfwkk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=401452856]
-transform = Transform3D(1, 0, 0, 0, 0.54661363, -0.837385, 0, 0.837385, 0.54661363, -12.81246, 1.5480728, 1.9399433)
+transform = Transform3D(0.99699354, 0.042354178, -0.064884484, -0.07551816, 0.7185984, -0.69131273, 0.01734591, 0.69413435, 0.7196365, -15.0583725, 0.9175277, 0.7902956)
 light_color = Color(0.99704367, 1, 0.79365075, 1)
 light_specular = 16.0
 shadow_enabled = true
