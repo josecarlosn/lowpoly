@@ -1,13 +1,24 @@
 class_name IdlePlayerState extends State
 
 func update(_delta: float) -> void:
-	if Global.player._is_crouching == true and Global.player.velocity.length() == 0.0:
+	var player := Global.player
+	if player._is_crouching == true and player.velocity.length() == 0.0:
 		transition.emit("CrouchingIdlePlayerState")
-	elif Global.player._is_crouching == true and Global.player.velocity.length() > 0.0:
+	elif player._is_crouching == true and player.velocity.length() > 0.0:
 		transition.emit("CrouchingWalkingPlayerState")
+	elif player.velocity.length() > 0.0 and player.velocity.length() < 3:
+		transition.emit("WalkingPlayerState")
+	elif player.velocity.length() > 1:
+		transition.emit("SprintingPlayerState")
+
+func physics_update(_delta: float) -> void:
+	var player := Global.player
+	player.player_input.poll(player.head.transform.basis)
+	var direction := player.player_input.direction  # ← usa a direção agora
+	if direction:
+		player.velocity.x = direction.x * player.SPEED
+		player.velocity.z = direction.z * player.SPEED
 	else:
-		if Global.player.velocity.length() > 0.0 and Global.player.velocity.length() < 3:
-			transition.emit("WalkingPlayerState")
-		elif Global.player.velocity.length() > 1:
-			transition.emit("SprintingPlayerState")
-		
+		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+		player.velocity.z = move_toward(player.velocity.z, 0, player.SPEED)
+	player.move_and_slide()
