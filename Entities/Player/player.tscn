@@ -201,8 +201,8 @@ script = ExtResource("1_dqkch")
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, -0.044962525)
 script = ExtResource("2_r8fok")
-bob_freq = 4.5
-bob_amp = 0.025
+bob_freq = 2.5
+bob_amp = 0.1
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
@@ -440,7 +440,8 @@ script = ExtResource("15_r8fok")
 
 [node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=683862867]
 stream = SubResource("AudioStreamRandomizer_avsg8")
-volume_db = 30.164
+volume_db = 46.355
+pitch_scale = 2.0
 bus = &"Steps"
 
 [node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]

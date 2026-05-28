@@ -9,8 +9,8 @@ class_name PlayerCamera extends Camera3D
 @export var camera_smooth_speed := 20.0
 @export var head_smooth_speed := 20.0
 @export_category("Bob Settings")
-@export var bob_freq = 2.0
-@export var bob_amp = 0.1
+@export var bob_freq = 3.0
+@export var bob_amp = 0.05
 @export var bob_on_time = 0.0
 @export var ZOOM_SPEED = 5.0
 @onready var ANIMATION_PLAYER: AnimationPlayer = $"../../AnimationPlayer"
@@ -35,24 +35,31 @@ func handle_zoom() -> void:
 	if Input.is_action_just_released("right_click"):
 		ANIMATION_PLAYER.play("camera_zoom", -1, -ZOOM_SPEED, true)
 
-var _prev_bob_y: float = 0.0
-var _was_descending: bool = false
-var _step_count: int = 0  # <- aqui fora
+# Substitua as variáveis e funções de bob por isto:
 
+var _step_cooldown: float = 0.0
+const MIN_STEP_INTERVAL: float = 0.15
+var _stepped_this_cycle: bool = false
 
-func handle_bob(time) -> Vector3:
+func handle_bob(time: float, delta: float) -> Vector3:
 	var pos = Vector3.ZERO
-	pos.y = sin(time * bob_freq) * bob_amp
 
-	var descending = pos.y < _prev_bob_y
-	if _was_descending and not descending:
-		player.play_step_sounds()
+	var sine_value = sin(time * bob_freq)
+	pos.y = sine_value * bob_amp
 
-	_was_descending = descending
-	_prev_bob_y = pos.y
+	if _step_cooldown > 0.0:
+		_step_cooldown -= delta
+
+	if sine_value <= -0.95:
+		if not _stepped_this_cycle and _step_cooldown <= 0.0:
+			player.play_step_sounds()
+			_step_cooldown = MIN_STEP_INTERVAL
+			_stepped_this_cycle = true
+	else:
+		_stepped_this_cycle = false
+
 	return pos
 
-
 func _reset_bob_state() -> void:
-	_prev_bob_y = 0.0
-	_was_descending = false
+	_step_cooldown = 0.0
+	_stepped_this_cycle = false

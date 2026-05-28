@@ -1,5 +1,5 @@
 class_name IdlePlayerState extends State
-
+@onready var player_movement: PlayerMovement = $"../../PlayerMovement"
 func update(_delta: float) -> void:
 	var player := Global.player
 	if player._is_crouching == true and player.velocity.length() == 0.0:
@@ -12,13 +12,4 @@ func update(_delta: float) -> void:
 		transition.emit("SprintingPlayerState")
 
 func physics_update(_delta: float) -> void:
-	var player := Global.player
-	player.player_input.poll(player.head.transform.basis)
-	var direction := player.player_input.direction  # ← usa a direção agora
-	if direction:
-		player.velocity.x = direction.x * player.SPEED
-		player.velocity.z = direction.z * player.SPEED
-	else:
-		player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
-		player.velocity.z = move_toward(player.velocity.z, 0, player.SPEED)
-	player.move_and_slide()
+	player_movement.move(_delta)

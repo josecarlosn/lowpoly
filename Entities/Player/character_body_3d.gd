@@ -3,8 +3,8 @@ class_name Player
 
 const FORCA_EMPURRAO = 1.0
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 4.0
-@export var DEFAULT_SPEED := 2
+@export var SPRINT_SPEED := 4
+@export var DEFAULT_SPEED := 2.5
 @export var CROUCH_SPEED := 1
 @export var JUMP_VELOCITY := 2.5
 
@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 	# move_and_slide() saiu daqui — cada estado chama o seu
 	if _is_crouching == false and can_move:
 		camera.bob_on_time += delta * velocity.length() * float(is_on_floor())
-		head.transform.origin = camera.handle_bob(camera.bob_on_time)
+		head.transform.origin = camera.handle_bob(camera.bob_on_time, delta)
 	for i in get_slide_collision_count():
 		var colisao = get_slide_collision(i)
 		var objeto = colisao.get_collider()

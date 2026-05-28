@@ -9,4 +9,4 @@ func update(_delta: float) -> void:
 		transition.emit("CrouchingWalkingPlayerState")
 
 func physics_update(_delta: float) -> void:
-	player_movement.move()
+	player_movement.move(_delta)
