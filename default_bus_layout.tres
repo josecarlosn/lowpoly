@@ -1,0 +1,31 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://de1ebusacmkpt"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 0.11
+wet = 0.07
+
+[sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_j3pel"]
+resource_name = "EQ10"
+band_db/31_hz = -60.0
+band_db/62_hz = -60.0
+band_db/125_hz = -60.0
+band_db/250_hz = -60.0
+band_db/500_hz = -60.0
+band_db/1000_hz = -9.0
+band_db/2000_hz = -41.5
+band_db/4000_hz = -60.0
+band_db/8000_hz = -60.0
+band_db/16000_hz = -60.0
+
+[resource]
+bus/1/name = &"Steps"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -1.7170057
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectEQ10_j3pel")
+bus/1/effect/1/enabled = true

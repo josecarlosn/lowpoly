@@ -3,10 +3,11 @@ class_name Player
 
 const FORCA_EMPURRAO = 1.0
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 5.0
+@export var SPRINT_SPEED := 4.0
 @export var DEFAULT_SPEED := 2
 @export var CROUCH_SPEED := 1
 @export var JUMP_VELOCITY := 2.5
+
 @export_range(1, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
 var SPEED := DEFAULT_SPEED
 
@@ -16,13 +17,17 @@ var _can_sprint : bool = true
 var _can_jump : bool = true
 var can_move : bool = true
 var is_paused = false
-
+var _was_on_floor: bool = true
 @onready var camera: PlayerCamera = $head/Camera3D
 @onready var head = $head
 @onready var player_movement: PlayerMovement = $PlayerMovement
 @onready var player_input: PlayerInput = $PlayerInput  # ← novo
 @onready var detected = null
 @onready var state_machine: StateMachine = $StateMachine
+
+@onready var wood_step: AudioStreamPlayer3D = $PlayerSounds/WoodStep
+@onready var floor_type_ray: RayCast3D = $FloorTypeRay
+
 
 func _ready() -> void:
 	floor_snap_length = 0.3
@@ -57,6 +62,12 @@ func _input(event: InputEvent) -> void:
 
 func _process(delta: float) -> void:
 	camera.smooth_rotation(delta)
+	
+	var just_landed = not _was_on_floor and is_on_floor()
+	if just_landed:
+		play_step_sounds()
+
+	_was_on_floor = is_on_floor()
 	#print("Pode correr? >", _can_sprint)
 	#print("Está correndo? > ", _is_sprinting)
 
@@ -98,3 +109,10 @@ func handle_sprint():
 func toggle_jump():
 	if is_on_floor() and _can_jump:
 		velocity.y = JUMP_VELOCITY
+
+
+func play_step_sounds():
+	if floor_type_ray.is_colliding():
+		var floor = floor_type_ray.get_collider()
+		if floor.is_in_group("wood_floor"):
+			wood_step.play()

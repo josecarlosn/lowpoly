@@ -19,7 +19,7 @@ var target_head_rotation_y := 0.0
 var target_camera_rotation_x := 0.0
 
 @onready var head = get_parent()
-
+@onready var player = $"../.."
 func handle_mouse_motion(event: InputEventMouseMotion) -> void:
 	target_head_rotation_y -= deg_to_rad(event.relative.x * mouse_sense)
 	target_camera_rotation_x -= deg_to_rad(event.relative.y * mouse_sense)
@@ -46,8 +46,7 @@ func handle_bob(time) -> Vector3:
 
 	var descending = pos.y < _prev_bob_y
 	if _was_descending and not descending:
-		_step_count += 1
-		print("step", _step_count)
+		player.play_step_sounds()
 
 	_was_descending = descending
 	_prev_bob_y = pos.y
