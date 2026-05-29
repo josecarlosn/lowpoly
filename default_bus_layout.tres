@@ -2,18 +2,18 @@
 
 [sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
 resource_name = "Reverb"
-room_size = 0.11
-wet = 0.07
+room_size = 0.0
+wet = 0.15
 
 [sub_resource type="AudioEffectEQ10" id="AudioEffectEQ10_j3pel"]
 resource_name = "EQ10"
 band_db/31_hz = -60.0
-band_db/62_hz = -60.0
-band_db/125_hz = -60.0
-band_db/250_hz = -60.0
-band_db/500_hz = -60.0
-band_db/1000_hz = -9.0
-band_db/2000_hz = -41.5
+band_db/62_hz = -45.8
+band_db/125_hz = -26.4
+band_db/250_hz = -20.0
+band_db/500_hz = -27.6
+band_db/1000_hz = -42.9
+band_db/2000_hz = -52.4
 band_db/4000_hz = -60.0
 band_db/8000_hz = -60.0
 band_db/16000_hz = -60.0
@@ -23,7 +23,7 @@ bus/1/name = &"Steps"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = 6.0199986
+bus/1/volume_db = -7.6307178
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
 bus/1/effect/0/enabled = true

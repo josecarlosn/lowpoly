@@ -12,7 +12,7 @@ class_name PlayerCamera extends Camera3D
 @export var bob_freq = 3.0
 @export var bob_amp = 0.05
 @export var bob_on_time = 0.0
-@export var ZOOM_SPEED = 5.0
+@export var ZOOM_SPEED = 1.75
 @onready var ANIMATION_PLAYER: AnimationPlayer = $"../../AnimationPlayer"
 
 var target_head_rotation_y := 0.0

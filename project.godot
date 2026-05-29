@@ -19,6 +19,10 @@ run/main_scene="uid://cv6y40cdyecmh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://de1ebusacmkpt"
+
 [autoload]
 
 Global="*res://Globals/Scripts/Global.gd"
@@ -27,11 +31,13 @@ Global="*res://Globals/Scripts/Global.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=760
+window/size/mode=3
 window/size/initial_position_type=3
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_wb02u"]
 [ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://object_ps1_shader.gdshader" id="2_6lvfm"]
+[ext_resource type="AudioStream" uid="uid://cswd4pwucdbgv" path="res://Scenes/home_sweet_home/geladeira vela.mp3" id="2_udhub"]
 [ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="3_dfwkk"]
 [ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
 
@@ -9,7 +10,7 @@
 render_priority = 0
 shader = ExtResource("2_6lvfm")
 shader_parameter/u_jitter_resolution = 192.0
-shader_parameter/u_affine_intensity = 0.0999999977648
+shader_parameter/u_affine_intensity = 0.01999999955296
 shader_parameter/u_affine_z_bias = 0.0005
 shader_parameter/texture_albedo = ExtResource("3_dfwkk")
 shader_parameter/albedo = Color(1, 1, 1, 1)
@@ -30,11 +31,12 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Environment" id="Environment_dfwkk"]
+background_energy_multiplier = 0.21
 
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.751103, -0.6107235, 4.280345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751103, -0.6107235, 0.28034496)
 visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
@@ -74,6 +76,14 @@ size = Vector3(0.021270752, 0.77692413, 0.5687561)
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.4250774, 0.5502156, -2.1685767)
 size = Vector3(0.53222656, 1.855896, 0.8590088)
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CSGBox3D/CSGBox3D4" unique_id=152504571]
+stream = ExtResource("2_udhub")
+volume_db = -50.0
+pitch_scale = 0.92
+autoplay = true
+max_distance = 2.0
+playback_type = 1
+
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D" unique_id=2068389708]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.943899, 0.032308698, -0.70317596)
 size = Vector3(0.6303711, 0.76818085, 0.8437042)
@@ -104,7 +114,7 @@ use_collision = true
 size = Vector3(6.404419, 0.10827929, 4.0728683)
 material = SubResource("ShaderMaterial_dfwkk")
 
-[node name="floor" type="CSGBox3D" parent="." unique_id=687782780]
+[node name="floor" type="CSGBox3D" parent="." unique_id=687782780 groups=["wood_floor"]]
 transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -0.18520355, -0.0004708767, 1.3179169)
 use_collision = true
 size = Vector3(7.929077, 0.5700742, 6.700226)
@@ -189,6 +199,7 @@ material = SubResource("ShaderMaterial_dfwkk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=401452856]
 transform = Transform3D(0.99699354, 0.042354178, -0.064884484, -0.07551816, 0.7185984, -0.69131273, 0.01734591, 0.69413435, 0.7196365, -15.0583725, 0.9175277, 0.7902956)
+visible = false
 light_color = Color(0.99704367, 1, 0.79365075, 1)
 light_specular = 16.0
 shadow_enabled = true
@@ -199,3 +210,9 @@ environment = SubResource("Environment_dfwkk")
 
 [node name="teste" parent="." unique_id=1560026623 instance=ExtResource("4_dfwkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1711072597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, 3)
+light_color = Color(1, 0.78879535, 0.51400995, 1)
+light_energy = 3.74
+shadow_enabled = true

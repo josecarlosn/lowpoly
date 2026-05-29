@@ -8,7 +8,8 @@ const FORCA_EMPURRAO = 1.0
 @export var CROUCH_SPEED := 1
 @export var JUMP_VELOCITY := 2.5
 
-@export_range(1, 10, 0.1) var CROUCH_ANIMATION_SPEED = 5.0
+@export_range(1, 10, 0.1) var CROUCH_ANIMATION_SPEED = 1.0
+
 var SPEED := DEFAULT_SPEED
 
 var _is_crouching : bool = false
