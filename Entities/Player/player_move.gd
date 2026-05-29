@@ -20,7 +20,7 @@ func move(delta: float) -> void:
 	player.player_input.poll(player.head.transform.basis)
 	var direction := player.player_input.direction
 	if player.can_move:
-		if direction:
+		if direction:	
 			_has_input      = true
 			_last_direction = direction
 			_stop_timer     = 0.0

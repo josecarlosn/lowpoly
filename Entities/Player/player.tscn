@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Sounds/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
 [ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
-[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/inventory_controller.tscn" id="19_0poeq"]
+[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/Inventory/inventory_controller.tscn" id="19_0poeq"]
 
 [sub_resource type="SystemFont" id="SystemFont_gjmho"]
 subpixel_positioning = 0
