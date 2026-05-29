@@ -20,7 +20,7 @@ func _ready() -> void:
 
 	
 func _process(delta: float) -> void:
-	debug_label.text ="Player velocity: " + str(Global.player.velocity.length()) +"\nCurrent State: " + CURRENT_STATE.name + "\nPrevious State: " + PREVIOUS_STATE.name +"\nFPS: " + str(Engine.get_frames_per_second())
+	debug_label.text ="Player velocity: " + str(Global.player.velocity.length()) +"\nCurrent State: " + CURRENT_STATE.name + "\nPrevious State: " + PREVIOUS_STATE.name +"\nFPS: " + str(Engine.get_frames_per_second()) + "\nCan move: " + str(Global.player.can_move)
 
 
 	CURRENT_STATE.update(delta)

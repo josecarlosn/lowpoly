@@ -18,6 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Sounds/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
 [ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
+[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/inventory_controller.tscn" id="19_0poeq"]
 
 [sub_resource type="SystemFont" id="SystemFont_gjmho"]
 subpixel_positioning = 0
@@ -448,3 +449,5 @@ bus = &"Steps"
 
 [node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.100776, 0)
+
+[node name="InventoryController" parent="." unique_id=889977702 instance=ExtResource("19_0poeq")]

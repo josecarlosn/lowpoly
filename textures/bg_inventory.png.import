@@ -2,29 +2,28 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c88j3oj0lf6om"
-path.bptc="res://.godot/imported/rock023_alb_ht.png-9c06b8a5f11d940d1c46d8928f6d6a5c.bptc.ctex"
+uid="uid://b23j603f1j3dt"
+path="res://.godot/imported/bg_inventory.png-532009f5ce941ba42ae034a02abc556f.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://demo/assets/textures/rock023_alb_ht.png"
-dest_files=["res://.godot/imported/rock023_alb_ht.png-9c06b8a5f11d940d1c46d8928f6d6a5c.bptc.ctex"]
+source_file="res://textures/bg_inventory.png"
+dest_files=["res://.godot/imported/bg_inventory.png-532009f5ce941ba42ae034a02abc556f.ctex"]
 
 [params]
 
-compress/mode=2
-compress/high_quality=true
+compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

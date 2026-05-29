@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cle53yp5cybvb"]
+
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/inventory_controller.gd" id="1_juqp6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
+bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.98039216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
+font_size = 36
+
+[sub_resource type="LabelSettings" id="LabelSettings_juqp6"]
+font_size = 24
+outline_size = 1
+outline_color = Color(10.300002, 10.300002, 10.300002, 1)
+
+[node name="InventoryController" type="Node" unique_id=889977702]
+script = ExtResource("1_juqp6")
+
+[node name="InventoryCanvasLayer" type="CanvasLayer" parent="." unique_id=1505330638]
+
+[node name="PlayerInventoryUI" type="Control" parent="InventoryCanvasLayer" unique_id=2140140693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqwek")
+
+[node name="InventoryTitle" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=338487523]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.0
+offset_right = 244.0
+offset_bottom = 169.0
+grow_horizontal = 2
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=2038116552]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -268.0
+offset_right = 555.0
+grow_vertical = 0
+theme_override_colors/default_color = Color(18.892157, 18.892157, 18.892157, 1)
+text = "Descrição do item com base nos dados obtidos através de métodos nos quais não se sabem ainda o quão úteis serão para o aproveitamento dos mesmos na descrição do item."
+horizontal_alignment = 3
+
+[node name="Label" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1076856970]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 120.0
+offset_right = 406.0
+offset_bottom = 202.0
+text = "Título do item"
+label_settings = SubResource("LabelSettings_juqp6")
+horizontal_alignment = 1
+vertical_alignment = 1

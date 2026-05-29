@@ -36,7 +36,7 @@ background_energy_multiplier = 0.21
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751103, -0.6107235, 0.28034496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751103, 0.37197292, 3.0222256)
 visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
