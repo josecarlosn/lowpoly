@@ -1,29 +1,22 @@
 [gd_scene format=3 uid="uid://b3efs8ifbmvv2"]
 
-[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="1_dqkch"]
-[ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/player_camera_3d.gd" id="2_r8fok"]
-[ext_resource type="Script" uid="uid://elp5h1kao7rq" path="res://Entities/Player/RayCast/interact_ray.gd" id="3_tuyoq"]
+[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://entities/player/character_body_3d.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://entities/player/player_camera_3d.gd" id="2_r8fok"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
-[ext_resource type="Script" uid="uid://dj52t3a1g4q3k" path="res://Entities/Player/note_control.gd" id="4_iplt1"]
-[ext_resource type="Texture2D" uid="uid://dhedabt2urrw8" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.png" id="4_tekja"]
-[ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
-[ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
-[ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
-[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
-[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
-[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
-[ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="13_owvpp"]
-[ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/player_input.gd" id="14_xr8lj"]
-[ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/player_move.gd" id="15_r8fok"]
-[ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Sounds/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
-[ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
-[ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
-[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/Inventory/inventory_controller.tscn" id="19_0poeq"]
-
-[sub_resource type="SystemFont" id="SystemFont_gjmho"]
-subpixel_positioning = 0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tekja"]
+[ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://entities/player/playerStateMachine/state_machine.gd" id="5_5c2io"]
+[ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://entities/player/playerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
+[ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://entities/player/playerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
+[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://entities/player/playerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
+[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://entities/player/playerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
+[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://entities/player/playerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
+[ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://scenes/snow_particles.tscn" id="13_owvpp"]
+[ext_resource type="Script" uid="uid://douit1scy43ov" path="res://entities/player/player_input.gd" id="14_xr8lj"]
+[ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://entities/player/player_move.gd" id="15_r8fok"]
+[ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://sounds/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
+[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://entities/player/interaction/interaction_controller.tscn" id="17_3wlsy"]
+[ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://sounds/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
+[ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://sounds/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
+[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://entities/player/inventory/inventory_controller.tscn" id="19_0poeq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
 radius = 0.3
@@ -186,6 +179,11 @@ _data = {
 &"standup": SubResource("Animation_m7jmp")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_yqrof"]
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
 random_pitch = 1.3348398
 random_volume_offset_db = 5.0
@@ -195,6 +193,7 @@ stream_1/stream = ExtResource("17_ppdlg")
 stream_2/stream = ExtResource("18_v7p16")
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368]
+collision_mask = 2561
 script = ExtResource("1_dqkch")
 CROUCH_ANIMATION_SPEED = 1.5
 
@@ -206,9 +205,10 @@ script = ExtResource("2_r8fok")
 bob_freq = 4.0
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
-target_position = Vector3(0, 0, 1.5)
-script = ExtResource("3_tuyoq")
+target_position = Vector3(0, 0, 2)
+collision_mask = 2049
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
 layout_mode = 3
@@ -222,148 +222,13 @@ grow_vertical = 2
 script = ExtResource("4_fjrip")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=1441135316]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.5
-offset_top = -55.0
-offset_right = 185.5
-offset_bottom = 11.499985
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_gjmho")
-theme_override_font_sizes/font_size = 12
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="CrossHairActionLabel" type="Label" parent="head/Camera3D/interactRay/Label" unique_id=145936556]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -185.5
-offset_top = -33.249992
-offset_right = 185.5
-offset_bottom = 22.750008
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = SubResource("SystemFont_gjmho")
-theme_override_font_sizes/font_size = 10
-text = "teste"
-horizontal_alignment = 1
-vertical_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="NoteLayer" type="CanvasLayer" parent="head/Camera3D" unique_id=2031119320]
-
-[node name="NoteControl" type="Control" parent="head/Camera3D/NoteLayer" unique_id=1611879838]
+[node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=1661565795]
 unique_name_in_owner = true
-visible = false
-material = SubResource("ShaderMaterial_tekja")
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-script = ExtResource("4_iplt1")
-
-[node name="NoteTexture" type="TextureRect" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1741862862]
-unique_name_in_owner = true
-modulate = Color(0.2647818, 0.2647818, 0.2647818, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -123.5
-offset_top = -166.5
-offset_right = 123.5
-offset_bottom = 166.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_tekja")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="CloseLabel" type="Label" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1986237622]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -58.5
-offset_top = -62.0
-offset_right = 58.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 12
-text = "[E] Voltar"
-horizontal_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=87708002]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.4627451)
-
-[node name="NoteLabel" type="RichTextLabel" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=2012380933]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = -150.5
-offset_right = 234.0
-offset_bottom = 150.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_font_sizes/normal_font_size = 18
-bbcode_enabled = true
-text = "texto test eaa aaaa aaaaaaaaaaaaaaatexto atesteaaaaaaaaaaaaaaaaaaaaa  texto testeaaaaaaaaa aaa aaaaa aaaa texto testeaaaa aa aaa a aaaa aaaaaa"
-horizontal_alignment = 3
-vertical_alignment = 1
-justification_flags = 171
-
-[node name="NoteTitle" type="Label" parent="head/Camera3D/NoteLayer/NoteControl" unique_id=1330589662]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -21.0
-offset_top = 73.5
-offset_right = 21.0
-offset_bottom = 92.5
-grow_horizontal = 2
-text = "teste"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2483012e-07, 0, 1.4889826)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=468286749]
-light_color = Color(0.9182153, 0.74834204, 0.58313245, 1)
 shadow_enabled = true
 shadow_normal_bias = 10.0
-spot_range = 10.65
-spot_attenuation = 1.17
-spot_angle = 16.18
-spot_angle_attenuation = 1.7411014
 
 [node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
 
@@ -388,30 +253,16 @@ libraries/ = SubResource("AnimationLibrary_m7jmp")
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="DebugPanel" type="PanelContainer" parent="Debug" unique_id=67110041]
-offset_right = 211.0
-offset_bottom = 103.0
-
-[node name="Title" type="Label" parent="Debug/DebugPanel" unique_id=131475504]
-layout_mode = 2
+[node name="Title" type="Label" parent="Debug" unique_id=131475504]
+unique_name_in_owner = true
+offset_right = 83.0
+offset_bottom = 17.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "Debug Center:"
-
-[node name="Panel" type="Panel" parent="Debug" unique_id=1551793451]
-offset_top = 17.0
-offset_right = 211.0
-offset_bottom = 103.0
-
-[node name="Label" type="Label" parent="Debug/Panel" unique_id=917073445]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 9
+label_settings = SubResource("LabelSettings_yqrof")
 
 [node name="PlayerStateMachine" type="Node" parent="." unique_id=186113698 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
 script = ExtResource("5_5c2io")
@@ -451,3 +302,6 @@ bus = &"Steps"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.100776, 0)
 
 [node name="InventoryController" parent="." unique_id=889977702 instance=ExtResource("19_0poeq")]
+
+[node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("17_3wlsy")]
+unique_name_in_owner = true

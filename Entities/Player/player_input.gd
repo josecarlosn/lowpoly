@@ -5,6 +5,7 @@ var direction := Vector3.ZERO
 var is_sprinting := false
 var jump_requested := false
 var crouch_just_pressed := false
+var is_interacting:bool
 var in_inventory := false # Começa fechado (false)
 
 func poll(head_basis: Basis) -> void:
@@ -14,6 +15,7 @@ func poll(head_basis: Basis) -> void:
 	is_sprinting = Input.is_action_pressed("sprint")
 	jump_requested = Input.is_action_just_pressed("jump")
 	crouch_just_pressed = Input.is_action_just_pressed("crouch")
+	is_interacting = Input.is_action_pressed("primary")
 	
 	# SE apertar o botão, inverte o estado atual (se era false vira true, se era true vira false)
 	if Input.is_action_just_pressed("inventory"):

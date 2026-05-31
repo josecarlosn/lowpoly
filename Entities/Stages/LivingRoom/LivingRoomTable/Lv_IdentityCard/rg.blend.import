@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b3fbmg0662cy0"
-path="res://.godot/imported/rg.blend-052fc8b7c87ae53a99e6e0de0549089f.scn"
+path="res://.godot/imported/rg.blend-c22f63ea6199a9d42b31a548cd89ca7e.scn"
 
 [deps]
 
-source_file="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend"
-dest_files=["res://.godot/imported/rg.blend-052fc8b7c87ae53a99e6e0de0549089f.scn"]
+source_file="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend"
+dest_files=["res://.godot/imported/rg.blend-c22f63ea6199a9d42b31a548cd89ca7e.scn"]
 
 [params]
 

@@ -25,6 +25,7 @@ var _was_on_floor: bool = true
 @onready var player_input: PlayerInput = $PlayerInput  # ← novo
 @onready var detected = null
 @onready var state_machine: StateMachine = $StateMachine
+@onready var hand: Marker3D = %playerHand
 
 @onready var wood_step: AudioStreamPlayer3D = $PlayerSounds/WoodStep
 @onready var floor_type_ray: RayCast3D = $FloorTypeRay

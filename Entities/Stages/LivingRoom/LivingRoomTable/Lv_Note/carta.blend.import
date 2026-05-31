@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://1r0fp83e01h7"
-path="res://.godot/imported/carta.blend-9a398d69d481603b41bf928f42bc7af9.scn"
+path="res://.godot/imported/carta.blend-e3854f1b4c60ff231a771dfefd849b73.scn"
 
 [deps]
 
-source_file="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend"
-dest_files=["res://.godot/imported/carta.blend-9a398d69d481603b41bf928f42bc7af9.scn"]
+source_file="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend"
+dest_files=["res://.godot/imported/carta.blend-e3854f1b4c60ff231a771dfefd849b73.scn"]
 
 [params]
 

@@ -1,6 +1,7 @@
 class_name StateMachine extends Node
 
-@onready var debug_label: Label = $"../Debug/Panel/Label"
+@onready var debug_label: Label = %Title
+
 
 @export var CURRENT_STATE: State
 @export var PREVIOUS_STATE: State

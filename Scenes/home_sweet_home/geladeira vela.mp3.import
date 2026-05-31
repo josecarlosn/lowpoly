@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cswd4pwucdbgv"
-path="res://.godot/imported/geladeira vela.mp3-948150b33b1780b266a1b38846cdb6cb.mp3str"
+path="res://.godot/imported/geladeira vela.mp3-0923445d847f933270dd3946b3ad0bc8.mp3str"
 
 [deps]
 
-source_file="res://Scenes/home_sweet_home/geladeira vela.mp3"
-dest_files=["res://.godot/imported/geladeira vela.mp3-948150b33b1780b266a1b38846cdb6cb.mp3str"]
+source_file="res://scenes/home_sweet_home/geladeira vela.mp3"
+dest_files=["res://.godot/imported/geladeira vela.mp3-0923445d847f933270dd3946b3ad0bc8.mp3str"]
 
 [params]
 

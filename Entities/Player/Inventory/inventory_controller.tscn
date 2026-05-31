@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cle53yp5cybvb"]
 
-[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/inventory_controller.gd" id="1_juqp6"]
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://entities/player/inventory/inventory_controller.gd" id="1_juqp6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
 bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.98039216)

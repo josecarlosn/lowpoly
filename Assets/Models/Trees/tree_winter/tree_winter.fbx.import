@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://udm7ks7pe2fq"
-path="res://.godot/imported/tree_winter.fbx-742bd3794be39cdacd78f02a8b1e2eee.scn"
+path="res://.godot/imported/tree_winter.fbx-04599f2c7af14bfd82d29d93b4aa1416.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Trees/tree_winter/tree_winter.fbx"
-dest_files=["res://.godot/imported/tree_winter.fbx-742bd3794be39cdacd78f02a8b1e2eee.scn"]
+source_file="res://assets/Models/Trees/tree_winter/tree_winter.fbx"
+dest_files=["res://.godot/imported/tree_winter.fbx-04599f2c7af14bfd82d29d93b4aa1416.scn"]
 
 [params]
 

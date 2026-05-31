@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://c4fxfhqeloi5h"]
 
-[ext_resource type="PackedScene" uid="uid://udm7ks7pe2fq" path="res://Assets/Models/Trees/tree_winter/tree_winter.fbx" id="1_j3de3"]
+[ext_resource type="PackedScene" uid="uid://udm7ks7pe2fq" path="res://assets/Models/Trees/tree_winter/tree_winter.fbx" id="1_j3de3"]
 [ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://object_ps1_shader.gdshader" id="2_pvw35"]
-[ext_resource type="Texture2D" uid="uid://cfs5snoeibgcd" path="res://Assets/Models/Trees/tree_winter/texture_tree.png" id="3_g5ytw"]
+[ext_resource type="Texture2D" uid="uid://cfs5snoeibgcd" path="res://assets/Models/Trees/tree_winter/texture_tree.png" id="3_g5ytw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_upj6s"]
 render_priority = 0

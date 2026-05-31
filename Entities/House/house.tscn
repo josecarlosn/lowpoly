@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dimwqoocy35w6"]
+
+[node name="HOUSE" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.073491335, 0, 0, 0, 1, -0.15429688, 4.4387665, 0.18603516)
+size = Vector3(19, 121.797, 28)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.073491335, 0, 0, 0, 1, -0.08627319, 6.555748, 0.70999146)
+operation = 2
+size = Vector3(17.478943, 121.797, 26.729065)

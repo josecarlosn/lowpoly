@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cv6y40cdyecmh"]
 
-[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_wb02u"]
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://entities/player/player.tscn" id="1_wb02u"]
 [ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://object_ps1_shader.gdshader" id="2_6lvfm"]
-[ext_resource type="AudioStream" uid="uid://cswd4pwucdbgv" path="res://Scenes/home_sweet_home/geladeira vela.mp3" id="2_udhub"]
-[ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="3_dfwkk"]
-[ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
+[ext_resource type="AudioStream" uid="uid://cswd4pwucdbgv" path="res://scenes/home_sweet_home/geladeira vela.mp3" id="2_udhub"]
+[ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://terrains/Textures/wood/wood.png" id="3_dfwkk"]
+[ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfwkk"]
 render_priority = 0
@@ -36,7 +36,7 @@ background_energy_multiplier = 0.21
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.751103, 0.37197292, 3.0222256)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.519526, 0.37197292, 3.0222256)
 visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
@@ -208,11 +208,11 @@ omni_range = 30.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
 environment = SubResource("Environment_dfwkk")
 
-[node name="teste" parent="." unique_id=1560026623 instance=ExtResource("4_dfwkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 1)
-
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1711072597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, 3)
 light_color = Color(1, 0.78879535, 0.51400995, 1)
 light_energy = 3.74
 shadow_enabled = true
+
+[node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.607447, 9.536743e-07, 1.6618347)
