@@ -4,14 +4,14 @@ importer="wavefront_obj"
 importer_version=1
 type="Mesh"
 uid="uid://bpx4wron6v2ge"
-path="res://.godot/imported/tree_winter.obj-80be71fb82ceed612a818e33a026fd79.mesh"
+path="res://.godot/imported/tree_winter.obj-045348ba2e8ef2ea3566d7268384ce49.mesh"
 
 [deps]
 
-files=["res://.godot/imported/tree_winter.obj-80be71fb82ceed612a818e33a026fd79.mesh"]
+files=["res://.godot/imported/tree_winter.obj-045348ba2e8ef2ea3566d7268384ce49.mesh"]
 
-source_file="res://assets/Models/Trees/tree_winter/tree_winter.obj"
-dest_files=["res://.godot/imported/tree_winter.obj-80be71fb82ceed612a818e33a026fd79.mesh", "res://.godot/imported/tree_winter.obj-80be71fb82ceed612a818e33a026fd79.mesh"]
+source_file="res://Assets/Models/Trees/tree_winter/tree_winter.obj"
+dest_files=["res://.godot/imported/tree_winter.obj-045348ba2e8ef2ea3566d7268384ce49.mesh", "res://.godot/imported/tree_winter.obj-045348ba2e8ef2ea3566d7268384ce49.mesh"]
 
 [params]
 

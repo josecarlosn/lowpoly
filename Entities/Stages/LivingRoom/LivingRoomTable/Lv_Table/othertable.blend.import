@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://76k0ggbk1kxj"
-path="res://.godot/imported/othertable.blend-7ca3dc3e24fcc71e8f39f3061120c3df.scn"
+path="res://.godot/imported/othertable.blend-d8014b759f9cc836342f0da5c4634eb0.scn"
 
 [deps]
 
-source_file="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend"
-dest_files=["res://.godot/imported/othertable.blend-7ca3dc3e24fcc71e8f39f3061120c3df.scn"]
+source_file="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend"
+dest_files=["res://.godot/imported/othertable.blend-d8014b759f9cc836342f0da5c4634eb0.scn"]
 
 [params]
 

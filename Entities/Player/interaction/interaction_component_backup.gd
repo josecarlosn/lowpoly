@@ -1,5 +1,6 @@
 extends Node
 
+
 enum InteractionType {
 	DEFAULT,
 	DOOR,

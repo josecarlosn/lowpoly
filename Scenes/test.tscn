@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2ve5djpn5e0g"]
 
-[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://entities/player/player.tscn" id="1_lc1oi"]
-[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://entities/player/interaction/interaction_component.tscn" id="2_bl13t"]
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_lc1oi"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="2_bl13t"]
 
 [sub_resource type="Environment" id="Environment_lc1oi"]
 background_energy_multiplier = 1.86

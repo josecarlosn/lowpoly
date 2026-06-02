@@ -2,7 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://db7p27ammoasd" path="res://teste_door_professional_01.png" id="1_tcxqi"]
 [ext_resource type="Texture2D" uid="uid://caitg2o5hagu6" path="res://teste_wood_fancy_04.jpg" id="2_b3xde"]
-[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://entities/player/interaction/interaction_component.tscn" id="3_5a8rm"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="3_5a8rm"]
+[ext_resource type="AudioStream" uid="uid://dlke15f2x0r5r" path="res://Sounds/DoorSounds/variations/door_sound.mp3" id="3_g6wm4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv8q1"]
 
@@ -321,7 +322,13 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7or4u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a8rm"]
-size = Vector3(0.9143999, 2.032, 0.0508)
+size = Vector3(0.7791748, 1.5194092, 0.32366943)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0d0ft"]
+random_pitch = 1.122462
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_g6wm4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhwl1"]
 resource_name = "Door_Frame"
@@ -377,7 +384,7 @@ transform = Transform3D(0, -0.39999998, 0, 0.07, 0, 0, 0, 0, 1.2312044, 0.098309
 mesh = SubResource("ArrayMesh_o78k0")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1342419604]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1342419604 groups=["wood_floor"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=1954669836]
 shape = SubResource("ConvexPolygonShape3D_5jyg3")
@@ -433,7 +440,7 @@ skeleton = NodePath("")
 shape = SubResource("ConvexPolygonShape3D_ahed3")
 
 [node name="IndoorWall" type="MeshInstance3D" parent="." unique_id=705400136]
-transform = Transform3D(0.07, 0, 0, 0, 0.39999998, 0, 0, 0, 1.2312044, -0.23796606, 1.3930242, 3.0787773)
+transform = Transform3D(0.07, 0, 0, 0, 0.39999998, 0, 0, 0, 1.2312044, -0.23796606, 1.428436, 3.0787773)
 mesh = SubResource("ArrayMesh_j6ykt")
 skeleton = NodePath("")
 
@@ -447,18 +454,23 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.0
 rotation_edit_mode = 2
 collision_layer = 2048
 collision_mask = 512
-mass = 5.0
+mass = 2.0
 
-[node name="InteractionComponent" parent="StaticBody3D" unique_id=881712920 node_paths=PackedStringArray("object_ref") instance=ExtResource("3_5a8rm")]
+[node name="InteractionComponent" parent="StaticBody3D" unique_id=881712920 node_paths=PackedStringArray("sound_if_door_is_locked", "object_ref") instance=ExtResource("3_5a8rm")]
+label = "Porta da casa de Tia Suze"
+label_if_door_is_locked = "Só Hannah tem a chave paizao, fazer oq?"
+sound_if_door_is_locked = NodePath("../AudioStreamPlayer3D")
+description = "Yes we have description!"
+is_locked = true
 object_ref = NodePath("..")
 
 [node name="Door" type="MeshInstance3D" parent="StaticBody3D" unique_id=110563101]
-transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, -0.2565987, 0.03747976, 0.19362715)
+transform = Transform3D(0.90000063, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.0291433e-09, 0, 1.0000007, -0.2565987, 0.015917778, 0.14831293)
 mesh = SubResource("ArrayMesh_0tye3")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=90113264]
-transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, 0.18741289, -0.17386949, 0.10549143)
+transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, 0.13998866, 0.0858351, 0.2413863)
 shape = SubResource("BoxShape3D_5a8rm")
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="StaticBody3D" unique_id=1289221229]
@@ -466,8 +478,14 @@ transform = Transform3D(1.0000005, 1.8626451e-09, -4.3711402e-08, -4.371139e-08,
 node_a = NodePath("..")
 angular_limit/enable = true
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=776602255]
+stream = SubResource("AudioStreamRandomizer_0d0ft")
+volume_db = 17.778
+panning_strength = 2.0
+bus = &"Steps"
+
 [node name="Door_Frame" type="MeshInstance3D" parent="." unique_id=1430461674]
-transform = Transform3D(5.295479e-05, 0, -0.9999954, 0, 1, 0, 0.9204026, 0, 5.753411e-05, -0.23699512, 1.2746826, 3.4282784)
+transform = Transform3D(5.295479e-05, 0, -0.9999954, 0, 0.9, 0, 0.9204026, 0, 5.753411e-05, -0.23699512, 1.2746826, 3.4282784)
 mesh = SubResource("ArrayMesh_k8dm6")
 skeleton = NodePath("")
 

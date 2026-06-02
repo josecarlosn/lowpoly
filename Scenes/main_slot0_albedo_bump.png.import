@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjd6ti7jwwtpw"
-path.s3tc="res://.godot/imported/main_slot0_albedo_bump.png-e905d07cf6b1e009d616f4804c1eba10.s3tc.ctex"
+path.s3tc="res://.godot/imported/main_slot0_albedo_bump.png-2b4dfe2f9ee6e44fd93791a634dfcacd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/main_slot0_albedo_bump.png"
-dest_files=["res://.godot/imported/main_slot0_albedo_bump.png-e905d07cf6b1e009d616f4804c1eba10.s3tc.ctex"]
+source_file="res://Scenes/main_slot0_albedo_bump.png"
+dest_files=["res://.godot/imported/main_slot0_albedo_bump.png-2b4dfe2f9ee6e44fd93791a634dfcacd.s3tc.ctex"]
 
 [params]
 

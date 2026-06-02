@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://blwislr3sojvs"
-path="res://.godot/imported/SimpleHumanModel.blend-cc52a4a67f2e39a7f36e7a910428a394.scn"
+path="res://.godot/imported/SimpleHumanModel.blend-c88821627cffd31d2b6eff7d33e0eb41.scn"
 
 [deps]
 
-source_file="res://entities/house/SimpleHumanModel.blend"
-dest_files=["res://.godot/imported/SimpleHumanModel.blend-cc52a4a67f2e39a7f36e7a910428a394.scn"]
+source_file="res://Entities/House/SimpleHumanModel.blend"
+dest_files=["res://.godot/imported/SimpleHumanModel.blend-c88821627cffd31d2b6eff7d33e0eb41.scn"]
 
 [params]
 

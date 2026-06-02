@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cpbjiviyqu2j4"
-path="res://.godot/imported/house4.blend-7644e6e7baa5293ace1de51ed9f2b5f5.scn"
+path="res://.godot/imported/house4.blend-edbe6bc9712ec84d26a6ef4da31ec318.scn"
 
 [deps]
 
-source_file="res://entities/house/house4.blend"
-dest_files=["res://.godot/imported/house4.blend-7644e6e7baa5293ace1de51ed9f2b5f5.scn"]
+source_file="res://Entities/House/house4.blend"
+dest_files=["res://.godot/imported/house4.blend-edbe6bc9712ec84d26a6ef4da31ec318.scn"]
 
 [params]
 
