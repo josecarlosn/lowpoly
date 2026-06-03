@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="1_0d0ft"]
 [ext_resource type="Texture2D" uid="uid://db7p27ammoasd" path="res://teste_door_professional_01.png" id="1_tcxqi"]
 [ext_resource type="Texture2D" uid="uid://caitg2o5hagu6" path="res://teste_wood_fancy_04.jpg" id="2_b3xde"]
-[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="3_5a8rm"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/interaction/interaction_component.tscn" id="3_5a8rm"]
 [ext_resource type="AudioStream" uid="uid://dlke15f2x0r5r" path="res://Sounds/DoorSounds/variations/door_sound.mp3" id="3_g6wm4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d0ft"]
@@ -352,11 +352,10 @@ _surfaces = [{
 "vertex_count": 24,
 "vertex_data": PackedByteArray("/v8AAAAA/z8AAAAA/v//P/7/AAD+//8/AAAAAAAA/z//////AAD/vwAA///+//+/AAD//wAA/7/+////////v/7/AAAAAP+//v///////7//////AAD/v/7/AAD+//+//v8AAP7/AIAAAP///v8AgP7//////wCAAAAAAP7/AIAAAAAA/v//vwAA//8AAP+/AAD///7//78AAAAAAAD/v/////8AAAAAAAAAAAAAAAD+/wAAAAAAAAAA//8AAAAAAAD/fwAA/38AAP9/AAD/f////3////9/////f////3/8fwEA/38AAP9/AAD8fwEA/3////9/////f////3////9/////f////3////9///////9/////f////3////9/")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7or4u")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5a8rm"]
-size = Vector3(0.7791748, 1.5194092, 0.32366943)
+size = Vector3(0.8, 1.5, 0.3)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0d0ft"]
 random_pitch = 1.122462
@@ -487,33 +486,38 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IndoorWall/StaticBody3D" unique_id=1469508842]
 shape = SubResource("ConcavePolygonShape3D_tcglw")
 
-[node name="StaticBody3D" type="RigidBody3D" parent="." unique_id=1665906376]
+[node name="RoomDoor" type="RigidBody3D" parent="." unique_id=1665906376]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.080697656, 1.3082932, 3.2694252)
 rotation_edit_mode = 2
 collision_layer = 2048
 collision_mask = 512
 mass = 2.0
 
-[node name="InteractionComponent" parent="StaticBody3D" unique_id=881712920 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
+[node name="InteractionComponent" parent="RoomDoor" unique_id=881712920 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
 door_ref = NodePath("..")
 label = "door"
 locked_door_label = "locked"
 description = "bla bla bla description"
+rest_angle = -90.0
 
-[node name="Door" type="MeshInstance3D" parent="StaticBody3D" unique_id=110563101]
+[node name="Door" type="MeshInstance3D" parent="RoomDoor" unique_id=110563101]
 transform = Transform3D(0.90000063, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.0291433e-09, 0, 1.0000007, -0.2565987, 0.015917778, 0.14831293)
 mesh = SubResource("ArrayMesh_0tye3")
-skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=90113264]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomDoor" unique_id=90113264]
 transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, 0.13998866, 0.0858351, 0.2413863)
 shape = SubResource("BoxShape3D_5a8rm")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=776602255]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RoomDoor" unique_id=776602255]
 stream = SubResource("AudioStreamRandomizer_0d0ft")
 volume_db = 17.778
 panning_strength = 2.0
 bus = &"Steps"
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="RoomDoor" unique_id=1734061747]
+transform = Transform3D(1, -4.3711385e-08, -1.9106853e-15, 0, -4.371139e-08, 1, -4.3711385e-08, -1, -4.371139e-08, -0.30811167, 0, 0.16182983)
+node_a = NodePath("..")
+angular_limit/enable = true
 
 [node name="Door_Frame" type="MeshInstance3D" parent="." unique_id=1430461674]
 transform = Transform3D(4.9993894e-05, 0, -0.99999213, 0, 0.9587956, 0, 0.86893946, 0, 5.753392e-05, -0.23699512, 1.2504452, 3.4282784)

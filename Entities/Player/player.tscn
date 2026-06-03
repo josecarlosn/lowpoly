@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/player_camera_3d.gd" id="2_r8fok"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
-[ext_resource type="Texture2D" uid="uid://5o4ci07vy828" path="res://Objects/lamp.png" id="4_pjcup"]
+[ext_resource type="Script" uid="uid://bl8tg3sjtvcmx" path="res://Entities/Player/lamp.gd" id="4_pjcup"]
 [ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/player_input.gd" id="14_xr8lj"]
 [ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/player_move.gd" id="15_r8fok"]
 [ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Sounds/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
-[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/Interaction/InteractionController/interaction_controller.tscn" id="17_3wlsy"]
+[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/interaction/InteractionController/interaction_controller.tscn" id="17_3wlsy"]
 [ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Sounds/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
 [ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/Inventory/inventory_controller.tscn" id="19_0poeq"]
@@ -322,25 +322,19 @@ mesh = SubResource("PlaneMesh_vskfa")
 [node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78909683, -0.16831267, 0)
 light_color = Color(3.851815, 2.6464787, 0, 1)
 light_energy = 0.3
-light_size = 1.0
 shadow_enabled = true
 shadow_bias = 1.0
+distance_fade_enabled = true
 spot_range = 3.0
 spot_angle = 60.0
 spot_angle_attenuation = 10.0
+script = ExtResource("4_pjcup")
 
 [node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
 libraries/ = SubResource("AnimationLibrary_0poeq")
 autoplay = &"light_animation"
-
-[node name="Sprite2D" type="Sprite2D" parent="head/Camera3D" unique_id=1701825070]
-texture_filter = 1
-position = Vector2(1057, 511.00003)
-scale = Vector2(3, 3)
-texture = ExtResource("4_pjcup")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)

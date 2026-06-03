@@ -2,8 +2,11 @@ extends Node
 class_name DoorInteraction
 
 @export_category("Settings")
+##Referência do objeto
 @export var door_ref: Node3D
+##Define se está trancada ou não
 @export var is_locked: bool = false
+##Define qual o ID da chave que abre essa porta
 @export var key_id: String
 
 @export_category("Label Settings")
@@ -14,6 +17,14 @@ class_name DoorInteraction
 @export_category("Sound Settings")
 @export var locked_door_sound: AudioStreamPlayer3D
 
+@export_category("Door Settings")
+@export var auto_close: bool = true
+##Define quão rápido a porta volta para sua posição de origem
+@export var spring_stiffness: float = 1.0
+##Controla a resistência e o balanço do movimento da porta.
+@export var spring_damping: float = 3.0
+##Corrige o ângulo da porta caso o ângulo original não seja o esperado.
+@export var rest_angle: float = 0.0  # em graus
 var can_interact: bool = true
 var is_interacting: bool = false
 var player_hand: Marker3D
@@ -29,7 +40,7 @@ func pre_interact() -> void:
 
 func interact() -> void:
 	if not can_interact:
-		return 
+		return
 	_try_interact()
 
 func post_interact() -> void:
@@ -49,3 +60,21 @@ func _try_interact() -> void:
 		var rigid_body_door: RigidBody3D = door_ref as RigidBody3D
 		rigid_body_door.freeze = true
 		rigid_body_door.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC
+		
+
+
+func _physics_process(_delta: float) -> void:
+	if auto_close:
+		_auto_close()
+
+func _auto_close():
+	var rigid_body_door: RigidBody3D = door_ref as RigidBody3D
+	if not rigid_body_door or rigid_body_door.freeze:
+		return
+
+	var angle = rigid_body_door.rotation.y
+	var vel = rigid_body_door.angular_velocity.y
+	var target = deg_to_rad(rest_angle)
+
+	var torque = (-(angle - target) * spring_stiffness) - (vel * spring_damping)
+	rigid_body_door.apply_torque(Vector3(0, torque, 0))

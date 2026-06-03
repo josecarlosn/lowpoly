@@ -33,19 +33,20 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [sub_resource type="Environment" id="Environment_p4gms"]
 background_mode = 1
 background_color = Color(0.2331579, 0.029700482, 0.11907724, 1)
+background_energy_multiplier = 0.5
 tonemap_mode = 3
 fog_enabled = true
 fog_light_energy = 0.05
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_p4gms"]
 auto_exposure_enabled = true
-auto_exposure_scale = 64.0
-auto_exposure_speed = 64.0
+auto_exposure_scale = 0.8
+auto_exposure_max_sensitivity = 4000.0
 
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13023, 0.37197292, 2.0222254)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.271346, 0.37197292, 5.646812)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
 transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 0, 2.235, 0)
