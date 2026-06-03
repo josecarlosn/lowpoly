@@ -1,9 +1,14 @@
 [gd_scene format=4 uid="uid://ccec72m7f0yss"]
 
+[ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="1_0d0ft"]
 [ext_resource type="Texture2D" uid="uid://db7p27ammoasd" path="res://teste_door_professional_01.png" id="1_tcxqi"]
 [ext_resource type="Texture2D" uid="uid://caitg2o5hagu6" path="res://teste_wood_fancy_04.jpg" id="2_b3xde"]
 [ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="3_5a8rm"]
 [ext_resource type="AudioStream" uid="uid://dlke15f2x0r5r" path="res://Sounds/DoorSounds/variations/door_sound.mp3" id="3_g6wm4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d0ft"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_scale = Vector3(15, 15, 15)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv8q1"]
 
@@ -36,6 +41,10 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jayml")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cavm"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xdbcs"]
 
@@ -72,6 +81,11 @@ shadow_mesh = SubResource("ArrayMesh_yr6ie")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5jyg3"]
 points = PackedVector3Array(0.9998065, 9.741267, 1.0167294, -1.000002, 9.741267, 1.0167294, 0.9998065, -9.464118, 1.0167294, 0.9998065, 9.741267, -3.7344747, -1.000002, 9.741267, -3.7344747, -1.000002, -9.464118, 1.0167294, 0.9998065, -9.464118, -3.7344747, -1.000002, -9.464118, -3.7344747)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvqib"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7q0p"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_yajli"]
@@ -106,6 +120,10 @@ shadow_mesh = SubResource("ArrayMesh_yajli")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_brnwl"]
 points = PackedVector3Array(0.99980426, 5.137765, 1.0167305, -1.0000002, 5.137765, 1.0167305, 0.99980426, -3.8010967, 1.0167305, 0.99980426, 5.137765, -2.0561202, -1.0000002, 5.137765, -2.0561202, -1.0000002, -3.8010967, 1.0167305, 0.99980426, -3.8010967, -2.0561202, -1.0000002, -3.8010967, -2.0561202)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot0qo"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8jtw"]
 
@@ -142,6 +160,10 @@ shadow_mesh = SubResource("ArrayMesh_xyl47")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_becsm"]
 points = PackedVector3Array(1, 5.137765, 1.0167294, -1, 5.137765, 1.0167294, 1, -3.8010967, 1.0167294, 1, 5.137765, -3.7344747, -1, 5.137765, -3.7344747, -1, -3.8010967, 1.0167294, 1, -3.8010967, -3.7344747, -1, -3.8010967, -3.7344747)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq5ul"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcdw7"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_41r3r"]
@@ -176,6 +198,10 @@ shadow_mesh = SubResource("ArrayMesh_41r3r")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cswy7"]
 points = PackedVector3Array(1, 5.137765, 1.0167305, -1, 5.137765, 1.0167305, 1, -3.8010967, 1.0167305, 1, 5.137765, -3.7344735, -1, 5.137765, -3.7344735, -1, -3.8010967, 1.0167305, 1, -3.8010967, -3.7344735, -1, -3.8010967, -3.7344735)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apo0f"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kkq7f"]
 
@@ -212,6 +238,10 @@ shadow_mesh = SubResource("ArrayMesh_x2rpq")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3g4r8"]
 points = PackedVector3Array(1.0000005, 5.137765, 1.0290852, -1, 5.137765, 1.0290852, 1.0000005, -3.8010967, 1.0290852, 0.99980474, 5.137765, -3.9056811, -1, 5.137765, -3.9056811, -1, -3.8010967, 1.0290852, 0.99980474, -3.8010967, -3.9056811, -1, -3.8010967, -3.9056811)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5v1t"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhnnq"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_rifp7"]
@@ -246,6 +276,10 @@ shadow_mesh = SubResource("ArrayMesh_rifp7")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ahed3"]
 points = PackedVector3Array(1.0000005, 5.137765, 1.0290852, -1, 5.137765, 1.0290852, 1.0000005, -3.8010967, 1.0290852, 0.99980474, 5.137765, -3.9056811, -1, 5.137765, -3.9056811, -1, -3.8010967, 1.0290852, 0.99980474, -3.8010967, -3.9056811, -1, -3.8010967, -3.9056811)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7kb7"]
+albedo_texture = ExtResource("1_0d0ft")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iaf77"]
 
@@ -332,10 +366,8 @@ stream_0/stream = ExtResource("3_g6wm4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhwl1"]
 resource_name = "Door_Frame"
-cull_mode = 2
-shading_mode = 0
 albedo_texture = ExtResource("2_b3xde")
-texture_filter = 2
+texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tjeyw"]
 _surfaces = [{
@@ -349,7 +381,6 @@ _surfaces = [{
 "vertex_count": 16,
 "vertex_data": PackedByteArray("AAD/////AAAAAAAAAAAAAAAA//8AAAAA7RYAAAAAAAAAAAAA//8AAO0Wm/IAAAAA7RYAAP//AADtFpvy//8AAP////8AAAAAEemb8gAAAAAR6Zvy//8AAP///////wAAEekAAAAAAAAR6QAA//8AAP//AAAAAAAA//8AAP//AAA=")
 }]
-blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_k8dm6"]
 resource_name = "teste_Cube_004"
@@ -366,7 +397,6 @@ _surfaces = [{
 "vertex_count": 48,
 "vertex_data": PackedByteArray("AAD///////8AAAAAAAD//wAA//8AAP//AAAAAP////8AAP//AAD//+0WAAAAAP//7Rab8gAA//8AAAAAAAD//+0Wm/IAAP//7RYAAP/////tFpvy/////+0WAAAAAP//7Rab8v////8AAAAA/////wAA////////7RYAAP////8AAP//AAD/////////////AAD/////////////AAD///////////8///8AAAAA/z///wAA////P/////8AAP8//////wAAAAAR6QAAAAAAAP//AAAAAAAAEemb8gAAAAAR6ZvyAAD/PxHpAAD///8/EekAAAAA/z8R6Zvy////PxHpm/L///5///8AAP///n8R6QAA///+f/////////5/7Rab8v////8R6ZvyAAD//+0Wm/IAAP//Eemb8v/////tFpvyAAD///////8AAP//AAD//wAA//8R6ZvyAAD//wAA////////Eemb8v/////tFpvy/////////////////z//f/8//3//P/9//z//f/7/AID+//9//v8AgP///3//v/9//7//f/+//3//v/9//3//f/9//3//f/9//3//f/9//7//f/+//3//v/9//7//fwAA/38AAP9/AAD/fwAAAID+//9//v//f///AID+//9/////f////3////9/////f/9//3////9/////f/9//3//P/9//z//f/8//3//P/9//v//f////3/+//9/////f/9//3//f/9//3//f/9/")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_tjeyw")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_l7lld"]
@@ -376,11 +406,13 @@ data = PackedVector3Array(-0.5671679, 1.1362324, 0.0762, -0.5671679, -1.016, -0.
 
 [node name="Roof" type="MeshInstance3D" parent="." unique_id=1242881679]
 transform = Transform3D(0, -0.39999998, 0, 0.07, 0, 0, 0, 0, 1.2312044, 0.09830928, 3.1356337, 3.0787773)
+material_override = SubResource("StandardMaterial3D_0d0ft")
 mesh = SubResource("ArrayMesh_be0yy")
 skeleton = NodePath("")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=281326350]
 transform = Transform3D(0, -0.39999998, 0, 0.07, 0, 0, 0, 0, 1.2312044, 0.09830928, 0.22648406, 3.0787773)
+material_override = SubResource("StandardMaterial3D_4cavm")
 mesh = SubResource("ArrayMesh_o78k0")
 skeleton = NodePath("")
 
@@ -391,6 +423,7 @@ shape = SubResource("ConvexPolygonShape3D_5jyg3")
 
 [node name="IndoorWall_002" type="MeshInstance3D" parent="." unique_id=339257658]
 transform = Transform3D(1.2516977e-08, 0, 1.3471977, 0, 0.39999998, 0, -0.07, 0, 2.4089772e-07, 2.462034, 1.3930242, 0.77877736)
+material_override = SubResource("StandardMaterial3D_tvqib")
 mesh = SubResource("ArrayMesh_n1uha")
 skeleton = NodePath("")
 
@@ -401,6 +434,7 @@ shape = SubResource("ConvexPolygonShape3D_brnwl")
 
 [node name="Wall" type="MeshInstance3D" parent="." unique_id=177773826]
 transform = Transform3D(0.07, 0, 0, 0, 0.39999998, 0, 0, 0, 1.2312044, 3.813956, 1.3930242, 3.0787773)
+material_override = SubResource("StandardMaterial3D_ot0qo")
 mesh = SubResource("ArrayMesh_lkkli")
 skeleton = NodePath("")
 
@@ -411,6 +445,7 @@ shape = SubResource("ConvexPolygonShape3D_becsm")
 
 [node name="Wall_001" type="MeshInstance3D" parent="." unique_id=465715828]
 transform = Transform3D(0.07, 0, 0, 0, 0.39999998, 0, 0, 0, 1.2312044, -3.7289486, 1.3930242, 3.0787773)
+material_override = SubResource("StandardMaterial3D_iq5ul")
 mesh = SubResource("ArrayMesh_juofh")
 skeleton = NodePath("")
 
@@ -421,6 +456,7 @@ shape = SubResource("ConvexPolygonShape3D_cswy7")
 
 [node name="Wall_002" type="MeshInstance3D" parent="." unique_id=502878084]
 transform = Transform3D(1.2516977e-08, 0, -1.5001532, 0, 0.39999998, 0, 0.07, 0, 2.6824833e-07, -2.1151633, 1.3930242, -1.4491234)
+material_override = SubResource("StandardMaterial3D_apo0f")
 mesh = SubResource("ArrayMesh_cqe5u")
 skeleton = NodePath("")
 
@@ -431,6 +467,7 @@ shape = SubResource("ConvexPolygonShape3D_3g4r8")
 
 [node name="Wall_003" type="MeshInstance3D" parent="." unique_id=376615651]
 transform = Transform3D(1.2516977e-08, 0, -1.5001532, 0, 0.39999998, 0, 0.07, 0, 2.6824833e-07, -2.1151633, 1.3930242, 4.2605796)
+material_override = SubResource("StandardMaterial3D_j5v1t")
 mesh = SubResource("ArrayMesh_313yp")
 skeleton = NodePath("")
 
@@ -441,6 +478,7 @@ shape = SubResource("ConvexPolygonShape3D_ahed3")
 
 [node name="IndoorWall" type="MeshInstance3D" parent="." unique_id=705400136]
 transform = Transform3D(0.07, 0, 0, 0, 0.39999998, 0, 0, 0, 1.2312044, -0.23796606, 1.428436, 3.0787773)
+material_override = SubResource("StandardMaterial3D_j7kb7")
 mesh = SubResource("ArrayMesh_j6ykt")
 skeleton = NodePath("")
 
@@ -456,13 +494,11 @@ collision_layer = 2048
 collision_mask = 512
 mass = 2.0
 
-[node name="InteractionComponent" parent="StaticBody3D" unique_id=881712920 node_paths=PackedStringArray("sound_if_door_is_locked", "object_ref") instance=ExtResource("3_5a8rm")]
-label = "Porta da casa de Tia Suze"
-label_if_door_is_locked = "Só Hannah tem a chave paizao, fazer oq?"
-sound_if_door_is_locked = NodePath("../AudioStreamPlayer3D")
-description = "Yes we have description!"
-is_locked = true
-object_ref = NodePath("..")
+[node name="InteractionComponent" parent="StaticBody3D" unique_id=881712920 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
+door_ref = NodePath("..")
+label = "door"
+locked_door_label = "locked"
+description = "bla bla bla description"
 
 [node name="Door" type="MeshInstance3D" parent="StaticBody3D" unique_id=110563101]
 transform = Transform3D(0.90000063, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.0291433e-09, 0, 1.0000007, -0.2565987, 0.015917778, 0.14831293)
@@ -473,11 +509,6 @@ skeleton = NodePath("")
 transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, 0.13998866, 0.0858351, 0.2413863)
 shape = SubResource("BoxShape3D_5a8rm")
 
-[node name="HingeJoint3D" type="HingeJoint3D" parent="StaticBody3D" unique_id=1289221229]
-transform = Transform3D(1.0000005, 1.8626451e-09, -4.3711402e-08, -4.371139e-08, 1.9106855e-15, -1, -1.8626451e-09, 1.0000005, 2.1094237e-15, -0.25149584, 0, 0.07715083)
-node_a = NodePath("..")
-angular_limit/enable = true
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="StaticBody3D" unique_id=776602255]
 stream = SubResource("AudioStreamRandomizer_0d0ft")
 volume_db = 17.778
@@ -485,11 +516,11 @@ panning_strength = 2.0
 bus = &"Steps"
 
 [node name="Door_Frame" type="MeshInstance3D" parent="." unique_id=1430461674]
-transform = Transform3D(5.295479e-05, 0, -0.9999954, 0, 0.9, 0, 0.9204026, 0, 5.753411e-05, -0.23699512, 1.2746826, 3.4282784)
+transform = Transform3D(4.9993894e-05, 0, -0.99999213, 0, 0.9587956, 0, 0.86893946, 0, 5.753392e-05, -0.23699512, 1.2504452, 3.4282784)
 mesh = SubResource("ArrayMesh_k8dm6")
-skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Door_Frame" unique_id=2118432629]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Frame/StaticBody3D" unique_id=431886301]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, -3.637979e-12, 0, 1, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_l7lld")

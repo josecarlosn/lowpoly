@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/character_body_3d.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/player_camera_3d.gd" id="2_r8fok"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://5o4ci07vy828" path="res://Objects/lamp.png" id="4_pjcup"]
 [ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
@@ -20,6 +21,70 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_vskfa"]
 font_size = 24
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
+
+[sub_resource type="Animation" id="Animation_vskfa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:spot_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:spot_angle_attenuation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [10.0]
+}
+
+[sub_resource type="Animation" id="Animation_pjcup"]
+resource_name = "light_animation"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:spot_range")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [3.0, 3.25, 3.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:spot_angle_attenuation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.76666665, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [10.0, 20.0, 10.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0poeq"]
+_data = {
+&"RESET": SubResource("Animation_vskfa"),
+&"light_animation": SubResource("Animation_pjcup")
+}
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
 radius = 0.3
@@ -248,12 +313,34 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2483012e-07, 0, 1.4889826)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=468286749]
-light_color = Color(0.7529412, 1, 1, 1)
-light_energy = 2.928
-shadow_enabled = true
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/Camera3D/interactRay/playerHand" unique_id=1769194412]
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, 0.05, 0, -0.05, -2.1855695e-09, 0, 0, 0)
+visible = false
+layers = 2
+mesh = SubResource("PlaneMesh_vskfa")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.78909683, -0.16831267, 0)
+light_color = Color(3.851815, 2.6464787, 0, 1)
+light_energy = 0.3
+light_size = 1.0
+shadow_enabled = true
+shadow_bias = 1.0
+spot_range = 3.0
+spot_angle = 60.0
+spot_angle_attenuation = 10.0
+
+[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
+libraries/ = SubResource("AnimationLibrary_0poeq")
+autoplay = &"light_animation"
+
+[node name="Sprite2D" type="Sprite2D" parent="head/Camera3D" unique_id=1701825070]
+texture_filter = 1
+position = Vector2(1057, 511.00003)
+scale = Vector2(3, 3)
+texture = ExtResource("4_pjcup")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
@@ -262,6 +349,7 @@ mesh = SubResource("CapsuleMesh_iplt1")
 
 [node name="SnowParticles" parent="head" unique_id=487372938 instance=ExtResource("13_owvpp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1513386, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1387597552]
 transform = Transform3D(0.612684, 0, 0, 0, 0.9165557, 0, 0, 0, 0.6431235, 0, 0.94802094, 0)

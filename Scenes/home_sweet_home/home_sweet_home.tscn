@@ -30,14 +30,22 @@ shader_parameter/normal_scale = 1.0
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="Environment" id="Environment_dfwkk"]
-background_energy_multiplier = 0.21
+[sub_resource type="Environment" id="Environment_p4gms"]
+background_mode = 1
+background_color = Color(0.2331579, 0.029700482, 0.11907724, 1)
+tonemap_mode = 3
+fog_enabled = true
+fog_light_energy = 0.05
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_p4gms"]
+auto_exposure_enabled = true
+auto_exposure_scale = 64.0
+auto_exposure_speed = 64.0
 
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.519526, 0.37197292, 3.0222256)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.13023, 0.37197292, 2.0222254)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
 transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 0, 2.235, 0)
@@ -200,17 +208,18 @@ material = SubResource("ShaderMaterial_dfwkk")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=401452856]
 transform = Transform3D(0.99699354, 0.042354178, -0.064884484, -0.07551816, 0.7185984, -0.69131273, 0.01734591, 0.69413435, 0.7196365, -3.0583725, 1.9175277, -0.2097044)
+visible = false
 light_color = Color(1, 1, 0.49411765, 1)
 light_energy = 0.067
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
-environment = SubResource("Environment_dfwkk")
+environment = SubResource("Environment_p4gms")
+camera_attributes = SubResource("CameraAttributesPractical_p4gms")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1711072597]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, 3)
-light_color = Color(1, 1, 0.8, 1)
-shadow_enabled = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, 2, 2)
+visible = false
 shadow_normal_bias = 10.0
 
 [node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]

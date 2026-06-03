@@ -9,7 +9,7 @@ var last_potential_object: Object
 var interact_component: Node
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not player:
 		player = Global.player
 		return
@@ -19,16 +19,16 @@ func _process(delta: float) -> void:
 				var distancia = player.global_position.distance_to(current_object.global_position)
 				if distancia > 3.0:
 					label.text = interact_component.label
-					interact_component.postInteract()
+					interact_component.post_interact()
 					current_object = null
 					
 					return
 				if interact_component.is_locked:
-					label.text = interact_component.label_if_door_is_locked
-					interact_component.sound_if_door_is_locked.play()
+					label.text = interact_component.locked_door_label
+
 				else:
 					label.text = interact_component.label
-				interact_component.Interact()
+				interact_component.interact()
 				#if not interact_component.description:
 					#label.text = interact_component.label
 #
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		else:
 			if interact_component:
 				label.text = interact_component.label
-				interact_component.postInteract()
+				interact_component.post_interact()
 				current_object = null
 	else:
 		var potential_object: Object = interact_ray.get_collider()
@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 				last_potential_object = current_object
 				if player.player_input.is_interacting:
 					current_object = potential_object
-					interact_component.preInteract()
+					interact_component.pre_interact()
 			else:
 				_unfocus()
 		else:
