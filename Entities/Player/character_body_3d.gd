@@ -1,7 +1,8 @@
 extends CharacterBody3D
 class_name Player
 
-const FORCA_EMPURRAO = 1.0
+const FORCA_EMPURRAO = 10.0
+
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 4
 @export var DEFAULT_SPEED := 2.5
@@ -72,7 +73,6 @@ func _process(delta: float) -> void:
 	_was_on_floor = is_on_floor()
 	#print("Pode correr? >", _can_sprint)
 	#print("Está correndo? > ", _is_sprinting)
-
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -80,12 +80,8 @@ func _physics_process(delta: float) -> void:
 	if _is_crouching == false and can_move:
 		camera.bob_on_time += delta * velocity.length() * float(is_on_floor())
 		head.transform.origin = camera.handle_bob(camera.bob_on_time, delta)
-	for i in get_slide_collision_count():
-		var colisao = get_slide_collision(i)
-		var objeto = colisao.get_collider()
-		if objeto is RigidBody3D:
-			var direcao_empurrao = colisao.get_normal() * -1
-			objeto.apply_central_impulse(direcao_empurrao * FORCA_EMPURRAO)
+	#ANTIGO SCRIPT DE EMPURRAR PORTA:
+	#handle_push()
 
 func toggle_crouch():
 	_is_crouching = !_is_crouching
@@ -118,3 +114,11 @@ func play_step_sounds():
 		var floor = floor_type_ray.get_collider()
 		if floor.is_in_group("wood_floor"):
 			wood_step.play()
+
+func handle_push():
+	for i in get_slide_collision_count():
+		var colisao = get_slide_collision(i)
+		var objeto = colisao.get_collider()
+		if objeto is RigidBody3D:
+			var direcao_empurrao = colisao.get_normal() * -1
+			objeto.apply_force(direcao_empurrao * FORCA_EMPURRAO)

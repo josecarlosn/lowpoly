@@ -354,8 +354,8 @@ _surfaces = [{
 }]
 shadow_mesh = SubResource("ArrayMesh_7or4u")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5a8rm"]
-size = Vector3(0.8, 1.5, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0d0ft"]
+size = Vector3(0.9143999, 2.032, 0.0508)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0d0ft"]
 random_pitch = 1.122462
@@ -486,27 +486,70 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="IndoorWall/StaticBody3D" unique_id=1469508842]
 shape = SubResource("ConcavePolygonShape3D_tcglw")
 
+[node name="RoomDoor2" type="RigidBody3D" parent="." unique_id=1386055150]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.615573, 1.32148, 1.6335676)
+rotation_edit_mode = 2
+collision_layer = 2048
+collision_mask = 514
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp = 10.14
+
+[node name="InteractionComponent" parent="RoomDoor2" unique_id=881712920 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
+door_ref = NodePath("..")
+hover_label = "passei o mouse"
+unlocked_label = "abrindo"
+locked_door_label = "locked"
+rest_angle = -90.0
+
+[node name="Door" type="MeshInstance3D" parent="RoomDoor2" unique_id=449788116]
+transform = Transform3D(0.8975928, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.015689e-09, 0, 1.0000007, -0.24635339, 0.015917778, 0.23157755)
+mesh = SubResource("ArrayMesh_0tye3")
+skeleton = NodePath("../../RoomDoor2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomDoor2" unique_id=1385132853]
+transform = Transform3D(1, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1, 0.15745592, -0.032530665, 0.20614737)
+shape = SubResource("BoxShape3D_0d0ft")
+debug_color = Color(0.93065643, 0.033490337, 0.64016426, 1)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RoomDoor2" unique_id=569245811]
+stream = SubResource("AudioStreamRandomizer_0d0ft")
+volume_db = 17.778
+panning_strength = 2.0
+bus = &"Steps"
+
+[node name="HingeJoint3D" type="HingeJoint3D" parent="RoomDoor2" unique_id=1969735551]
+transform = Transform3D(1, -4.3711385e-08, -1.9106853e-15, 0, -4.371139e-08, 1, -4.3711385e-08, -1, -4.371139e-08, -0.27981424, 0, 0.16182983)
+node_a = NodePath("../../RoomDoor2")
+angular_limit/enable = true
+angular_limit/upper = 2.0943952
+angular_limit/lower = -1.3962634
+
 [node name="RoomDoor" type="RigidBody3D" parent="." unique_id=1665906376]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.080697656, 1.3082932, 3.2694252)
 rotation_edit_mode = 2
 collision_layer = 2048
-collision_mask = 512
-mass = 2.0
+collision_mask = 514
+contact_monitor = true
+max_contacts_reported = 1
+angular_damp = 10.14
 
-[node name="InteractionComponent" parent="RoomDoor" unique_id=881712920 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
+[node name="InteractionComponent" parent="RoomDoor" unique_id=241331543 node_paths=PackedStringArray("door_ref") instance=ExtResource("3_5a8rm")]
 door_ref = NodePath("..")
-label = "door"
-locked_door_label = "locked"
-description = "bla bla bla description"
+is_locked = true
+hover_label = "porta 2"
+unlocked_label = "abrindo porta 2"
+locked_door_label = "locked 2"
 rest_angle = -90.0
 
 [node name="Door" type="MeshInstance3D" parent="RoomDoor" unique_id=110563101]
-transform = Transform3D(0.90000063, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.0291433e-09, 0, 1.0000007, -0.2565987, 0.015917778, 0.14831293)
+transform = Transform3D(0.8975928, 0, 5.5879354e-09, 0, 0.92336863, 0, -5.015689e-09, 0, 1.0000007, -0.24635339, 0.015917778, 0.23157755)
 mesh = SubResource("ArrayMesh_0tye3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomDoor" unique_id=90113264]
-transform = Transform3D(1.0000007, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1.0000007, 0.13998866, 0.0858351, 0.2413863)
-shape = SubResource("BoxShape3D_5a8rm")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomDoor" unique_id=754727520]
+transform = Transform3D(1, 0, 5.5879354e-09, 0, 1, 0, -5.5879354e-09, 0, 1, 0.15745592, -0.032530665, 0.20614737)
+shape = SubResource("BoxShape3D_0d0ft")
+debug_color = Color(0.93065643, 0.033490337, 0.64016426, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="RoomDoor" unique_id=776602255]
 stream = SubResource("AudioStreamRandomizer_0d0ft")
@@ -515,9 +558,11 @@ panning_strength = 2.0
 bus = &"Steps"
 
 [node name="HingeJoint3D" type="HingeJoint3D" parent="RoomDoor" unique_id=1734061747]
-transform = Transform3D(1, -4.3711385e-08, -1.9106853e-15, 0, -4.371139e-08, 1, -4.3711385e-08, -1, -4.371139e-08, -0.30811167, 0, 0.16182983)
+transform = Transform3D(1, -4.3711385e-08, -1.9106853e-15, 0, -4.371139e-08, 1, -4.3711385e-08, -1, -4.371139e-08, -0.27981424, 0, 0.16182983)
 node_a = NodePath("..")
 angular_limit/enable = true
+angular_limit/upper = 2.0943952
+angular_limit/lower = -1.3962634
 
 [node name="Door_Frame" type="MeshInstance3D" parent="." unique_id=1430461674]
 transform = Transform3D(4.9993894e-05, 0, -0.99999213, 0, 0.9587956, 0, 0.86893946, 0, 5.753392e-05, -0.23699512, 1.2504452, 3.4282784)
@@ -527,4 +572,6 @@ mesh = SubResource("ArrayMesh_k8dm6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_Frame/StaticBody3D" unique_id=431886301]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, -3.637979e-12, 0, 1, 0, 0, 0)
+visible = false
 shape = SubResource("ConcavePolygonShape3D_l7lld")
+disabled = true

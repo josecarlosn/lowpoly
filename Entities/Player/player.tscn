@@ -20,65 +20,19 @@
 [ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/Inventory/inventory_controller.tscn" id="19_0poeq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vskfa"]
+line_spacing = 0.0
 font_size = 24
+shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
 
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:spot_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:spot_angle_attenuation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [10.0]
-}
 
 [sub_resource type="Animation" id="Animation_pjcup"]
 resource_name = "light_animation"
-length = 1.5
+length = 2.0
 loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:spot_range")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7, 1.4666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [3.0, 3.25, 3.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:spot_angle_attenuation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.76666665, 1.4666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [10.0, 20.0, 10.0]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0poeq"]
 _data = {
@@ -91,7 +45,8 @@ radius = 0.3
 height = 2.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iplt1"]
-radius = 0.3
+custom_solver_bias = 1.0
+radius = 0.2
 height = 1.75
 
 [sub_resource type="Animation" id="Animation_u3cyc"]
@@ -99,50 +54,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:scale")
+tracks/0/path = NodePath("PlayerCollision:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.612684, 0.9165557, 0.6431235)]
+"values": [Vector3(0, 0.94802094, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("head:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.94802094, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("head:position")
+tracks/2/path = NodePath("head/Camera3D:fov")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [75.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("head/Camera3D:fov")
+tracks/3/path = NodePath("PlayerCollision:shape:height")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [75.0]
+"values": [1.75]
 }
 
 [sub_resource type="Animation" id="Animation_y2354"]
@@ -166,38 +121,38 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:scale")
+tracks/0/path = NodePath("PlayerCollision:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.612684, 0.9165557, 0.6431235), Vector3(0.556, 0.5, 0.585)]
+"values": [Vector3(0, 0.94802094, 0), Vector3(0, 0.5, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("head:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.94802094, 0), Vector3(0, 0.5, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("head:position")
+tracks/2/path = NodePath("PlayerCollision:shape:height")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
+"values": [1.75, 0.9]
 }
 
 [sub_resource type="Animation" id="Animation_m7jmp"]
@@ -205,7 +160,7 @@ resource_name = "standup"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:scale")
+tracks/0/path = NodePath("PlayerCollision:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,7 +172,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("PlayerCollision:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -260,7 +215,8 @@ stream_0/stream = ExtResource("16_0poeq")
 stream_1/stream = ExtResource("17_ppdlg")
 stream_2/stream = ExtResource("18_v7p16")
 
-[node name="Player" type="CharacterBody3D" unique_id=418249368]
+[node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
+collision_layer = 2
 collision_mask = 2561
 script = ExtResource("1_dqkch")
 CROUCH_ANIMATION_SPEED = 1.5
@@ -268,14 +224,14 @@ CROUCH_ANIMATION_SPEED = 1.5
 [node name="head" type="Node3D" parent="." unique_id=1886020297]
 
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, -0.044962525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.090173215)
 script = ExtResource("2_r8fok")
 bob_freq = 4.0
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
-target_position = Vector3(0, 0, 2)
+target_position = Vector3(0, 0, 1.5)
 collision_mask = 2049
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
@@ -288,26 +244,27 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_fjrip")
-radius = 4
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="head/Camera3D/interactRay/Crosshair" unique_id=846702407]
+[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=846702407]
 unique_name_in_owner = true
-layout_mode = 1
+visible = false
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -416.0
-offset_top = -67.0
-offset_right = 416.0
-offset_bottom = 4.0
+offset_left = -400.0
+offset_top = -108.5
+offset_right = 400.0
+offset_bottom = 108.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Porta da casa de Tia Suze"
 label_settings = SubResource("LabelSettings_vskfa")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=1661565795]
 unique_name_in_owner = true
@@ -322,14 +279,13 @@ mesh = SubResource("PlaneMesh_vskfa")
 [node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
-light_color = Color(3.851815, 2.6464787, 0, 1)
-light_energy = 0.3
+light_color = Color(1, 0.7372549, 0, 1)
+light_energy = 2.0
 shadow_enabled = true
 shadow_bias = 1.0
 distance_fade_enabled = true
-spot_range = 3.0
-spot_angle = 60.0
-spot_angle_attenuation = 10.0
+spot_range = 10.0
+spot_angle = 70.0
 script = ExtResource("4_pjcup")
 
 [node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
@@ -345,8 +301,8 @@ mesh = SubResource("CapsuleMesh_iplt1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1513386, 0, 0)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1387597552]
-transform = Transform3D(0.612684, 0, 0, 0, 0.9165557, 0, 0, 0, 0.6431235, 0, 0.94802094, 0)
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1387597552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94802094, 0)
 shape = SubResource("CapsuleShape3D_iplt1")
 debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 
@@ -354,6 +310,7 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 

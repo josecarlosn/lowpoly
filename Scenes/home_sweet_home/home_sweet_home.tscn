@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cswd4pwucdbgv" path="res://Scenes/home_sweet_home/geladeira vela.mp3" id="2_udhub"]
 [ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="3_dfwkk"]
 [ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/interaction/interaction_component.tscn" id="6_rq7db"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dfwkk"]
 render_priority = 0
@@ -31,17 +32,11 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Environment" id="Environment_p4gms"]
-background_mode = 1
-background_color = Color(0.2331579, 0.029700482, 0.11907724, 1)
-background_energy_multiplier = 0.5
 tonemap_mode = 3
-fog_enabled = true
-fog_light_energy = 0.05
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_p4gms"]
-auto_exposure_enabled = true
-auto_exposure_scale = 0.8
-auto_exposure_max_sensitivity = 4000.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4gms"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rq7db"]
 
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
@@ -216,7 +211,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
 environment = SubResource("Environment_p4gms")
-camera_attributes = SubResource("CameraAttributesPractical_p4gms")
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1711072597]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, 2, 2)
@@ -225,3 +219,21 @@ shadow_normal_bias = 10.0
 
 [node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.607447, 9.536743e-07, 1.6618347)
+
+[node name="RigidBody3D2" type="RigidBody3D" parent="." unique_id=1146415783]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.681278, 1.1680648, 1.1125809)
+collision_layer = 2048
+collision_mask = 2049
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1888526968]
+shape = SubResource("BoxShape3D_p4gms")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D2/CollisionShape3D" unique_id=181255229]
+mesh = SubResource("BoxMesh_rq7db")
+skeleton = NodePath("../..")
+
+[node name="InteractionComponent" parent="RigidBody3D2" unique_id=2029070013 node_paths=PackedStringArray("door_ref") instance=ExtResource("6_rq7db")]
+door_ref = NodePath("..")
+hover_label = "just a cube"
+unlocked_label = "solte o botão para soltar o cubo"

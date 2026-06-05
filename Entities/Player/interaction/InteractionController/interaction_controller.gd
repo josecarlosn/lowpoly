@@ -1,57 +1,46 @@
 extends Node
-@onready var interaction_controller: Node = %InteractionController
+
+#@onready var interaction_controller: Node = %InteractionController
+#@onready var camera_3d: PlayerCamera = $"../head/Camera3D"
 @onready var interact_ray: RayCast3D = %interactRay
-@onready var camera_3d: PlayerCamera = $"../head/Camera3D"
 @onready var player = Global.player
 @onready var label: Label = %Label
-var current_object: Object
-var last_potential_object: Object
-var interact_component: Node
 
+var current_object: Object
+var interact_component: Node
 
 func _physics_process(delta: float) -> void:
 	if not player:
 		player = Global.player
 		return
-	if current_object:
-		if player.player_input.is_interacting:
-			if interact_component:
-				var distancia = player.global_position.distance_to(current_object.global_position)
-				if distancia > 3.0:
-					label.text = interact_component.label
-					interact_component.post_interact()
-					current_object = null
-					
-					return
-				if interact_component.is_locked:
-					label.text = interact_component.locked_door_label
 
-				else:
-					label.text = interact_component.label
-				interact_component.interact()
-				#if not interact_component.description:
-					#label.text = interact_component.label
-#
-				#else:
-					#label.visible = true
-					#label.text = interact_component.editor_description
-				
-					
+	var potential_object: Object = interact_ray.get_collider()
+
+	if current_object:
+		if not is_instance_valid(current_object):
+			_clear_interaction()
+			return
+		if interact_ray.get_collider() != current_object:
+			_unfocus()
 		else:
-			if interact_component:
-				label.text = interact_component.label
-				interact_component.post_interact()
-				current_object = null
+			_focus()
+		var distancia = player.global_position.distance_to(current_object.global_position)
+		if distancia > 3.0:
+			_clear_interaction()
+			return
+
+		if player.player_input.is_interacting:
+			interact_component.interact()
+			label.text = interact_component.interact_label
+			#Se existir alguma label ao interagir com um objeto, ela será manipulada no componente
+		else:
+			_clear_interaction()
 	else:
-		var potential_object: Object = interact_ray.get_collider()
 		if potential_object and potential_object is Node:
 			interact_component = potential_object.get_node_or_null("InteractionComponent")
 			if interact_component:
-				if not interact_component.can_interact:
-					return
 				_focus()
-				last_potential_object = current_object
-				if player.player_input.is_interacting:
+				if interact_component.can_interact and player.player_input.is_interacting:
 					current_object = potential_object
 					interact_component.pre_interact()
 			else:
@@ -59,10 +48,17 @@ func _physics_process(delta: float) -> void:
 		else:
 			_unfocus()
 
-func locked_label_timer():
-	label.text = interact_component.label_if_door_is_locked
-	get_tree().create_timer(0.5)
+func _clear_interaction() -> void:
+	if interact_component:
+		interact_component.post_interact()
+	current_object = null
+	interact_component = null
+	_unfocus()
 func _focus() -> void:
-	label.visible = true
+	if label:
+		label.text = interact_component.hover_label
+		label.visible = true
 func _unfocus() -> void:
-	label.visible = false
+	if label:
+
+		label.visible = false

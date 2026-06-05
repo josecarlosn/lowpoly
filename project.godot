@@ -31,6 +31,7 @@ Global="*res://globals/Scripts/Global.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=760
+window/size/mode=3
 window/size/initial_position_type=3
 window/size/resizable=false
 window/size/borderless=true
@@ -50,6 +51,11 @@ import/stretch/mode="viewport"
 [global_group]
 
 wood_floor=""
+player=""
+
+[gui]
+
+theme/custom_font="uid://c3ys6g716e3de"
 
 [importer_defaults]
 
@@ -135,7 +141,6 @@ sensors/enable_gravity=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
 textures/default_filters/anisotropic_filtering_level=0
 global_illumination/use_physical_light_units=false
 global_illumination/rendering_method="gl_compatibility"
