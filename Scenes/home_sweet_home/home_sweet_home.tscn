@@ -224,7 +224,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.607447, 9.536743e-07, 1.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.681278, 1.1680648, 1.1125809)
 collision_layer = 2048
 collision_mask = 2049
-continuous_cd = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D2" unique_id=1888526968]
 shape = SubResource("BoxShape3D_p4gms")

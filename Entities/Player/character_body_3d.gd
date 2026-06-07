@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const FORCA_EMPURRAO = 10.0
+const FORCA_EMPURRAO = 7.5
 
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 4
@@ -111,8 +111,11 @@ func toggle_jump():
 
 func play_step_sounds():
 	if floor_type_ray.is_colliding():
+		print("Chão")
 		var floor = floor_type_ray.get_collider()
+
 		if floor.is_in_group("wood_floor"):
+
 			wood_step.play()
 
 func handle_push():

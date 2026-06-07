@@ -217,7 +217,8 @@ stream_2/stream = ExtResource("18_v7p16")
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
 collision_layer = 2
-collision_mask = 2561
+collision_mask = 27
+floor_block_on_wall = false
 script = ExtResource("1_dqkch")
 CROUCH_ANIMATION_SPEED = 1.5
 
@@ -232,7 +233,7 @@ bob_freq = 4.0
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 1.5)
-collision_mask = 2049
+collision_mask = 24
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
 layout_mode = 3
@@ -361,7 +362,7 @@ pitch_scale = 0.82
 bus = &"Steps"
 
 [node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.100776, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
 [node name="InventoryController" parent="." unique_id=889977702 instance=ExtResource("19_0poeq")]
 

@@ -19,7 +19,7 @@ var interact_label: String
 @export var locked_door_sound: AudioStreamPlayer3D
 
 @export_category("Door Settings")
-@export var auto_close: bool = true
+@export var auto_close: bool = false
 ##Define quão rápido a porta volta para sua posição de origem
 @export var spring_stiffness: float = 1.0
 ##Controla a resistência e o balanço do movimento da porta.
@@ -28,6 +28,7 @@ var interact_label: String
 @export var rest_angle: float = 0.0  # em graus
 
 @export var FORCA_ABERTURA: float = 3.0
+var auto_close_distance: float = 0.6
 var can_interact: bool = true
 var is_interacting: bool = false
 var player_hand: Marker3D
@@ -38,6 +39,7 @@ func _ready() -> void:
 		if rigid_body_door:
 			rigid_body_door.freeze = true
 func _physics_process(_delta: float) -> void:
+
 	if auto_close:
 		_auto_close()
 
@@ -67,12 +69,22 @@ func _try_interact() -> void:
 		var rigid_body_door: RigidBody3D = door_ref as RigidBody3D
 		rigid_body_door.freeze = true
 		rigid_body_door.freeze_mode = RigidBody3D.FREEZE_MODE_STATIC	
+
+
 func _auto_close():
 	var rigid_body_door: RigidBody3D = door_ref as RigidBody3D
-
 	if not rigid_body_door or rigid_body_door.freeze:
 		return
-	var angle = rigid_body_door.rotation.y
+
+	var player_pos = Global.player.global_transform.origin
+	var door_pos = rigid_body_door.global_transform.origin
+
+	var door_pos_flat = Vector2(door_pos.x, door_pos.z)
+	var player_pos_flat = Vector2(player_pos.x, player_pos.z)
+	if door_pos_flat.distance_to(player_pos_flat) < auto_close_distance:
+		return
+
+	var angle = rigid_body_door.global_rotation.y
 	var vel = rigid_body_door.angular_velocity.y
 	var target = deg_to_rad(rest_angle)
 	var torque = (-(angle - target) * spring_stiffness) - (vel * spring_damping)

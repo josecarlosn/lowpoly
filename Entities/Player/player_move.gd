@@ -51,4 +51,5 @@ func move(delta: float) -> void:
 		var target := _last_direction * player.SPEED * _speed_factor
 		player.velocity.x = target.x
 		player.velocity.z = target.z
+		player.handle_push()
 		player.move_and_slide()

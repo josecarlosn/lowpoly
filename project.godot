@@ -29,9 +29,8 @@ Global="*res://globals/Scripts/Global.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=760
-window/size/mode=3
+window/size/viewport_width=640
+window/size/viewport_height=380
 window/size/initial_position_type=3
 window/size/resizable=false
 window/size/borderless=true
@@ -137,6 +136,14 @@ lamp={
 [input_devices]
 
 sensors/enable_gravity=true
+
+[layer_names]
+
+3d_physics/layer_1="wolrd"
+3d_physics/layer_2="player"
+3d_physics/layer_3="ray_cast"
+3d_physics/layer_4="interactables"
+3d_physics/layer_5="doors"
 
 [rendering]
 
