@@ -33,6 +33,7 @@ var can_interact: bool = true
 var is_interacting: bool = false
 var player_hand: Marker3D
 
+
 func _ready() -> void:
 	var rigid_body_door: RigidBody3D = door_ref as RigidBody3D
 	if is_locked:

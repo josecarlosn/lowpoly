@@ -9,7 +9,7 @@ class_name PlayerCamera extends Camera3D
 @export var camera_smooth_speed := 20.0
 @export var head_smooth_speed := 20.0
 @export_category("Bob Settings")
-@export var bob_freq = 3.0
+@export var bob_freq = 2.5
 @export var bob_amp = 0.05
 @export var bob_on_time = 0.0
 @export var ZOOM_SPEED = 1.75

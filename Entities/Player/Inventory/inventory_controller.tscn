@@ -8,16 +8,9 @@ bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.98039216)
 [sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
 font_size = 36
 
-[sub_resource type="LabelSettings" id="LabelSettings_juqp6"]
-font_size = 24
-outline_size = 1
-outline_color = Color(10.300002, 10.300002, 10.300002, 1)
-
 [node name="InventoryController" type="Node" unique_id=889977702]
-script = ExtResource("1_juqp6")
 
 [node name="InventoryCanvasLayer" type="CanvasLayer" parent="." unique_id=1505330638]
-visible = false
 
 [node name="PlayerInventoryUI" type="Control" parent="InventoryCanvasLayer" unique_id=2140140693]
 layout_mode = 3
@@ -26,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_juqp6")
 
 [node name="Panel" type="Panel" parent="InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
 texture_filter = 1
@@ -44,36 +38,29 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -244.0
 offset_right = 244.0
-offset_bottom = 169.0
+offset_bottom = 127.0
 grow_horizontal = 2
 text = "INVENTORY"
 label_settings = SubResource("LabelSettings_gpkcq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1076856970]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 368.0
-offset_right = 421.0
-offset_bottom = 450.0
-text = "Título do item"
-label_settings = SubResource("LabelSettings_juqp6")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1776908797]
+[node name="MarginContainer" type="MarginContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -269.0
-offset_right = 510.0
-grow_vertical = 0
-theme_override_constants/margin_left = 50
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -150.0
+offset_right = 400.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=2038116552]
+[node name="GridContainer" type="GridContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=281649815]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/default_color = Color(18.892157, 18.892157, 18.892157, 1)
-text = "Descrição do item com base nos dados obtidos através de métodos nos quais não se sabem ainda o quão úteis serão para o aproveitamento dos mesmos na descrição do item."
-horizontal_alignment = 3
+size_flags_horizontal = 4
+columns = 5

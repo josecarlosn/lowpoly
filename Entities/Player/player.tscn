@@ -217,7 +217,7 @@ stream_2/stream = ExtResource("18_v7p16")
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
 collision_layer = 2
-collision_mask = 27
+collision_mask = 19
 floor_block_on_wall = false
 script = ExtResource("1_dqkch")
 CROUCH_ANIMATION_SPEED = 1.5
@@ -232,7 +232,7 @@ bob_freq = 4.0
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
-target_position = Vector3(0, 0, 1.5)
+target_position = Vector3(0, 0, 2)
 collision_mask = 24
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
@@ -281,7 +281,6 @@ mesh = SubResource("PlaneMesh_vskfa")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
 light_color = Color(1, 0.7372549, 0, 1)
-light_energy = 2.0
 shadow_enabled = true
 shadow_bias = 1.0
 distance_fade_enabled = true
@@ -292,6 +291,10 @@ script = ExtResource("4_pjcup")
 [node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
 libraries/ = SubResource("AnimationLibrary_0poeq")
 autoplay = &"light_animation"
+
+[node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=990342070]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
@@ -311,7 +314,6 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
-visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
@@ -365,6 +367,7 @@ bus = &"Steps"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
 [node name="InventoryController" parent="." unique_id=889977702 instance=ExtResource("19_0poeq")]
+unique_name_in_owner = true
 
 [node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("17_3wlsy")]
 unique_name_in_owner = true

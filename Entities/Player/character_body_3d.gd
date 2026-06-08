@@ -27,7 +27,7 @@ var _was_on_floor: bool = true
 @onready var detected = null
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hand: Marker3D = %playerHand
-
+@onready var inventory_target: Node3D = %InventoryTarget
 @onready var wood_step: AudioStreamPlayer3D = $PlayerSounds/WoodStep
 @onready var floor_type_ray: RayCast3D = $FloorTypeRay
 
@@ -111,7 +111,6 @@ func toggle_jump():
 
 func play_step_sounds():
 	if floor_type_ray.is_colliding():
-		print("Chão")
 		var floor = floor_type_ray.get_collider()
 
 		if floor.is_in_group("wood_floor"):
