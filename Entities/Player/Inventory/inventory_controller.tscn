@@ -11,9 +11,9 @@ font_size = 36
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
 shader = ExtResource("2_7qqrg")
-shader_parameter/color_offset_multiplier = 0.004
-shader_parameter/black_offset_multiplier = 0.10000000149012
-shader_parameter/color_offset = 0.005
+shader_parameter/color_offset_multiplier = 0.0010000000475
+shader_parameter/black_offset_multiplier = 0.050000002375
+shader_parameter/color_offset = 0.0020000033548800006
 shader_parameter/blur_amount = 0.0
 
 [node name="InventoryController" type="Node" unique_id=889977702]

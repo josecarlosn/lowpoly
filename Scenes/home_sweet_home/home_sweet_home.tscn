@@ -8,6 +8,12 @@
 [sub_resource type="Environment" id="Environment_p4gms"]
 background_energy_multiplier = 0.1
 tonemap_mode = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0005
+volumetric_fog_length = 1.0
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.5
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rq7db"]
 auto_exposure_enabled = true

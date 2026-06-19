@@ -4,11 +4,13 @@
 [ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/player_camera_3d.gd" id="2_r8fok"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
 [ext_resource type="Script" uid="uid://bl8tg3sjtvcmx" path="res://Entities/Player/lamp.gd" id="4_pjcup"]
+[ext_resource type="Texture2D" uid="uid://q31x7k0403rg" path="res://textures/lamp.png" id="4_v7p16"]
 [ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Entities/Player/Inventory/vcr_shader.gdshader" id="5_0poeq"]
 [ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
 [ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
+[ext_resource type="Script" uid="uid://ibump470bcjh" path="res://Entities/Player/debug_controller.gd" id="7_ppdlg"]
 [ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
 [ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
 [ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="13_owvpp"]
@@ -27,6 +29,13 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
+shader = ExtResource("5_0poeq")
+shader_parameter/color_offset_multiplier = 0.0
+shader_parameter/black_offset_multiplier = 0.1
+shader_parameter/color_offset = 0.00200000335488
+shader_parameter/blur_amount = 0.0
+
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
 
@@ -40,13 +49,6 @@ _data = {
 &"RESET": SubResource("Animation_vskfa"),
 &"light_animation": SubResource("Animation_pjcup")
 }
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
-shader = ExtResource("5_0poeq")
-shader_parameter/color_offset_multiplier = 0.0
-shader_parameter/black_offset_multiplier = 0.1
-shader_parameter/color_offset = 0.0020000033548800006
-shader_parameter/blur_amount = 0.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
 radius = 0.3
@@ -290,31 +292,37 @@ mesh = SubResource("PlaneMesh_vskfa")
 
 [node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
 
-[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
-light_color = Color(1, 0.7372549, 0, 1)
-shadow_enabled = true
-shadow_bias = 1.0
-distance_fade_begin = 280.8
-distance_fade_shadow = 4096.0
-distance_fade_length = 4096.0
-spot_angle = 70.0
-script = ExtResource("4_pjcup")
-
-[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
-libraries/ = SubResource("AnimationLibrary_0poeq")
-autoplay = &"light_animation"
-
 [node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=990342070]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+visible = false
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
+light_color = Color(1, 0.8631991, 0.6085637, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 16.0
+light_projector = ExtResource("4_v7p16")
+shadow_enabled = true
+shadow_bias = 1.0
+distance_fade_begin = 280.8
+distance_fade_shadow = 4096.0
+distance_fade_length = 4096.0
+spot_range = 30.0
+spot_angle = 30.0
+script = ExtResource("4_pjcup")
+
+[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
+libraries/ = SubResource("AnimationLibrary_0poeq")
+autoplay = &"light_animation"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
@@ -334,9 +342,10 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
-visible = false
+unique_name_in_owner = true
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("7_ppdlg")
 
 [node name="Title" type="Label" parent="Debug" unique_id=131475504]
 unique_name_in_owner = true
