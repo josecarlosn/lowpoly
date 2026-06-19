@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x8y0vot1v657" path="res://Objects/Test/key2.tscn" id="7_ij6h2"]
 
 [sub_resource type="Environment" id="Environment_p4gms"]
-background_energy_multiplier = 0.1
+background_energy_multiplier = 0.05
 tonemap_mode = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0005
@@ -37,3 +37,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.868116, 0.4179368, 3.9037
 
 [node name="Key2" parent="." unique_id=1694274916 instance=ExtResource("7_ij6h2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.028138, 0.24101293, 0.1184881)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=728388377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.376163, 2.1128597, 2.5131788)
+light_color = Color(1, 0.73333335, 0.23921569, 1)
+light_energy = 0.25
+shadow_enabled = true

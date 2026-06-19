@@ -26,8 +26,8 @@ load_path = "res://.godot/imported/lamp.png-31e270d944ee091404e61d7cd61cc5c5.cte
 
 [sub_resource type="Resource" id="Resource_je38n"]
 script = ExtResource("5_qfqxx")
-name = "Room Key 2"
-description = "Just a key that open a door, i mean"
+name = "Key 2"
+description = "Just a key that open the second door, i mean"
 item_icon = SubResource("CompressedTexture2D_gv0dk")
 action_data = SubResource("Resource_udd12")
 metadata/_custom_type_script = "uid://l425ibqu6anc"

@@ -3,6 +3,10 @@ class_name InventorySlot
 
 @onready var player = Global.player
 @onready var icon: TextureRect = %InventoryTextureRect
+@onready var num_slot: Label = %NumSlot
+
+var slot_title: String
+var slot_description: String
 
 var inventory_slot_id: int = -1
 var empty_icon: Texture = preload("uid://ckirht210g37o")
@@ -16,6 +20,7 @@ signal on_item_right_clicked(slot_id: int)
 func _ready() -> void:
 	icon.texture = empty_icon
 	pass
+	
 # fill_slot é chamado na função pickup_item no inventory_controller.gd
 func fill_slot(item_data: ItemData) -> void: # Eu diria que é nessa fuinção que futuramente salvaremos persistentemente os dados do inventário
 	slot_data = item_data

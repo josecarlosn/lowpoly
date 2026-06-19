@@ -28,7 +28,6 @@ func poll(head_basis: Basis) -> void:
 	if Input.is_action_just_pressed("inventory"):
 		player.can_move = !player.can_move
 		in_inventory = !in_inventory
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Input.is_action_just_pressed("debug"):
 		in_debug = !in_debug
 		

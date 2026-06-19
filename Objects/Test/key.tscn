@@ -26,7 +26,7 @@ load_path = "res://.godot/imported/teste_wood_fancy_04.jpg-14750b01eb2250b0b5cf6
 
 [sub_resource type="Resource" id="Resource_je38n"]
 script = ExtResource("4_je38n")
-name = "Room Key 2"
+name = "Key"
 description = "Just a key that open a door, i mean"
 item_icon = SubResource("CompressedTexture2D_udd12")
 action_data = SubResource("Resource_udd12")
