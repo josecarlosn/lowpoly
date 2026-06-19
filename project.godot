@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="lowpoly"
 run/main_scene="uid://cv6y40cdyecmh"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.14797607, 0.15181723, 0.3479062, 1)
 config/icon="res://icon.svg"
 
 [audio]
@@ -33,6 +34,7 @@ window/size/viewport_width=1280
 window/size/viewport_height=760
 window/size/mode=3
 window/size/initial_position_type=3
+window/size/initial_screen=1
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
@@ -56,7 +58,7 @@ player=""
 
 [gui]
 
-theme/custom_font="uid://c3ys6g716e3de"
+theme/custom_font="uid://de4qdcjkcxdjq"
 
 [importer_defaults]
 
@@ -153,9 +155,5 @@ textures/canvas_textures/default_texture_filter=0
 textures/default_filters/anisotropic_filtering_level=0
 global_illumination/use_physical_light_units=false
 global_illumination/rendering_method="gl_compatibility"
-global_illumination/directional_shadow/size=4096
-global_illumination/directional_shadow/16_bits=true
-global_illumination/stretch/scale=1.0
 global_illumination/size/resizable=true
 global_illumination/size/initial_position_type=1
-rendering_device/enabled=false

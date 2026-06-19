@@ -1,35 +1,9 @@
 [gd_scene format=3 uid="uid://cv6y40cdyecmh"]
 
 [ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_wb02u"]
-[ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://object_ps1_shader.gdshader" id="2_6lvfm"]
-[ext_resource type="AudioStream" uid="uid://cswd4pwucdbgv" path="res://Scenes/home_sweet_home/geladeira vela.mp3" id="2_udhub"]
-[ext_resource type="Texture2D" uid="uid://f3v7281wbb8q" path="res://Terrains/Textures/wood/wood.png" id="3_dfwkk"]
 [ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/home_sweet_home/home.tscn" id="4_dfwkk"]
 [ext_resource type="PackedScene" uid="uid://bpm6kk4guoi01" path="res://Objects/Test/key.tscn" id="6_rq7db"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfwkk"]
-render_priority = 0
-shader = ExtResource("2_6lvfm")
-shader_parameter/u_jitter_resolution = 192.0
-shader_parameter/u_affine_intensity = 0.01999999955296
-shader_parameter/u_affine_z_bias = 0.0005
-shader_parameter/texture_albedo = ExtResource("3_dfwkk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/normal_scale = 1.0
-shader_parameter/uv_scale = Vector2(3, 3)
-shader_parameter/uv_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6lvfm"]
-render_priority = 0
-shader = ExtResource("2_6lvfm")
-shader_parameter/u_jitter_resolution = 192.0
-shader_parameter/u_affine_intensity = 0.0
-shader_parameter/u_affine_z_bias = 0.0005
-shader_parameter/texture_albedo = ExtResource("3_dfwkk")
-shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/normal_scale = 1.0
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
+[ext_resource type="PackedScene" uid="uid://x8y0vot1v657" path="res://Objects/Test/key2.tscn" id="7_ij6h2"]
 
 [sub_resource type="Environment" id="Environment_p4gms"]
 background_energy_multiplier = 0.1
@@ -45,183 +19,15 @@ auto_exposure_min_sensitivity = 50.0
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.271346, 0.37197292, 5.646812)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1209288182]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 0, 2.235, 0)
-visible = false
-use_collision = true
-
-[node name="camaCSG" type="CSGBox3D" parent="." unique_id=21139123]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2392256, 0.8116911, 1.950074)
-size = Vector3(1, 0.10809326, 2.239727)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="camaCSG" unique_id=320160651]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23405838, -1.0391798)
-size = Vector3(1, 0.559227, 0.16136742)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="camaCSG" unique_id=889455111]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24576569, 1.040092)
-size = Vector3(1, 0.5358124, 0.16136742)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1313544595]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.873277, 0.6691631, 1.0341047)
-size = Vector3(1.0566406, 0.7515869, 0.44122314)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=609594562]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5019445, 0.39402366, 0.7879499)
-size = Vector3(1.5489502, 0.03692627, 0.5687561)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=2050063409]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5019445, 0.010320365, 1.5388125)
-size = Vector3(0.021270752, 0.7799759, 0.5687561)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=1049426995]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.5019445, 0.0087944865, 0.024223208)
-size = Vector3(0.021270752, 0.77692413, 0.5687561)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D" unique_id=1183942836]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.4250774, 0.5502156, -2.1685767)
-size = Vector3(0.53222656, 1.855896, 0.8590088)
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CSGBox3D/CSGBox3D4" unique_id=152504571]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35083413, 0, 0.29820633)
-stream = ExtResource("2_udhub")
-volume_db = -23.212
-pitch_scale = 2.17
-autoplay = true
-max_distance = 2.0
-panning_strength = 2.0
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D" unique_id=2068389708]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.943899, 0.032308698, -0.70317596)
-size = Vector3(0.6303711, 0.76818085, 0.8437042)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=761997380]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5975237, 0.6717417, -0.93650484)
-size = Vector3(0.50561523, 0.76818085, 0.6426945)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=962948955]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.466817, 0.48355794, -0.93650484)
-size = Vector3(0.7670288, 0.39181328, 0.6426945)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=1052701831]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4376756, 0.9821671, 0.32903552)
-size = Vector3(0.68014526, 0.17593193, 0.6426945)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1645936319]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 4.007216, 1.604294, 2.4412203)
-size = Vector3(1.0805664, 0.5806885, 1.2538147)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2" unique_id=338352851]
-transform = Transform3D(-3.496911e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 1.0250864, 0.074964285, -2.461127)
-size = Vector3(0.59161377, 0.5806885, 0.57829666)
-
-[node name="wall5" type="CSGBox3D" parent="." unique_id=129440663]
-transform = Transform3D(1.9670122e-08, 4.371139e-08, 1, 0.8, -4.3711385e-08, -3.5527137e-15, 5.4639234e-08, 1, -4.371139e-08, 1.7510977, 0.7967677, 0.7691025)
-use_collision = true
-size = Vector3(6.404419, 0.10827929, 4.0728683)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="floor" type="CSGBox3D" parent="." unique_id=687782780 groups=["wood_floor"]]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -0.18520355, -0.0004708767, 1.3179169)
-use_collision = true
-size = Vector3(7.929077, 0.5700742, 6.700226)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall1" type="CSGBox3D" parent="." unique_id=557177168]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, -0.24072406, 1.0209373, 2.5998378)
-use_collision = true
-size = Vector3(6.9648438, 0.15, 3.6216133)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall2" type="CSGBox3D" parent="." unique_id=18978530]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, -3.9262948, 0.93219876, 1.1885681)
-use_collision = true
-size = Vector3(6.288208, 0.5700742, 6.5234985)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall3" type="CSGBox3D" parent="." unique_id=187106472]
-transform = Transform3D(2.5149816e-08, 0.50000006, 0.8660254, 1, -4.371139e-08, -3.5527137e-15, 5.0148998e-08, 0.8660254, -0.50000006, -3.644477, 1.2983971, -1.2642254)
-use_collision = true
-size = Vector3(4.474121, 0.5700742, 2.059082)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall4" type="CSGBox3D" parent="." unique_id=1060928735]
-transform = Transform3D(3.5527137e-15, 4.371139e-08, 1, 1, -4.371139e-08, -3.5527137e-15, 4.371139e-08, 1, -4.371139e-08, -0.08317137, 1.2646511, 4.49374)
-use_collision = true
-size = Vector3(4.380554, 0.5700742, 7.7166443)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="roof" type="CSGBox3D" parent="." unique_id=1033330818]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -0.20486021, 3.3469577, 1.1276245)
-use_collision = true
-size = Vector3(7.5863037, 0.5700742, 6.212036)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1169801218]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -2.868458, 0.49947178, 1.2773972)
-size = Vector3(2.4766846, 1.599884, 0.4452057)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall6" type="CSGBox3D" parent="." unique_id=1561428121]
-transform = Transform3D(1.6875575e-08, -1.1920929e-07, -1, 1.25, -6.010316e-08, -9.463772e-09, -3.5174015e-08, -1, 1.1920929e-07, -0.1927047, 1.211512, -1.690113)
-use_collision = true
-size = Vector3(4.4193726, 0.5700742, 7.9552)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="door_hole2" type="CSGBox3D" parent="." unique_id=2028177096]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -0.96199995, 1.2845998, 3.3803997)
-operation = 2
-size = Vector3(2, 2, 0.9)
-material = SubResource("ShaderMaterial_6lvfm")
-
-[node name="wall7" type="CSGBox3D" parent="." unique_id=886528696]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371138e-08, -7.1054274e-15, -2.3883568e-15, 0, 1, 0.93103904, 0.9769927, -0.5713692)
-use_collision = true
-size = Vector3(6.8549805, 0.15, 2.706871)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="wall8" type="CSGBox3D" parent="." unique_id=1356102322]
-transform = Transform3D(-3.4969112e-08, -1, 0, 0.8, -4.371139e-08, 0, 0, 0, 1, 3.7975602, 1.7512581, 1.3792725)
-use_collision = true
-size = Vector3(4.729889, 0.115115225, 5.8879395)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="door_hole3" type="CSGBox3D" parent="." unique_id=713561630]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, 2.038, 1.2846, -0.6196003)
-operation = 2
-size = Vector3(3, 2, 0.9)
-material = SubResource("ShaderMaterial_6lvfm")
-
-[node name="door_hole4" type="CSGBox3D" parent="." unique_id=1654682332]
-transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.5389004, 1.2845998, 3.3803997)
-operation = 2
-size = Vector3(0.329, 2, 0.9)
-material = SubResource("ShaderMaterial_6lvfm")
-
-[node name="roof2" type="CSGBox3D" parent="." unique_id=1505367525]
-transform = Transform3D(-5.4639237e-08, 1.25, 0, -1, -4.3711395e-08, 0, 0, 0, 1, -0.23633993, 3.1681333, -0.41464233)
-use_collision = true
-size = Vector3(1.3016505, 0.03967285, 2.3602905)
-material = SubResource("ShaderMaterial_dfwkk")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=401452856]
-transform = Transform3D(0.99699354, 0.042354178, -0.064884484, -0.07551816, 0.7185984, -0.69131273, 0.01734591, 0.69413435, 0.7196365, -3.0583725, 1.9175277, -0.2097044)
-visible = false
-light_color = Color(1, 1, 0.49411765, 1)
-light_energy = 0.067
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
 environment = SubResource("Environment_p4gms")
 camera_attributes = SubResource("CameraAttributesPractical_rq7db")
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1711072597]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.7, 2, 2)
-visible = false
-shadow_normal_bias = 10.0
-
 [node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.545354, -0.12094879, 1.4876156)
 
-[node name="Key" parent="." unique_id=1694274916 instance=ExtResource("6_rq7db")]
+[node name="Key" parent="." unique_id=76621192 instance=ExtResource("6_rq7db")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.868116, 0.4179368, 3.9037185)
+
+[node name="Key2" parent="." unique_id=1694274916 instance=ExtResource("7_ij6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.028138, 0.24101293, 0.1184881)

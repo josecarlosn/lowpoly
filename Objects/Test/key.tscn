@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/interaction/interaction_component.tscn" id="1_8r45a"]
 [ext_resource type="Script" uid="uid://blnb5u2ckvmon" path="res://Entities/Player/interaction/InteractableScripts/collectable_interaction_component.gd" id="2_2bbki"]
 [ext_resource type="Script" uid="uid://dgxufe02u4jc4" path="res://Entities/Player/Inventory/Actions/equipable_action.gd" id="3_udd12"]
-[ext_resource type="Texture2D" uid="uid://5o4ci07vy828" path="res://Objects/lamp.png" id="4_dxj54"]
 [ext_resource type="Script" uid="uid://l425ibqu6anc" path="res://Entities/Player/Inventory/item_data.gd" id="4_je38n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r45a"]
@@ -22,11 +21,14 @@ height = 0.1
 script = ExtResource("3_udd12")
 metadata/_custom_type_script = "uid://dgxufe02u4jc4"
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_udd12"]
+load_path = "res://.godot/imported/teste_wood_fancy_04.jpg-14750b01eb2250b0b5cf6dfcb20d8d47.ctex"
+
 [sub_resource type="Resource" id="Resource_je38n"]
 script = ExtResource("4_je38n")
-name = "Room Key"
+name = "Room Key 2"
 description = "Just a key that open a door, i mean"
-item_icon = ExtResource("4_dxj54")
+item_icon = SubResource("CompressedTexture2D_udd12")
 action_data = SubResource("Resource_udd12")
 metadata/_custom_type_script = "uid://l425ibqu6anc"
 
@@ -46,4 +48,4 @@ script = ExtResource("2_2bbki")
 collectable_ref = NodePath("..")
 item_data = SubResource("Resource_je38n")
 can_collect = true
-hover_label = "Chave"
+hover_label = "Chave2"

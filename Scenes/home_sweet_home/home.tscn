@@ -280,6 +280,7 @@ points = PackedVector3Array(1.0000005, 5.137765, 1.0290852, -1, 5.137765, 1.0290
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7kb7"]
 albedo_texture = ExtResource("1_0d0ft")
 uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iaf77"]
 

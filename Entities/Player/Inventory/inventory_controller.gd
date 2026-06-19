@@ -27,6 +27,10 @@ func _process(delta: float) -> void:
 		
 func handle_inventory_visibility():
 	inventory_canvas_layer.visible = player.player_input.in_inventory
+	if inventory_canvas_layer.visible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _is_inventory_full() -> bool:
 	for slot in inventory_slots:
@@ -40,12 +44,11 @@ func pickup_item(item_data: ItemData) -> void:
 	if inventory_full:
 		print("Inventário cheio! Não é possível coletar: ", item_data)
 		return
-
 	for slot in inventory_slots:
 		if not slot.slot_filled:
 			slot.fill_slot(item_data)
 			inventory_full = _is_inventory_full()
-			print("Item adicionado ao slot: ", item_data)
+			print("Item adicionado ao slot: ", item_data.name)
 			return # CORREÇÃO 2: Interrompe a função aqui para colocar em apenas UM slot!
 			
 	# Se saiu do loop e não achou slot livre (segurança extra)

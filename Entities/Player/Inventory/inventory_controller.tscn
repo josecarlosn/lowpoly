@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cle53yp5cybvb"]
 
 [ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="1_juqp6"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Entities/Player/Inventory/vcr_shader.gdshader" id="2_7qqrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
-bg_color = Color(0.03137255, 0.03137255, 0.03137255, 0.98039216)
+bg_color = Color(0, 0.14117648, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
 font_size = 36
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
+shader = ExtResource("2_7qqrg")
+shader_parameter/color_offset_multiplier = 0.004
+shader_parameter/black_offset_multiplier = 0.10000000149012
+shader_parameter/color_offset = 0.005
+shader_parameter/blur_amount = 0.0
 
 [node name="InventoryController" type="Node" unique_id=889977702]
 
@@ -43,7 +51,7 @@ grow_horizontal = 2
 text = "INVENTORY"
 label_settings = SubResource("LabelSettings_gpkcq")
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
 layout_mode = 1
@@ -64,3 +72,29 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 5
+
+[node name="Tools" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1461083166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.5
+offset_top = -205.0
+offset_right = 380.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "[E]:EQUIP     [G]:DROP  
+
+[TAB] EXIT"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+
+[node name="InventoryShader" type="ColorRect" parent="InventoryCanvasLayer" unique_id=1922621707]
+material = SubResource("ShaderMaterial_xxysq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

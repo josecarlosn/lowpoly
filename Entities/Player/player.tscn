@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/player_camera_3d.gd" id="2_r8fok"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
 [ext_resource type="Script" uid="uid://bl8tg3sjtvcmx" path="res://Entities/Player/lamp.gd" id="4_pjcup"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Entities/Player/Inventory/vcr_shader.gdshader" id="5_0poeq"]
 [ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
@@ -39,6 +40,13 @@ _data = {
 &"RESET": SubResource("Animation_vskfa"),
 &"light_animation": SubResource("Animation_pjcup")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
+shader = ExtResource("5_0poeq")
+shader_parameter/color_offset_multiplier = 0.0
+shader_parameter/black_offset_multiplier = 0.1
+shader_parameter/color_offset = 0.0020000033548800006
+shader_parameter/blur_amount = 0.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
 radius = 0.3
@@ -227,6 +235,9 @@ CROUCH_ANIMATION_SPEED = 1.5
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.090173215)
 script = ExtResource("2_r8fok")
+cam_limit_up = 80.0
+camera_smooth_speed = 15.0
+head_smooth_speed = 15.0
 bob_freq = 4.0
 
 [node name="interactRay" type="RayCast3D" parent="head/Camera3D" unique_id=1915562258]
@@ -283,8 +294,9 @@ mesh = SubResource("PlaneMesh_vskfa")
 light_color = Color(1, 0.7372549, 0, 1)
 shadow_enabled = true
 shadow_bias = 1.0
-distance_fade_enabled = true
-spot_range = 10.0
+distance_fade_begin = 280.8
+distance_fade_shadow = 4096.0
+distance_fade_length = 4096.0
 spot_angle = 70.0
 script = ExtResource("4_pjcup")
 
@@ -295,6 +307,14 @@ autoplay = &"light_animation"
 [node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=990342070]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
+
+[node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+material = SubResource("ShaderMaterial_ppdlg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
@@ -314,6 +334,7 @@ debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
 [node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+visible = false
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
@@ -362,6 +383,8 @@ stream = SubResource("AudioStreamRandomizer_avsg8")
 volume_db = 46.355
 pitch_scale = 0.82
 bus = &"Steps"
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=311161243]
 
 [node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

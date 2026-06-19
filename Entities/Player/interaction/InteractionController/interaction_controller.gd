@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		if potential_object and potential_object is Node:
 			interact_component = potential_object.get_node_or_null("InteractionComponent")
 			if interact_component:
-				if not interact_component.is_connected("item_collected", Callable(self, "_on_item_collected")):
+				if interact_component is CollectableInteraction and not interact_component.is_connected("item_collected", Callable(self, "_on_item_collected")):
 					interact_component.connect("item_collected", Callable(self, "_on_item_collected"))
 				_focus()
 				if interact_component.can_interact and player.player_input.is_interacting:

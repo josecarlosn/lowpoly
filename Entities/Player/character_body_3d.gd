@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-const FORCA_EMPURRAO = 7.5
+const FORCA_EMPURRAO = 50.0
 
 @export_category("Player Settings")
 @export var SPRINT_SPEED := 4
