@@ -5,8 +5,8 @@
 [ext_resource type="Resource" uid="uid://otyhc44apjaf" path="res://Terrains/data.hterrain" id="3_21xkr"]
 [ext_resource type="Script" uid="uid://bgee330qjjofq" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_6bp64"]
 [ext_resource type="Shader" uid="uid://dfmcxa5y7n1fa" path="res://addons/zylann.hterrain/shaders/psx_terrain.gdshader" id="4_21xkr"]
-[ext_resource type="Texture2D" uid="uid://dfg3dby5fjufm" path="res://Terrains/Textures/Snow/snow_ground.png" id="5_kry3j"]
-[ext_resource type="PackedScene" uid="uid://c4fxfhqeloi5h" path="res://tree_winter.tscn" id="7_6bp64"]
+[ext_resource type="Texture2D" uid="uid://dfg3dby5fjufm" path="res://Assets/Textures/Terrain/Snow/snow_ground.png" id="5_kry3j"]
+[ext_resource type="PackedScene" uid="uid://c4fxfhqeloi5h" path="res://Entities/Props/Trees/tree_winter.tscn" id="7_6bp64"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kry3j"]
 

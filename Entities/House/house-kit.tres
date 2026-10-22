@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=19 format=4 uid="uid://bekasyh6b3asb"]
 
-[ext_resource type="Texture2D" uid="uid://uus6gl3iq5j1" path="res://TexturesBlender/textures/house-textures.png" id="1_l33br"]
+[ext_resource type="Texture2D" uid="uid://uus6gl3iq5j1" path="res://Assets/Textures/House/house-textures.png" id="1_l33br"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlc5w"]
 resource_name = "LR-Wall"

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bpm6kk4guoi01"]
+
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="1_8r45a"]
+[ext_resource type="Script" uid="uid://blnb5u2ckvmon" path="res://Entities/Player/Interaction/InteractableScripts/collectable_interaction_component.gd" id="2_2bbki"]
+[ext_resource type="Script" uid="uid://dgxufe02u4jc4" path="res://Entities/Player/Inventory/Actions/equipable_action.gd" id="3_udd12"]
+[ext_resource type="Script" uid="uid://l425ibqu6anc" path="res://Entities/Player/Inventory/item_data.gd" id="4_je38n"]
+[ext_resource type="Texture2D" uid="uid://caitg2o5hagu6" path="res://Assets/Textures/Items/teste_wood_fancy_04.jpg" id="CompressedTexture2D_udd12"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r45a"]
+albedo_color = Color(1.3266667, 1.3266667, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nupns"]
+material = SubResource("StandardMaterial3D_8r45a")
+radius = 0.01
+height = 0.1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nupns"]
+radius = 0.01
+height = 0.1
+
+[sub_resource type="Resource" id="Resource_udd12"]
+script = ExtResource("3_udd12")
+metadata/_custom_type_script = "uid://dgxufe02u4jc4"
+
+[sub_resource type="Resource" id="Resource_je38n"]
+script = ExtResource("4_je38n")
+name = "Key"
+description = "Just a key that open a door, i mean"
+item_icon = ExtResource("CompressedTexture2D_udd12")
+action_data = SubResource("Resource_udd12")
+metadata/_custom_type_script = "uid://l425ibqu6anc"
+
+[node name="Key" type="Node3D" unique_id=1694274916]
+
+[node name="KeyRigidBody" type="RigidBody3D" parent="." unique_id=1284994424]
+collision_layer = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="KeyRigidBody" unique_id=327019452]
+mesh = SubResource("CapsuleMesh_nupns")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KeyRigidBody" unique_id=720759990]
+shape = SubResource("CapsuleShape3D_nupns")
+
+[node name="InteractionComponent" parent="KeyRigidBody" unique_id=881712920 node_paths=PackedStringArray("collectable_ref") instance=ExtResource("1_8r45a")]
+script = ExtResource("2_2bbki")
+collectable_ref = NodePath("..")
+item_data = SubResource("Resource_je38n")
+can_collect = true
+hover_label = "Chave2"

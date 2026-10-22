@@ -26,7 +26,7 @@ buses/default_bus_layout="uid://de1ebusacmkpt"
 
 [autoload]
 
-Global="*res://globals/Scripts/Global.gd"
+Global="*res://Globals/Scripts/Global.gd"
 
 [display]
 

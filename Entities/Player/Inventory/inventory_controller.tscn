@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cle53yp5cybvb"]
 
 [ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="1_juqp6"]
-[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Entities/Player/Inventory/vcr_shader.gdshader" id="2_7qqrg"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="2_7qqrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
 bg_color = Color(0, 0.14117648, 1, 1)

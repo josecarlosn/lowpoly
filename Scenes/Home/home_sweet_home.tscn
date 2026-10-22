@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cv6y40cdyecmh"]
+
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_wb02u"]
+[ext_resource type="PackedScene" uid="uid://ccec72m7f0yss" path="res://Scenes/Home/home.tscn" id="4_dfwkk"]
+[ext_resource type="PackedScene" uid="uid://bpm6kk4guoi01" path="res://Entities/Items/Collectables/key.tscn" id="6_rq7db"]
+[ext_resource type="PackedScene" uid="uid://x8y0vot1v657" path="res://Entities/Items/Collectables/key2.tscn" id="7_ij6h2"]
+
+[sub_resource type="Environment" id="Environment_p4gms"]
+background_energy_multiplier = 0.05
+tonemap_mode = 3
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0005
+volumetric_fog_length = 1.0
+volumetric_fog_detail_spread = 6.0
+volumetric_fog_temporal_reprojection_enabled = false
+volumetric_fog_temporal_reprojection_amount = 0.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_rq7db"]
+auto_exposure_enabled = true
+auto_exposure_speed = 0.4
+auto_exposure_min_sensitivity = 50.0
+
+[node name="Node3D" type="Node3D" unique_id=1942673489]
+
+[node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.271346, 0.37197292, 5.646812)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
+environment = SubResource("Environment_p4gms")
+camera_attributes = SubResource("CameraAttributesPractical_rq7db")
+
+[node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.545354, -0.12094879, 1.4876156)
+
+[node name="Key" parent="." unique_id=76621192 instance=ExtResource("6_rq7db")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.868116, 0.4179368, 3.9037185)
+
+[node name="Key2" parent="." unique_id=1694274916 instance=ExtResource("7_ij6h2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.028138, 0.24101293, 0.1184881)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=728388377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.376163, 2.1128597, 2.5131788)
+light_color = Color(1, 0.73333335, 0.23921569, 1)
+light_energy = 0.25
+shadow_enabled = true

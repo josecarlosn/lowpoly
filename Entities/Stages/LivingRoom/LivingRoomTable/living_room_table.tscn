@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cp7mbojse4kkk"]
 
-[ext_resource type="PackedScene" uid="uid://76k0ggbk1kxj" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend" id="1_670du"]
-[ext_resource type="PackedScene" uid="uid://b1wbx00l3bdk7" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.blend" id="2_hn3ok"]
-[ext_resource type="PackedScene" uid="uid://b3fbmg0662cy0" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend" id="3_6uti2"]
-[ext_resource type="Script" uid="uid://b4ef1alfca1sk" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.gd" id="3_tjaqw"]
-[ext_resource type="Script" uid="uid://dd6lyxf7cyom4" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/lv_identity_card.gd" id="4_6nuho"]
-[ext_resource type="PackedScene" uid="uid://1r0fp83e01h7" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend" id="5_bpgm6"]
-[ext_resource type="Script" uid="uid://ch8flt6oexqtj" path="res://entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/lv_note.gd" id="6_b6raq"]
+[ext_resource type="PackedScene" uid="uid://76k0ggbk1kxj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Table/othertable.blend" id="1_670du"]
+[ext_resource type="PackedScene" uid="uid://b1wbx00l3bdk7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.blend" id="2_hn3ok"]
+[ext_resource type="PackedScene" uid="uid://b3fbmg0662cy0" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/rg.blend" id="3_6uti2"]
+[ext_resource type="Script" uid="uid://b4ef1alfca1sk" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Lamp/lamp.gd" id="3_tjaqw"]
+[ext_resource type="Script" uid="uid://dd6lyxf7cyom4" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_IdentityCard/lv_identity_card.gd" id="4_6nuho"]
+[ext_resource type="PackedScene" uid="uid://1r0fp83e01h7" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/carta.blend" id="5_bpgm6"]
+[ext_resource type="Script" uid="uid://ch8flt6oexqtj" path="res://Entities/Stages/LivingRoom/LivingRoomTable/Lv_Note/lv_note.gd" id="6_b6raq"]
 
 [node name="LivingRoomDesk" type="Node3D"]
 
