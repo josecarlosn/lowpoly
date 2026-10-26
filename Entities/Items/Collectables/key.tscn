@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://blnb5u2ckvmon" path="res://Entities/Player/Interaction/InteractableScripts/collectable_interaction_component.gd" id="2_2bbki"]
 [ext_resource type="Script" uid="uid://dgxufe02u4jc4" path="res://Entities/Player/Inventory/Actions/equipable_action.gd" id="3_udd12"]
 [ext_resource type="Script" uid="uid://l425ibqu6anc" path="res://Entities/Player/Inventory/item_data.gd" id="4_je38n"]
-[ext_resource type="Texture2D" uid="uid://caitg2o5hagu6" path="res://Assets/Textures/Items/teste_wood_fancy_04.jpg" id="CompressedTexture2D_udd12"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r45a"]
 albedo_color = Color(1.3266667, 1.3266667, 0, 1)
@@ -24,9 +23,9 @@ metadata/_custom_type_script = "uid://dgxufe02u4jc4"
 
 [sub_resource type="Resource" id="Resource_je38n"]
 script = ExtResource("4_je38n")
-name = "Key"
+id = &"key_teste"
+name = "Key 2"
 description = "Just a key that open a door, i mean"
-item_icon = ExtResource("CompressedTexture2D_udd12")
 action_data = SubResource("Resource_udd12")
 world_scene_path = "uid://bpm6kk4guoi01"
 metadata/_custom_type_script = "uid://l425ibqu6anc"

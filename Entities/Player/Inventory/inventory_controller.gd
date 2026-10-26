@@ -21,13 +21,6 @@ func _ready() -> void:
 	# ENUMERAÇÃO DOS SLOTS DO INVENTÁRIO	
 	for i in inventory_slots.size():
 		inventory_slots[i].num_slot.text = str(i + 1)
-	for slot in inventory_slots:
-		slot.focus_entered.connect(_select_slot.bind(slot))
-		slot.mouse_entered.connect(_select_slot.bind(slot))
-	selected_slot = inventory_slots[0]
-
-func _select_slot(slot: InventorySlot) -> void:
-	selected_slot = slot	
 func _process(delta: float) -> void:
 
 	who_is_on_focus() 
@@ -39,12 +32,10 @@ func _process(delta: float) -> void:
 	if not inventory_grid.get_viewport().gui_get_focus_owner():
 		inventory_grid.get_child(0).grab_focus()
 		
-	if player.player_input.drop_request:
-		player.player_input.drop_request = false    # consumiu
-		if player.player_input.in_inventory:
-			var focused := get_viewport().gui_get_focus_owner()
-			if focused is InventorySlot:
-				drop_item(focused)
+	if player.player_input.in_inventory and player.player_input.drop_request:
+		var focused := get_viewport().gui_get_focus_owner()
+		if focused is InventorySlot:
+			drop_item(focused)
 		
 func who_is_on_focus() -> void:
 	#RECEBE QUAL SLOT ESTÁ SELECIONADO (EM FOCO)
@@ -82,6 +73,7 @@ func pickup_item(item_data: ItemData) -> bool:
 	inventory_full = true
 	return false
 func drop_item(slot: InventorySlot) -> void:
+	print("TEORICAMENTE DROPEI xxxxxx")
 	if slot == null or not slot.slot_filled:
 		return
 	var data: ItemData = slot.slot_data
