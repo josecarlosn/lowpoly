@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="2_7qqrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
-bg_color = Color(0, 0.14117648, 1, 1)
+bg_color = Color(0, 0.1882353, 1, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
 line_spacing = 0.0

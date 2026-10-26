@@ -5,6 +5,7 @@ class_name InventorySlot
 @onready var icon: TextureRect = %InventoryTextureRect
 @onready var num_slot: Label = %NumSlot
 
+var slot_id: StringName
 var slot_title: String
 var slot_description: String
 
@@ -31,7 +32,12 @@ func fill_slot(item_data: ItemData) -> void: # Eu diria que é nessa fuinção q
 		print("_____________slot nulo!_____________")
 		slot_filled = false
 		icon.texture = empty_icon
-
+func clear_slot() -> void:
+	slot_data = null
+	slot_filled = false
+	slot_title = ""
+	slot_description = ""
+	icon.texture = empty_icon
 func _get_drag_data(at_position: Vector2) -> Variant:
 	if slot_filled:
 		var preview: TextureRect = TextureRect.new()

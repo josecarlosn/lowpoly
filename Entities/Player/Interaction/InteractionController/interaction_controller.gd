@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 	if not player:
 		player = Global.player
 		return
-
 	var potential_object: Object = interact_ray.get_collider()
 	if current_object:
 		if not is_instance_valid(current_object):
@@ -61,21 +60,35 @@ func _clear_interaction() -> void:
 	current_object = null
 	interact_component = null
 	_unfocus()
+	
+	
 func _focus() -> void:
 	if label:
 		label.text = interact_component.hover_label
 		label.visible = true
 func _unfocus() -> void:
 	if label:
+		label.text = ""		
 		label.visible = false
+		
 func _on_item_collected(item: Node) -> void:
 	var ic = item.get_node_or_null("InteractionComponent")
-	print("Aqui: ",ic)
+	if ic == null or ic.item_data == null:
+		return
+
+	if not inventory_controller.pickup_item(ic.item_data):
+		# inventário cheio: o item fica no chão e dá para tentar de novo
+		ic.can_interact = true
+		ic.is_collecting = false
+		return
+
+	# apaga a cena inteira da chave (Node3D + RigidBody), não só o RigidBody
+	var root := item.get_parent()
+	if root is Node3D and root.scene_file_path != "" and root.get_child_count() == 1:
+		root.queue_free()
+	else:
+		item.queue_free()
 	
-	_add_item_to_inventory(ic.item_data)
-	
-	#await som_de_coleta.finished
-	item.queue_free()
 func _add_item_to_inventory(item_data: ItemData) -> void:
 	if item_data != null:
 		print("Coletei o ", item_data)

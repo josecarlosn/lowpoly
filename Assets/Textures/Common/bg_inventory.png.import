@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b23j603f1j3dt"
-path="res://.godot/imported/bg_inventory.png-532009f5ce941ba42ae034a02abc556f.ctex"
+path="res://.godot/imported/bg_inventory.png-4cb11cd26cd08be87ad0e46c2eee29bb.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Common/bg_inventory.png"
-dest_files=["res://.godot/imported/bg_inventory.png-532009f5ce941ba42ae034a02abc556f.ctex"]
+dest_files=["res://.godot/imported/bg_inventory.png-4cb11cd26cd08be87ad0e46c2eee29bb.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp5q4hp0womhi"
-path="res://.godot/imported/door_professional_01.png-1ea91e2cdc7a9163d1e419ce4341f116.ctex"
+path="res://.godot/imported/door_professional_01.png-0413ecd9505e73f660044d9ce40a330f.ctex"
 metadata={
 "vram_texture": false
 }
@@ -12,7 +12,7 @@ generator_parameters={}
 [deps]
 
 source_file="res://Assets/Textures/Common/door_professional_01.png"
-dest_files=["res://.godot/imported/door_professional_01.png-1ea91e2cdc7a9163d1e419ce4341f116.ctex"]
+dest_files=["res://.godot/imported/door_professional_01.png-0413ecd9505e73f660044d9ce40a330f.ctex"]
 
 [params]
 

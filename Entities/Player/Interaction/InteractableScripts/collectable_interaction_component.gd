@@ -15,7 +15,9 @@ var is_interacting: bool = false
 var is_collecting: bool = false
 var collect_speed: float = 7.5
 #---SIGNALS---
+
 signal item_collected(item_data: Node)
+
 func _ready() -> void:
 	pass
 	
@@ -40,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		#
 		## 2. Deleta o item do jogo
 		#collectable_ref.queue_free()
-
 func pre_interact() -> void:
 	is_interacting = true
 func interact() -> void:

@@ -8,6 +8,7 @@ var jump_requested := false
 var crouch_just_pressed := false
 var is_interacting:bool
 var lamp_request := false
+var drop_request := false	
 var debug_request := false
 
 var in_inventory := false # Começa fechado (false)
@@ -20,7 +21,10 @@ func poll(head_basis: Basis) -> void:
 	is_sprinting = Input.is_action_pressed("sprint")
 	jump_requested = Input.is_action_just_pressed("jump")
 	crouch_just_pressed = Input.is_action_just_pressed("crouch")
-	is_interacting = Input.is_action_pressed("primary")
+	
+	is_interacting = Input.is_action_pressed("primary") and not in_inventory
+	
+	drop_request = Input.is_action_just_pressed("drop")
 	lamp_request = Input.is_action_just_pressed("lamp")
 	debug_request = Input.is_action_just_pressed("debug")
 	
@@ -30,6 +34,7 @@ func poll(head_basis: Basis) -> void:
 		in_inventory = !in_inventory
 	if Input.is_action_just_pressed("debug"):
 		in_debug = !in_debug
-		
+	if Input.is_action_just_pressed("drop"):
+		drop_request = true 	
 
 		

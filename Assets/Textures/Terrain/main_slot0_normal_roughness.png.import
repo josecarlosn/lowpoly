@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cr5vtmcc6hdj2"
-path.s3tc="res://.godot/imported/main_slot0_normal_roughness.png-920893eaf8b92f7257376ea94d502478.s3tc.ctex"
+path.s3tc="res://.godot/imported/main_slot0_normal_roughness.png-bc866113c033dcb6f8dec4f9cd415029.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,7 +12,7 @@ metadata={
 [deps]
 
 source_file="res://Assets/Textures/Terrain/main_slot0_normal_roughness.png"
-dest_files=["res://.godot/imported/main_slot0_normal_roughness.png-920893eaf8b92f7257376ea94d502478.s3tc.ctex"]
+dest_files=["res://.godot/imported/main_slot0_normal_roughness.png-bc866113c033dcb6f8dec4f9cd415029.s3tc.ctex"]
 
 [params]
 

@@ -28,6 +28,7 @@ name = "Key"
 description = "Just a key that open a door, i mean"
 item_icon = ExtResource("CompressedTexture2D_udd12")
 action_data = SubResource("Resource_udd12")
+world_scene_path = "uid://bpm6kk4guoi01"
 metadata/_custom_type_script = "uid://l425ibqu6anc"
 
 [node name="Key" type="Node3D" unique_id=1694274916]
