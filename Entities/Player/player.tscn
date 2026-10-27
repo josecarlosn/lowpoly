@@ -10,7 +10,8 @@
 [ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
 [ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
 [ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
-[ext_resource type="Script" path="res://Entities/Player/Scripts/debug_controller.gd" id="7_ppdlg"]
+[ext_resource type="Script" uid="uid://c7l43s7fph0vr" path="res://Entities/Player/hand.gd" id="7_a8wow"]
+[ext_resource type="Script" uid="uid://ibump470bcjh" path="res://Entities/Player/Scripts/debug_controller.gd" id="7_ppdlg"]
 [ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
 [ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
 [ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="13_owvpp"]
@@ -31,10 +32,10 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
 shader = ExtResource("5_0poeq")
-shader_parameter/color_offset_multiplier = 0.0
+shader_parameter/color_offset_multiplier = 0.004
 shader_parameter/black_offset_multiplier = 0.1
-shader_parameter/color_offset = 0.00200000335488
-shader_parameter/blur_amount = 0.0
+shader_parameter/color_offset = 0.005
+shader_parameter/blur_amount = 3.0
 
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
@@ -122,7 +123,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [75.0, 40.0]
+"values": [75.0, 30.0]
 }
 
 [sub_resource type="Animation" id="Animation_3253y"]
@@ -218,8 +219,8 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
-random_pitch = 1.3348398
-random_volume_offset_db = 5.0
+random_pitch = 1.3671453
+random_volume_offset_db = 6.72
 streams_count = 3
 stream_0/stream = ExtResource("16_0poeq")
 stream_1/stream = ExtResource("17_ppdlg")
@@ -246,7 +247,7 @@ bob_freq = 4.0
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 target_position = Vector3(0, 0, 2)
-collision_mask = 24
+collision_mask = 25
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
 layout_mode = 3
@@ -283,10 +284,10 @@ autowrap_mode = 3
 [node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=1661565795]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2483012e-07, 0, 1.4889826)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head/Camera3D/interactRay/playerHand" unique_id=1769194412]
 transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, 0.05, 0, -0.05, -2.1855695e-09, 0, 0, 0)
-visible = false
 layers = 2
 mesh = SubResource("PlaneMesh_vskfa")
 
@@ -297,7 +298,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
-visible = false
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
 anchor_right = 1.0
@@ -323,6 +323,11 @@ script = ExtResource("4_pjcup")
 [node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
 libraries/ = SubResource("AnimationLibrary_0poeq")
 autoplay = &"light_animation"
+
+[node name="Hand" type="Marker3D" parent="head/Camera3D" unique_id=354981468]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.6)
+script = ExtResource("7_a8wow")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)

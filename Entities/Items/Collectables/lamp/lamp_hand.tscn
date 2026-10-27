@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bqo26dshn3duo"]
+
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="1_776ku"]
+[ext_resource type="Script" uid="uid://blnb5u2ckvmon" path="res://Entities/Player/Interaction/InteractableScripts/collectable_interaction_component.gd" id="2_r11cd"]
+[ext_resource type="Script" uid="uid://dgxufe02u4jc4" path="res://Entities/Player/Inventory/Actions/equipable_action.gd" id="3_rhj05"]
+[ext_resource type="Script" uid="uid://l425ibqu6anc" path="res://Entities/Player/Inventory/item_data.gd" id="4_djafh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r45a"]
+albedo_color = Color(0.68882746, 0.50631726, 1.327, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nupns"]
+material = SubResource("StandardMaterial3D_8r45a")
+radius = 0.05
+height = 0.1
+
+[sub_resource type="Resource" id="Resource_udd12"]
+script = ExtResource("3_rhj05")
+metadata/_custom_type_script = "uid://dgxufe02u4jc4"
+
+[sub_resource type="Resource" id="Resource_je38n"]
+script = ExtResource("4_djafh")
+id = &"lamp"
+name = "Lamp"
+description = "Just a lamp"
+action_data = SubResource("Resource_udd12")
+world_scene_path = "uid://tprojoiwtpi"
+metadata/_custom_type_script = "uid://l425ibqu6anc"
+
+[node name="Lamp" type="Node3D" unique_id=1694274916]
+
+[node name="LampRigidBody" type="RigidBody3D" parent="." unique_id=1284994424]
+collision_layer = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LampRigidBody" unique_id=327019452]
+mesh = SubResource("CapsuleMesh_nupns")
+
+[node name="InteractionComponent" parent="LampRigidBody" unique_id=881712920 node_paths=PackedStringArray("collectable_ref") instance=ExtResource("1_776ku")]
+script = ExtResource("2_r11cd")
+collectable_ref = NodePath("..")
+item_data = SubResource("Resource_je38n")
+can_collect = true
+hover_label = "Lamp"

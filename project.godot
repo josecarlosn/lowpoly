@@ -30,8 +30,6 @@ Global="*res://Globals/Scripts/Global.gd"
 
 [display]
 
-window/size/viewport_width=853
-window/size/viewport_height=507
 window/size/initial_position_type=3
 window/size/initial_screen=1
 window/size/resizable=false
@@ -154,8 +152,7 @@ sensors/enable_gravity=true
 
 3d_physics/layer_1="wolrd"
 3d_physics/layer_2="player"
-3d_physics/layer_3="ray_cast"
-3d_physics/layer_4="interactables"
+3d_physics/layer_4="items"
 3d_physics/layer_5="doors"
 
 [rendering]

@@ -4,8 +4,8 @@ class_name Player
 const FORCA_EMPURRAO = 50.0
 
 @export_category("Player Settings")
-@export var SPRINT_SPEED := 4
-@export var DEFAULT_SPEED := 2.5
+@export var SPRINT_SPEED := 3
+@export var DEFAULT_SPEED := 2
 @export var CROUCH_SPEED := 1
 @export var JUMP_VELOCITY := 2.5
 

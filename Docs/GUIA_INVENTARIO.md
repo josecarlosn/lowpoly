@@ -43,7 +43,7 @@ res://
 ├── UI/                       (CrossHair, Inspector, InventoryUI)
 ├── addons/                   (intocado)
 └── _Archive/                 (.gdignore → o Godot não importa)
-    ├── Zips/  BlenderBackups/  Tmp/  Legacy/
+	├── Zips/  BlenderBackups/  Tmp/  Legacy/
 ```
 
 **O que foi feito além de mover:**
@@ -120,10 +120,10 @@ Cena de um item no mundo (`key.tscn`):
 ```
 Key (Node3D)
 └── KeyRigidBody (RigidBody3D, collision_layer = 8 → camada 4 "interactables")
-    ├── MeshInstance3D, CollisionShape3D
-    └── InteractionComponent   ← nó com NOME FIXO; script = CollectableInteraction
-          collectable_ref = ".." (o RigidBody)
-          item_data = ItemData embutido (sub_resource) com name/description/icon/action_data
+	├── MeshInstance3D, CollisionShape3D
+	└── InteractionComponent   ← nó com NOME FIXO; script = CollectableInteraction
+		  collectable_ref = ".." (o RigidBody)
+		  item_data = ItemData embutido (sub_resource) com name/description/icon/action_data
 ```
 
 A sequência, quadro a quadro (tudo em `_physics_process` do `interaction_controller.gd`):
@@ -461,9 +461,9 @@ ItemPickup (RigidBody3D)            collision_layer = 8 (camada 4 "interactables
 ├── MeshInstance3D                  (o modelo do item)
 ├── CollisionShape3D
 └── InteractionComponent (Node)     script = collectable_interaction_component.gd
-      collectable_ref = ".."
-      hover_label = "Pegar"
-      item_data = (arraste o .tres de Resources/Items/)
+	  collectable_ref = ".."
+	  hover_label = "Pegar"
+	  item_data = (arraste o .tres de Resources/Items/)
 ```
 
 Por que raiz `RigidBody3D`: (1) `queue_free()` limpa tudo, (2) `global_position` no drop move o corpo físico diretamente, (3) o raio já acerta o corpo que carrega o componente.
@@ -703,10 +703,10 @@ A mecânica de leitura antiga está desligada (1.6). Em vez de ressuscitá-la, u
 ItemInspector (Control, anchors Full Rect, script item_inspector.gd, visible = false)
 ├── ColorRect (preto ~70% alfa, mouse_filter = Ignore)
 └── CenterContainer (Full Rect)
-    └── VBoxContainer
-        ├── Title    (Label, unique name)
-        ├── Picture  (TextureRect, unique name, expand/keep aspect, tamanho mínimo ~400×300)
-        └── Content  (RichTextLabel, unique name, fit_content)
+	└── VBoxContainer
+		├── Title    (Label, unique name)
+		├── Picture  (TextureRect, unique name, expand/keep aspect, tamanho mínimo ~400×300)
+		└── Content  (RichTextLabel, unique name, fit_content)
 ```
 
 Instancie `inspector.tscn` dentro de `PlayerInventoryUI` (por último, para desenhar por cima) e arraste-o no export `inspector` do controller.
@@ -808,7 +808,7 @@ Três peças, da menor para a maior. Todas dependem do **`ItemSpawner`**.
  ┌── Drop manual (tecla G) ──┐
  │                           ├──▶ ItemSpawner.spawn_item() ──▶ instancia o pickup no mundo
  └── Loot (LootDropper) ─────┘
-        └─ LootTable ─ LootEntry ─ ItemData
+		└─ LootTable ─ LootEntry ─ ItemData
 ```
 
 ### 4.1 `ItemSpawner` — o único lugar que cria itens no mundo

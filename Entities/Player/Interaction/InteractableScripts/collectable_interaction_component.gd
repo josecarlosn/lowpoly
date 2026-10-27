@@ -49,15 +49,19 @@ func interact() -> void:
 		return
 
 	_try_interact()
+	
 func post_interact() -> void:
 	is_interacting = false
+	# Soltou o botão e o item não foi coletado (inventário cheio): libera nova tentativa
+	if is_collecting == false:
+		can_interact = true
+		
 
 func _try_interact() -> void:
 	if can_collect:
-		
-		emit_signal("item_collected", collectable_ref) # Quando tentamos interagir, ele emite o sinal passando o objeto coletado.
+		# marca ANTES de emitir, para o controller poder desfazer se a coleta falhar
 		can_interact = false
 		is_collecting = true
+		item_collected.emit(collectable_ref)
 	else:
 		print("Cannot collect")
-		
