@@ -28,6 +28,7 @@ name = "Key 2"
 description = "Just a key that open a door, i mean"
 action_data = SubResource("Resource_udd12")
 world_scene_path = "uid://bpm6kk4guoi01"
+hand_scene_path = "uid://x8y0vot1v657"
 metadata/_custom_type_script = "uid://l425ibqu6anc"
 
 [node name="Key" type="Node3D" unique_id=1694274916]

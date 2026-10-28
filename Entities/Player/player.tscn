@@ -18,10 +18,12 @@
 [ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/Scripts/player_input.gd" id="14_xr8lj"]
 [ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/Scripts/player_move.gd" id="15_r8fok"]
 [ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
+[ext_resource type="Script" uid="uid://dsot0oomfhl7y" path="res://Entities/Player/Equipment/equipment_controller.gd" id="16_avsg8"]
 [ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/Interaction/InteractionController/interaction_controller.tscn" id="17_3wlsy"]
 [ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
 [ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
-[ext_resource type="PackedScene" uid="uid://cle53yp5cybvb" path="res://Entities/Player/Inventory/inventory_controller.tscn" id="19_0poeq"]
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="22_avsg8"]
+[ext_resource type="Script" uid="uid://5vm1gq0rop8e" path="res://Entities/Player/view_model_renderer.gd" id="24_dv6dp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vskfa"]
 line_spacing = 0.0
@@ -59,6 +61,14 @@ height = 2.5
 custom_solver_bias = 1.0
 radius = 0.2
 height = 1.75
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
+random_pitch = 1.3671453
+random_volume_offset_db = 6.72
+streams_count = 3
+stream_0/stream = ExtResource("16_0poeq")
+stream_1/stream = ExtResource("17_ppdlg")
+stream_2/stream = ExtResource("18_v7p16")
 
 [sub_resource type="Animation" id="Animation_u3cyc"]
 length = 0.001
@@ -213,18 +223,26 @@ _data = {
 &"standup": SubResource("Animation_m7jmp")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
+bg_color = Color(0, 0.1882353, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
+line_spacing = 0.0
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_7qqrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
+shader = ExtResource("5_0poeq")
+shader_parameter/color_offset_multiplier = 0.0010000000475
+shader_parameter/black_offset_multiplier = 0.050000002375
+shader_parameter/color_offset = 0.00200000335488
+shader_parameter/blur_amount = 0.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_yqrof"]
 font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
-random_pitch = 1.3671453
-random_volume_offset_db = 6.72
-streams_count = 3
-stream_0/stream = ExtResource("16_0poeq")
-stream_1/stream = ExtResource("17_ppdlg")
-stream_2/stream = ExtResource("18_v7p16")
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
 collision_layer = 2
@@ -237,6 +255,7 @@ CROUCH_ANIMATION_SPEED = 1.5
 
 [node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.090173215)
+cull_mask = 1
 script = ExtResource("2_r8fok")
 cam_limit_up = 80.0
 camera_smooth_speed = 15.0
@@ -298,6 +317,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+visible = false
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,7 +344,7 @@ script = ExtResource("4_pjcup")
 libraries/ = SubResource("AnimationLibrary_0poeq")
 autoplay = &"light_animation"
 
-[node name="Hand" type="Marker3D" parent="head/Camera3D" unique_id=354981468]
+[node name="ItemHand" type="Marker3D" parent="head/Camera3D" unique_id=354981468]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.6)
 script = ExtResource("7_a8wow")
@@ -343,25 +363,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94802094, 0)
 shape = SubResource("CapsuleShape3D_iplt1")
 debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 
+[node name="PlayerSounds" type="Node3D" parent="." unique_id=843719486]
+
+[node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=683862867]
+stream = SubResource("AudioStreamRandomizer_avsg8")
+volume_db = 46.355
+pitch_scale = 0.82
+bus = &"Steps"
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=311161243]
+
+[node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=806651215]
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
-[node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
-unique_name_in_owner = true
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
-script = ExtResource("7_ppdlg")
+[node name="PlayerInput" type="Node" parent="." unique_id=1525634305]
+script = ExtResource("14_xr8lj")
 
-[node name="Title" type="Label" parent="Debug" unique_id=131475504]
-unique_name_in_owner = true
-offset_right = 83.0
-offset_bottom = 17.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Debug Center:"
-label_settings = SubResource("LabelSettings_yqrof")
+[node name="PlayerMovement" type="Node" parent="." unique_id=1913735012]
+script = ExtResource("15_r8fok")
+move_delay = 0.1
 
 [node name="PlayerStateMachine" type="Node" parent="." unique_id=186113698 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
 script = ExtResource("5_5c2io")
@@ -383,28 +406,173 @@ script = ExtResource("9_lub02")
 [node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
 script = ExtResource("10_x1y6q")
 
-[node name="PlayerInput" type="Node" parent="." unique_id=1525634305]
-script = ExtResource("14_xr8lj")
+[node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor")]
+script = ExtResource("16_avsg8")
+hand_anchor = NodePath("../head/Camera3D/ItemHand")
 
-[node name="PlayerMovement" type="Node" parent="." unique_id=1913735012]
-script = ExtResource("15_r8fok")
-move_delay = 0.1
-
-[node name="PlayerSounds" type="Node3D" parent="." unique_id=843719486]
-
-[node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=683862867]
-stream = SubResource("AudioStreamRandomizer_avsg8")
-volume_db = 46.355
-pitch_scale = 0.82
-bus = &"Steps"
-
-[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=311161243]
-
-[node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-
-[node name="InventoryController" parent="." unique_id=889977702 instance=ExtResource("19_0poeq")]
+[node name="InventoryController" type="Node" parent="." unique_id=889977702]
 unique_name_in_owner = true
+
+[node name="InventoryCanvasLayer" type="CanvasLayer" parent="InventoryController" unique_id=1505330638]
+
+[node name="PlayerInventoryUI" type="Control" parent="InventoryController/InventoryCanvasLayer" unique_id=2140140693 node_paths=PackedStringArray("equipment_controller")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_avsg8")
+equipment_controller = NodePath("../../../EquipmentController")
+
+[node name="Panel" type="Panel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqwek")
+
+[node name="InventoryTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=338487523]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.0
+offset_right = 244.0
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -125.0
+offset_right = 400.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=281649815]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="Tools" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1461083166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.5
+offset_top = -103.0
+offset_right = 380.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "[E]:EQUIP     [G]:DROP  
+
+[TAB] EXIT"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+
+[node name="ItemContent" type="VBoxContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=696196513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 120.0
+offset_right = 200.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="ItemTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=982580367]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Chave"
+label_settings = SubResource("LabelSettings_7qqrg")
+horizontal_alignment = 1
+
+[node name="ItemDescription" type="RichTextLabel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=957432693]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamente"
+horizontal_alignment = 3
+
+[node name="InventoryShader" type="ColorRect" parent="InventoryController/InventoryCanvasLayer" unique_id=1922621707]
+material = SubResource("ShaderMaterial_xxysq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 37.0
+offset_right = 3.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("17_3wlsy")]
 unique_name_in_owner = true
+
+[node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("7_ppdlg")
+
+[node name="Title" type="Label" parent="Debug" unique_id=131475504]
+unique_name_in_owner = true
+offset_right = 83.0
+offset_bottom = 17.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Debug Center:"
+label_settings = SubResource("LabelSettings_yqrof")
+
+[node name="EquipmentViewModel" type="CanvasLayer" parent="." unique_id=121120098 node_paths=PackedStringArray("main_camera")]
+layer = -1
+visible = false
+script = ExtResource("24_dv6dp")
+main_camera = NodePath("../head/Camera3D")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EquipmentViewModel" unique_id=1238909209]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="EquipmentViewModel/SubViewportContainer" unique_id=608536241]
+transparent_bg = true
+handle_input_locally = false
+vrs_mode = 1
+canvas_cull_mask = 4294967294
+size = Vector2i(1152, 648)
+render_target_update_mode = 0
+
+[node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]
+cull_mask = 2
+near = 0.01

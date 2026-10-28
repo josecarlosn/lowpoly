@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bpm6kk4guoi01" path="res://Entities/Items/Collectables/key.tscn" id="6_rq7db"]
 
 [sub_resource type="Environment" id="Environment_p4gms"]
-background_energy_multiplier = 0.05
+background_mode = 1
 tonemap_mode = 3
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0005
@@ -23,40 +23,26 @@ auto_exposure_min_sensitivity = 50.0
 [node name="Node3D" type="Node3D" unique_id=1942673489]
 
 [node name="Player" parent="." unique_id=418249368 instance=ExtResource("1_wb02u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.271346, 0.37197292, 5.646812)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.271346, 0.67326427, 5.181354)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1883828825]
 environment = SubResource("Environment_p4gms")
 camera_attributes = SubResource("CameraAttributesPractical_rq7db")
 
 [node name="teste" parent="." unique_id=22058486 instance=ExtResource("4_dfwkk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.543485, -0.113346875, 1.497086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.515555, -0.05475694, 1.478353)
 
 [node name="Key" parent="." unique_id=76621192 instance=ExtResource("6_rq7db")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.868116, 0.4179368, 3.7761154)
-visible = false
-
-[node name="Key2" parent="." unique_id=1694274916 instance=ExtResource("6_rq7db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.868116, 0.4179368, 3.6800733)
-visible = false
-
-[node name="Key3" parent="." unique_id=522112885 instance=ExtResource("6_rq7db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.774592, 0.4179368, 3.7761154)
-visible = false
-
-[node name="Key5" parent="." unique_id=1015927519 instance=ExtResource("6_rq7db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.680335, 0.4179368, 3.7761154)
-visible = false
-
-[node name="Key4" parent="." unique_id=962203593 instance=ExtResource("6_rq7db")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.774592, 0.4179368, 3.6800733)
-visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=728388377]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.376163, 2.1128597, 2.5131788)
+transform = Transform3D(-0.5457364, 0, -0.8379569, 0, 1, 0, 0.8379569, 0, -0.5457364, -16.119549, 2.1128597, 3.7072966)
+layers = 3
 light_color = Color(1, 0.73333335, 0.23921569, 1)
 light_energy = 0.25
+light_cull_mask = 4293918723
 shadow_enabled = true
+shadow_caster_mask = 4293918723
 
 [node name="Lamp" parent="." unique_id=1461994055 instance=ExtResource("4_0edi3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.574111, 0.4507864, 2.1305566)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.934047, 1.6257823, 3.5113566)
