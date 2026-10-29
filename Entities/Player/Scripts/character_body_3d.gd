@@ -117,10 +117,14 @@ func play_step_sounds():
 
 			wood_step.play()
 
-func handle_push():
+func handle_push() -> void:
 	for i in get_slide_collision_count():
-		var colisao = get_slide_collision(i)
-		var objeto = colisao.get_collider()
-		if objeto is RigidBody3D:
-			var direcao_empurrao = colisao.get_normal() * -1
-			objeto.apply_force(direcao_empurrao * FORCA_EMPURRAO)
+		var colisao := get_slide_collision(i)
+		var objeto := colisao.get_collider() as RigidBody3D
+
+		# Porta trancada (congelada) não deve receber força.
+		if objeto == null or objeto.freeze:
+			continue
+
+		var direcao_empurrao: Vector3 = -colisao.get_normal()
+		objeto.apply_central_force(direcao_empurrao * FORCA_EMPURRAO)

@@ -103,19 +103,25 @@ func _try_interact() -> void:
 			locked_door_sound.play()
 
 
-func _unlock_and_open(player: Player) -> bool:
-	if not is_instance_valid(player) or not is_instance_valid(door_ref):
-		return false
 
-	if not (door_ref is RigidBody3D):
-		return false
 
-	# Só altera o estado da porta se a abertura realmente puder começar.
-	if not _open_door(player):
+
+func _unlock_and_open(_player: Player) -> bool:
+	var rigid_body_door := door_ref as RigidBody3D
+
+	if not is_instance_valid(rigid_body_door):
 		return false
 
 	is_locked = false
+	rigid_body_door.linear_velocity = Vector3.ZERO
+	rigid_body_door.angular_velocity = Vector3.ZERO
+	rigid_body_door.freeze = false
 	interact_label = unlocked_label
+
+	print("Velocidade no momento do destrancamento:")
+	print("Linear: ", rigid_body_door.linear_velocity)
+	print("Angular: ", rigid_body_door.angular_velocity)
+
 	return true
 
 
@@ -131,12 +137,24 @@ func _open_door(player: Player) -> bool:
 	if not is_instance_valid(hand):
 		return false
 
+	# Porta trancada não pode ser aberta.
+	if is_locked:
+		return false
+
+	# Mantém o comportamento original de abertura ao segurar.
 	var door_distance := hand.global_position - door_ref.global_position
+	print("Posição antes de descongelar: ", rigid_body_door.global_position)
+	print("Rotação antes de descongelar: ", rigid_body_door.global_rotation)
 	rigid_body_door.freeze = false
+	print("Posição depois de descongelar: ", rigid_body_door.global_position)
+	print("Rotação depois de descongelar: ", rigid_body_door.global_rotation)
 	rigid_body_door.set_linear_velocity(
 		door_distance * (5.0 / maxf(rigid_body_door.mass, 0.001))
 	)
+
 	return true
+
+
 
 
 func _auto_close() -> void:
