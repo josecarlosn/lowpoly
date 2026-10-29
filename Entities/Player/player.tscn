@@ -406,9 +406,12 @@ script = ExtResource("9_lub02")
 [node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
 script = ExtResource("10_x1y6q")
 
-[node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor")]
+[node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor", "player_camera")]
 script = ExtResource("16_avsg8")
 hand_anchor = NodePath("../head/Camera3D/ItemHand")
+player_camera = NodePath("../head/Camera3D")
+sway_strength = 0.1
+sway_smoothness = 5.0
 
 [node name="InventoryController" type="Node" parent="." unique_id=889977702]
 unique_name_in_owner = true
@@ -570,7 +573,7 @@ transparent_bg = true
 handle_input_locally = false
 vrs_mode = 1
 canvas_cull_mask = 4294967294
-size = Vector2i(1152, 648)
+size = Vector2i(800, 600)
 render_target_update_mode = 0
 
 [node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]

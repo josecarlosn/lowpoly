@@ -4,7 +4,7 @@ shader_type spatial;
 // para luz e profundidade ficarem do lado do player (sem viewmodel).
 // Mantenha o ItemHand na posição/escala originais e cast_shadow = off.
 
-uniform float k : hint_range(0.05, 1.0) = 0.3;
+uniform float k : hint_range(0.05, 1.0) = 0.12;
 
 uniform vec4 albedo_color : source_color = vec4(1.0);
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
