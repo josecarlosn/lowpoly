@@ -216,6 +216,7 @@ func _is_inventory_full() -> bool:
 # COLETA DE ITENS
 # =========================================================
 
+
 func pickup_item(
 	item_data: ItemData,
 	world_item: Node3D = null
@@ -231,32 +232,46 @@ func pickup_item(
 			break
 
 	if free_slot == null:
-		print(
-			"Inventário cheio! Não é possível coletar: ",
-			item_data.name
-		)
+		print("Inventário cheio! Não é possível coletar: ", item_data.name)
+		return false
+
+	if is_instance_valid(world_item) and not is_instance_valid(pickup_target):
+		push_warning("Configure Pickup Target com o nó head do jogador.")
 		return false
 
 	var runtime_item := item_data.create_runtime_copy()
-
-	if not is_instance_valid(world_item):
-		free_slot.fill_slot(runtime_item)
-		return true
-
-	if not is_instance_valid(pickup_target):
-		push_warning(
-			"Configure Pickup Target com o nó head do jogador."
-		)
-		return false
-
 	free_slot.fill_slot(runtime_item)
-	pickup_in_progress = true
 
-	_disable_pickup_collisions(world_item)
-	_animate_pickup(world_item)
+	# Se o item veio do chão, inicia a animação e o autoequipamento.
+	if is_instance_valid(world_item):
+		pickup_in_progress = true
+		_disable_pickup_collisions(world_item)
+		_animate_pickup_and_equip(world_item, runtime_item)
 
 	return true
 
+
+func _animate_pickup_and_equip(
+	world_item: Node3D,
+	item_data: ItemData
+) -> void:
+	await _animate_pickup(world_item)
+
+	# A animação terminou; tenta equipar o item coletado.
+	await _auto_equip_item(item_data)
+
+
+func _auto_equip_item(item_data: ItemData) -> void:
+	var equipment := _get_equipment_controller()
+
+	if equipment == null:
+		push_warning("EquipmentController não encontrado no Player.")
+		return
+
+	if equipment.action_locked or equipment.is_transitioning:
+		return
+
+	await equipment.equip_item(item_data)
 
 func _animate_pickup(world_item: Node3D) -> void:
 	if not is_instance_valid(world_item):
