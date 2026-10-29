@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://cle53yp5cybvb"]
+
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="1_juqp6"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="2_7qqrg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
+bg_color = Color(0, 0.1882353, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
+line_spacing = 0.0
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_7qqrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
+shader = ExtResource("2_7qqrg")
+shader_parameter/color_offset_multiplier = 0.0010000000475
+shader_parameter/black_offset_multiplier = 0.050000002375
+shader_parameter/color_offset = 0.00200000335488
+shader_parameter/blur_amount = 0.0
+
+[node name="InventoryController" type="Node" unique_id=889977702]
+
+[node name="InventoryCanvasLayer" type="CanvasLayer" parent="." unique_id=1505330638]
+
+[node name="PlayerInventoryUI" type="Control" parent="InventoryCanvasLayer" unique_id=2140140693]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juqp6")
+
+[node name="Panel" type="Panel" parent="InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqwek")
+
+[node name="InventoryTitle" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=338487523]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.0
+offset_right = 244.0
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -125.0
+offset_right = 400.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=281649815]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="Tools" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1461083166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.5
+offset_top = -103.0
+offset_right = 380.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "[E]:EQUIP     [G]:DROP  
+
+[TAB] EXIT"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+
+[node name="ItemContent" type="VBoxContainer" parent="InventoryCanvasLayer/PlayerInventoryUI" unique_id=696196513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 120.0
+offset_right = 200.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="ItemTitle" type="Label" parent="InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=982580367]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Chave"
+label_settings = SubResource("LabelSettings_7qqrg")
+horizontal_alignment = 1
+
+[node name="ItemDescription" type="RichTextLabel" parent="InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=957432693]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamente"
+horizontal_alignment = 3
+
+[node name="InventoryShader" type="ColorRect" parent="InventoryCanvasLayer" unique_id=1922621707]
+material = SubResource("ShaderMaterial_xxysq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 37.0
+offset_right = 3.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

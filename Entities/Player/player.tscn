@@ -1,0 +1,589 @@
+[gd_scene format=3 uid="uid://b3efs8ifbmvv2"]
+
+[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/Scripts/character_body_3d.gd" id="1_dqkch"]
+[ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/Scripts/player_camera_3d.gd" id="2_r8fok"]
+[ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://q31x7k0403rg" path="res://Assets/Textures/Common/lamp.png" id="4_v7p16"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="5_0poeq"]
+[ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
+[ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
+[ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
+[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
+[ext_resource type="Script" uid="uid://c7l43s7fph0vr" path="res://Entities/Player/hand.gd" id="7_a8wow"]
+[ext_resource type="Script" uid="uid://ibump470bcjh" path="res://Entities/Player/Scripts/debug_controller.gd" id="7_ppdlg"]
+[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
+[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
+[ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="13_owvpp"]
+[ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/Scripts/player_input.gd" id="14_xr8lj"]
+[ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/Scripts/player_move.gd" id="15_r8fok"]
+[ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
+[ext_resource type="Script" uid="uid://dsot0oomfhl7y" path="res://Entities/Player/Equipment/equipment_controller.gd" id="16_avsg8"]
+[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/Interaction/InteractionController/interaction_controller.tscn" id="17_3wlsy"]
+[ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
+[ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="22_avsg8"]
+[ext_resource type="Script" uid="uid://5vm1gq0rop8e" path="res://Entities/Player/view_model_renderer.gd" id="24_dv6dp"]
+[ext_resource type="Script" uid="uid://cnn3t3p6jlxun" path="res://Entities/Player/Inventory/Actions/item_action_controller.gd" id="25_item_actions"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_b20ek"]
+radius = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_vskfa"]
+line_spacing = 0.0
+font_size = 24
+shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
+shader = ExtResource("5_0poeq")
+shader_parameter/color_offset_multiplier = 0.004
+shader_parameter/black_offset_multiplier = 0.1
+shader_parameter/color_offset = 0.005
+shader_parameter/blur_amount = 3.0
+
+[sub_resource type="Animation" id="Animation_vskfa"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_pjcup"]
+resource_name = "light_animation"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0poeq"]
+_data = {
+&"RESET": SubResource("Animation_vskfa"),
+&"light_animation": SubResource("Animation_pjcup")
+}
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_iplt1"]
+radius = 0.3
+height = 2.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iplt1"]
+custom_solver_bias = 1.0
+radius = 0.2
+height = 1.75
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
+random_pitch = 1.3671453
+random_volume_offset_db = 6.72
+streams_count = 3
+stream_0/stream = ExtResource("16_0poeq")
+stream_1/stream = ExtResource("17_ppdlg")
+stream_2/stream = ExtResource("18_v7p16")
+
+[sub_resource type="Animation" id="Animation_u3cyc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.94802094, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head/Camera3D:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerCollision:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.75]
+}
+
+[sub_resource type="Animation" id="Animation_y2354"]
+resource_name = "camera_zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [75.0, 30.0]
+}
+
+[sub_resource type="Animation" id="Animation_3253y"]
+resource_name = "crouch"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.94802094, 0), Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerCollision:shape:height")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.75, 0.9]
+}
+
+[sub_resource type="Animation" id="Animation_m7jmp"]
+resource_name = "standup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerCollision:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.613, 0.55, 0.643), Vector3(0.612684, 0.9165557, 0.6431235)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.55, 0), Vector3(0, 0.94802094, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.7, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m7jmp"]
+_data = {
+&"RESET": SubResource("Animation_u3cyc"),
+&"camera_zoom": SubResource("Animation_y2354"),
+&"crouch": SubResource("Animation_3253y"),
+&"standup": SubResource("Animation_m7jmp")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
+bg_color = Color(0, 0.1882353, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
+line_spacing = 0.0
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_7qqrg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
+shader = ExtResource("5_0poeq")
+shader_parameter/color_offset_multiplier = 0.0010000000475
+shader_parameter/black_offset_multiplier = 0.050000002375
+shader_parameter/color_offset = 0.00200000335488
+shader_parameter/blur_amount = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqrof"]
+font_size = 12
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
+collision_layer = 2
+collision_mask = 19
+floor_block_on_wall = false
+script = ExtResource("1_dqkch")
+CROUCH_ANIMATION_SPEED = 1.5
+
+[node name="head" type="Node3D" parent="." unique_id=1886020297]
+
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.090173215)
+cull_mask = 1
+script = ExtResource("2_r8fok")
+cam_limit_up = 80.0
+camera_smooth_speed = 15.0
+head_smooth_speed = 15.0
+bob_freq = 4.0
+
+[node name="interactRay" type="ShapeCast3D" parent="head/Camera3D" unique_id=1258692125]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_b20ek")
+target_position = Vector3(0, 0, 1.5)
+collision_mask = 25
+
+[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_fjrip")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=846702407]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -108.5
+offset_right = 400.0
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_vskfa")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=1661565795]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2483012e-07, 0, 1.4889826)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/Camera3D/interactRay/playerHand" unique_id=1769194412]
+transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, 0.05, 0, -0.05, -2.1855695e-09, 0, 0, 0)
+layers = 2
+mesh = SubResource("PlaneMesh_vskfa")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
+
+[node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=990342070]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
+
+[node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+visible = false
+material = SubResource("ShaderMaterial_ppdlg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
+visible = false
+light_color = Color(1, 0.8631991, 0.6085637, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 16.0
+light_projector = ExtResource("4_v7p16")
+shadow_enabled = true
+shadow_bias = 1.0
+distance_fade_begin = 280.8
+distance_fade_shadow = 4096.0
+distance_fade_length = 4096.0
+spot_range = 15.0
+spot_angle = 17.5
+
+[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
+libraries/ = SubResource("AnimationLibrary_0poeq")
+autoplay = &"light_animation"
+
+[node name="ItemHand" type="Marker3D" parent="head/Camera3D" unique_id=354981468]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.6)
+script = ExtResource("7_a8wow")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_iplt1")
+
+[node name="SnowParticles" parent="head" unique_id=487372938 instance=ExtResource("13_owvpp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1513386, 0, 0)
+visible = false
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1387597552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94802094, 0)
+shape = SubResource("CapsuleShape3D_iplt1")
+debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
+
+[node name="PlayerSounds" type="Node3D" parent="." unique_id=843719486]
+
+[node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=683862867]
+stream = SubResource("AudioStreamRandomizer_avsg8")
+volume_db = 46.355
+pitch_scale = 0.82
+bus = &"Steps"
+
+[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=311161243]
+
+[node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=806651215]
+libraries/ = SubResource("AnimationLibrary_m7jmp")
+
+[node name="PlayerInput" type="Node" parent="." unique_id=1525634305]
+script = ExtResource("14_xr8lj")
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=1913735012]
+script = ExtResource("15_r8fok")
+move_delay = 0.1
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=186113698 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
+script = ExtResource("5_5c2io")
+CURRENT_STATE = NodePath("IdlePlayerState")
+PREVIOUS_STATE = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1401070449]
+script = ExtResource("6_4wf4l")
+
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1492343580]
+script = ExtResource("7_7a1se")
+
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=150470411]
+script = ExtResource("7_01a4e")
+
+[node name="CrouchingIdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=656496806]
+script = ExtResource("9_lub02")
+
+[node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
+script = ExtResource("10_x1y6q")
+
+[node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor", "player_camera")]
+script = ExtResource("16_avsg8")
+hand_anchor = NodePath("../head/Camera3D/ItemHand")
+player_camera = NodePath("../head/Camera3D")
+sway_strength = 0.15
+sway_smoothness = 3.0
+
+[node name="ItemActionController" type="Node" parent="." unique_id=1032496541]
+script = ExtResource("25_item_actions")
+
+[node name="InventoryController" type="Node" parent="." unique_id=889977702]
+unique_name_in_owner = true
+
+[node name="InventoryCanvasLayer" type="CanvasLayer" parent="InventoryController" unique_id=1505330638]
+
+[node name="PlayerInventoryUI" type="Control" parent="InventoryController/InventoryCanvasLayer" unique_id=2140140693 node_paths=PackedStringArray("equipment_controller", "pickup_target")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("22_avsg8")
+equipment_controller = NodePath("../../../EquipmentController")
+pickup_target = NodePath("../../../head/Camera3D/InventoryTarget")
+
+[node name="Panel" type="Panel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eqwek")
+
+[node name="InventoryTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=338487523]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -244.0
+offset_right = 244.0
+offset_bottom = 127.0
+grow_horizontal = 2
+text = "INVENTORY"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -125.0
+offset_right = 400.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=281649815]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+
+[node name="Tools" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1461083166]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -380.5
+offset_top = -103.0
+offset_right = 380.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "[E]:EQUIP     [G]:DROP  
+
+[TAB] EXIT"
+label_settings = SubResource("LabelSettings_gpkcq")
+horizontal_alignment = 1
+
+[node name="ItemContent" type="VBoxContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=696196513]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 120.0
+offset_right = 200.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="ItemTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=982580367]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Chave"
+label_settings = SubResource("LabelSettings_7qqrg")
+horizontal_alignment = 1
+
+[node name="ItemDescription" type="RichTextLabel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=957432693]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamente"
+horizontal_alignment = 3
+
+[node name="InventoryShader" type="ColorRect" parent="InventoryController/InventoryCanvasLayer" unique_id=1922621707]
+material = SubResource("ShaderMaterial_xxysq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 37.0
+offset_right = 3.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("17_3wlsy")]
+unique_name_in_owner = true
+
+[node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("7_ppdlg")
+
+[node name="Title" type="Label" parent="Debug" unique_id=131475504]
+unique_name_in_owner = true
+offset_right = 83.0
+offset_bottom = 17.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Debug Center:"
+label_settings = SubResource("LabelSettings_yqrof")
+
+[node name="EquipmentViewModel" type="CanvasLayer" parent="." unique_id=121120098 node_paths=PackedStringArray("main_camera")]
+layer = -1
+visible = false
+script = ExtResource("24_dv6dp")
+main_camera = NodePath("../head/Camera3D")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EquipmentViewModel" unique_id=1238909209]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="EquipmentViewModel/SubViewportContainer" unique_id=608536241]
+transparent_bg = true
+handle_input_locally = false
+vrs_mode = 1
+canvas_cull_mask = 4294967294
+size = Vector2i(1200, 800)
+render_target_update_mode = 0
+
+[node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]
+cull_mask = 2
+near = 0.01

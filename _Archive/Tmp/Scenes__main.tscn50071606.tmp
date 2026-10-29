@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://cbloksat817ni"]
+
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://bu4bb2p5vq33h" path="res://addons/zylann.hterrain/hterrain.gd" id="2_kry3j"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kry3j"]
+
+[sub_resource type="Sky" id="Sky_21xkr"]
+sky_material = SubResource("ProceduralSkyMaterial_kry3j")
+
+[sub_resource type="Environment" id="Environment_6bp64"]
+background_mode = 1
+background_color = Color(0.5106049, 0.5072609, 0.6620647, 1)
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_21xkr")
+fog_light_color = Color(0.7685271, 0.8304222, 0.93574286, 1)
+fog_light_energy = 0.58
+fog_density = 0.075
+adjustment_enabled = true
+adjustment_brightness = 0.8
+
+[node name="Node3D" type="Node3D" unique_id=1943210807]
+transform = Transform3D(0.99960667, 0, 0.028043764, 0, 1, 0, -0.028043764, 0, 0.99960667, 0, 0, 0)
+
+[node name="Player" parent="." unique_id=1529643800 instance=ExtResource("2_jjvhh")]
+transform = Transform3D(1.0000029, 0, -1.8626451e-09, 0, 1, 0, 1.8626451e-09, 0, 1.0000029, -40.95894, 4.1441517, 24.715925)
+SPRINT_SPEED = 7.0
+ZOOM_SPEED = 2.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2052038417]
+transform = Transform3D(0.81222814, -0.44975337, -0.3714939, -0.31532618, -0.8742869, 0.36904162, -0.49076995, -0.18260418, -0.85193944, 0.46360493, 0, -3.0766048)
+light_color = Color(0.8802483, 0.8737948, 0.9817347, 1)
+light_energy = 1.039
+light_angular_distance = 35.47
+light_specular = 0.0
+shadow_enabled = true
+shadow_bias = 10.0
+shadow_normal_bias = 7.932
+shadow_opacity = 0.9
+shadow_blur = 10.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1619806329]
+environment = SubResource("Environment_6bp64")
+
+[node name="HTerrain" type="Node3D" parent="." unique_id=1740628154]
+script = ExtResource("2_kry3j")
+metadata/_custom_type_script = "uid://bu4bb2p5vq33h"
