@@ -29,14 +29,15 @@ func _ready() -> void:
 
 
 func equip_item(item_data: ItemData) -> void:
-	if item_data == null:
-		return
-
-	if is_transitioning:
+	if item_data == null or is_transitioning:
 		return
 
 	if item_data.hand_scene_path.is_empty():
 		push_warning("Este item não possui cena para a mão.")
+		return
+
+	if hand_anchor == null:
+		push_warning("O hand_anchor não foi configurado.")
 		return
 
 	var packed_scene := load(item_data.hand_scene_path) as PackedScene
@@ -45,22 +46,19 @@ func equip_item(item_data: ItemData) -> void:
 		push_warning("Não foi possível carregar a cena da mão.")
 		return
 
-	var new_instance := packed_scene.instantiate() as Node3D
+	var instance := packed_scene.instantiate()
+	var new_instance := instance as Node3D
 
 	if new_instance == null:
+		instance.free()
 		push_warning("A cena equipada precisa ter um Node3D como raiz.")
 		return
 
-	if hand_anchor == null:
-		new_instance.free()
-		push_warning("O hand_anchor não foi configurado.")
-		return
-
-	# Se já existe um item, anima sua saída primeiro.
+	# Se outro item estiver equipado, anima sua saída primeiro.
 	if is_instance_valid(equipped_instance):
 		is_transitioning = true
-
 		_play_unequip_animation()
+
 		await animation.finished
 
 		if is_instance_valid(equipped_instance):
@@ -70,23 +68,20 @@ func equip_item(item_data: ItemData) -> void:
 		current_item = null
 		is_transitioning = false
 
-	# Instancia o novo item.
+	# Cria o novo item.
 	equipped_instance = new_instance
 	hand_anchor.add_child(equipped_instance)
 	current_item = item_data
 
-	# Preserva a posição e a rotação definidas na cena do item.
 	var target_position := equipped_instance.position
 	base_item_rotation = equipped_instance.rotation
 
-	# Reinicia a referência do sway para evitar saltos.
 	if player_camera != null:
 		smoothed_camera_rotation = player_camera.global_rotation
 
 	# Começa abaixo da posição normal.
 	equipped_instance.position = target_position + equip_offset
 
-	# Anima a entrada.
 	is_transitioning = true
 
 	animation = create_tween()
@@ -105,10 +100,11 @@ func equip_item(item_data: ItemData) -> void:
 
 
 func unequip_item() -> void:
-	if not is_instance_valid(equipped_instance):
+	if is_transitioning:
 		return
 
-	if is_transitioning:
+	if not is_instance_valid(equipped_instance):
+		current_item = null
 		return
 
 	is_transitioning = true
@@ -121,7 +117,28 @@ func unequip_item() -> void:
 
 	equipped_instance = null
 	current_item = null
+	base_item_rotation = Vector3.ZERO
 	is_transitioning = false
+
+
+# Remove o modelo da mão imediatamente ao dropar.
+func remove_equipped_for_drop(item_data: ItemData) -> bool:
+	if is_transitioning:
+		return false
+
+	if current_item != item_data:
+		return false
+
+	if not is_instance_valid(equipped_instance):
+		return false
+
+	equipped_instance.queue_free()
+
+	equipped_instance = null
+	current_item = null
+	base_item_rotation = Vector3.ZERO
+
+	return true
 
 
 func _play_unequip_animation() -> void:
@@ -141,16 +158,10 @@ func _process(delta: float) -> void:
 	if not is_instance_valid(equipped_instance):
 		return
 
-	if player_camera == null:
-		return
-
-	# Não aplica o sway durante as animações de equipar/desequipar.
-	if is_transitioning:
+	if player_camera == null or is_transitioning:
 		return
 
 	var current_camera_rotation := player_camera.global_rotation
-
-	# A câmera suavizada demora a acompanhar a rotação real.
 	var weight := 1.0 - exp(-sway_smoothness * delta)
 
 	smoothed_camera_rotation.x = lerp_angle(
@@ -171,7 +182,6 @@ func _process(delta: float) -> void:
 		weight
 	)
 
-	# Calcula o atraso entre a câmera real e a suavizada.
 	var camera_lag := Vector3(
 		angle_difference(
 			current_camera_rotation.x,
@@ -187,7 +197,6 @@ func _process(delta: float) -> void:
 		)
 	)
 
-	# O item reage na direção contrária ao movimento da câmera.
 	var sway_offset := Vector3(
 		camera_lag.x,
 		camera_lag.y,
@@ -196,7 +205,6 @@ func _process(delta: float) -> void:
 
 	var target_rotation := base_item_rotation + sway_offset
 
-	# Suaviza a rotação do item.
 	equipped_instance.rotation = equipped_instance.rotation.lerp(
 		target_rotation,
 		weight

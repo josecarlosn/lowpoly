@@ -101,6 +101,7 @@ metadata/_custom_type_script = "uid://l425ibqu6anc"
 [node name="Lamp" type="Node3D" unique_id=1694274916]
 
 [node name="LampRigidBody" type="RigidBody3D" parent="." unique_id=1284994424]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 collision_layer = 8
 
 [node name="lamp" type="Node3D" parent="LampRigidBody" unique_id=363581303]

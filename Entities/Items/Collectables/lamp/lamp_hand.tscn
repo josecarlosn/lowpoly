@@ -52,7 +52,7 @@ shadow_mesh = SubResource("ArrayMesh_dixyb")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_djafh"]
 render_priority = 0
 shader = ExtResource("3_djafh")
-shader_parameter/k = 0.10000000312006
+shader_parameter/k = 0.15000000549505998
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_rhj05")
 shader_parameter/use_vertex_color = false
@@ -100,7 +100,7 @@ shadow_mesh = SubResource("ArrayMesh_575rl")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s8cq0"]
 render_priority = 0
 shader = ExtResource("3_djafh")
-shader_parameter/k = 0.10000000312006
+shader_parameter/k = 0.15000000549505998
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/texture_albedo = ExtResource("2_rhj05")
 shader_parameter/use_vertex_color = false
@@ -133,12 +133,14 @@ transform = Transform3D(-0.105106845, 0.054917756, 0.9929434, 0.33408132, 0.9423
 
 [node name="Cilindro" type="MeshInstance3D" parent="lamp" unique_id=1605986980]
 transform = Transform3D(0, -0.80985814, 0, 0.80985814, 0, 0, 0, 0, 0.80985814, 0.25588349, 0.03084232, -0.02917706)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_kjips")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_djafh")
 
 [node name="Cube" type="MeshInstance3D" parent="lamp" unique_id=1283071709]
 transform = Transform3D(0.25, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, 0.0110088615, -0.0023155531)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_el7a1")
 surface_material_override/0 = SubResource("ShaderMaterial_s8cq0")
 
