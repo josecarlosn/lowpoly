@@ -269,7 +269,7 @@ bob_freq = 4.0
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 shape = SubResource("SphereShape3D_b20ek")
-target_position = Vector3(0, 0, 1.5)
+target_position = Vector3(0, 0, 1.75)
 collision_mask = 25
 
 [node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
@@ -321,7 +321,6 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
-visible = false
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
 anchor_right = 1.0
@@ -581,7 +580,7 @@ transparent_bg = true
 handle_input_locally = false
 vrs_mode = 1
 canvas_cull_mask = 4294967294
-size = Vector2i(1200, 800)
+size = Vector2i(640, 480)
 render_target_update_mode = 0
 
 [node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]

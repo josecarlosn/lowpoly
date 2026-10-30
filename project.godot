@@ -17,7 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="lowpoly"
 run/main_scene="uid://cv6y40cdyecmh"
 config/features=PackedStringArray("4.7", "Forward Plus")
-boot_splash/bg_color=Color(0.14797607, 0.15181723, 0.3479062, 1)
+boot_splash/bg_color=Color(0.05960223, 0.06409059, 0.08083167, 1)
 config/icon="res://icon.svg"
 
 [audio]
@@ -30,8 +30,8 @@ Global="*res://Globals/Scripts/Global.gd"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=800
+window/size/viewport_width=640
+window/size/viewport_height=480
 window/size/initial_position_type=3
 window/size/initial_screen=1
 window/size/resizable=false
