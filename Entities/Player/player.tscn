@@ -37,10 +37,21 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
 shader = ExtResource("5_0poeq")
-shader_parameter/color_offset_multiplier = 0.004
-shader_parameter/black_offset_multiplier = 0.1
-shader_parameter/color_offset = 0.005
-shader_parameter/blur_amount = 3.0
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/curvature = 0.08
+shader_parameter/vignette_strength = 0.4
+shader_parameter/phosphor_mode = 0
+shader_parameter/scanline_strength = 0.0400000019
+shader_parameter/mask_strength = 0.5830000276925
+shader_parameter/blur_width = 1.5540000738150002
+shader_parameter/bloom_amount = 0.5750000273125
+shader_parameter/bloom_radius = 3.370000112575
+shader_parameter/color_levels = 23.0
+shader_parameter/dither_strength = 1.5
+shader_parameter/brightness = 1.15
+shader_parameter/contrast = 1.05
+shader_parameter/grain = 0.025
+shader_parameter/flicker = 0.012
 
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
@@ -237,10 +248,21 @@ font_size = 30
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
 shader = ExtResource("5_0poeq")
-shader_parameter/color_offset_multiplier = 0.0010000000475
-shader_parameter/black_offset_multiplier = 0.050000002375
-shader_parameter/color_offset = 0.00200000335488
-shader_parameter/blur_amount = 0.0
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/curvature = 0.08
+shader_parameter/vignette_strength = 0.4
+shader_parameter/phosphor_mode = 0
+shader_parameter/scanline_strength = 0.45
+shader_parameter/mask_strength = 0.15
+shader_parameter/blur_width = 0.8
+shader_parameter/bloom_amount = 0.35
+shader_parameter/bloom_radius = 3.0
+shader_parameter/color_levels = 64.0
+shader_parameter/dither_strength = 0.5
+shader_parameter/brightness = 1.15
+shader_parameter/contrast = 1.05
+shader_parameter/grain = 0.025
+shader_parameter/flicker = 0.012
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqrof"]
 font_size = 12
@@ -321,6 +343,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+visible = false
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
 anchor_right = 1.0
@@ -332,7 +355,8 @@ grow_vertical = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
 visible = false
 light_color = Color(1, 0.8631991, 0.6085637, 1)
-light_energy = 2.0
+light_energy = 10.0
+light_indirect_energy = 8.0
 light_volumetric_fog_energy = 16.0
 light_projector = ExtResource("4_v7p16")
 shadow_enabled = true
@@ -340,7 +364,7 @@ shadow_bias = 1.0
 distance_fade_begin = 280.8
 distance_fade_shadow = 4096.0
 distance_fade_length = 4096.0
-spot_range = 15.0
+spot_range = 9.642
 spot_angle = 17.5
 
 [node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]

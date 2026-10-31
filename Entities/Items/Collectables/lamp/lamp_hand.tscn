@@ -1,9 +1,8 @@
 [gd_scene format=4 uid="uid://bqo26dshn3duo"]
 
 [ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="1_776ku"]
-[ext_resource type="Script" uid="uid://b7q3wmudxa8bl" path="res://Entities/Items/Collectables/lamp/debug.gd" id="1_r11cd"]
 [ext_resource type="Script" uid="uid://blnb5u2ckvmon" path="res://Entities/Player/Interaction/InteractableScripts/collectable_interaction_component.gd" id="2_r11cd"]
-[ext_resource type="Texture2D" uid="uid://duokbnov2q10n" path="res://Entities/Items/Collectables/lamp/lamp_lamp-export.png" id="2_rhj05"]
+[ext_resource type="Texture2D" uid="uid://duokbnov2q10n" path="res://Entities/Items/Collectables/LigthsEmissors/assets/lamp_lamp-export.png" id="2_rhj05"]
 [ext_resource type="Shader" uid="uid://c5hwjset3n8fr" path="res://Entities/Player/viewmodel.gdshader" id="3_djafh"]
 [ext_resource type="Script" uid="uid://dgxufe02u4jc4" path="res://Entities/Player/Inventory/Actions/equipable_action.gd" id="3_rhj05"]
 [ext_resource type="Script" uid="uid://l425ibqu6anc" path="res://Entities/Player/Inventory/item_data.gd" id="4_djafh"]
@@ -126,7 +125,6 @@ hand_scene_path = "uid://bqo26dshn3duo"
 metadata/_custom_type_script = "uid://l425ibqu6anc"
 
 [node name="Lamp" type="Node3D" unique_id=1694274916]
-script = ExtResource("1_r11cd")
 
 [node name="lamp" type="Node3D" parent="." unique_id=363581303]
 transform = Transform3D(-0.105106845, 0.054917756, 0.9929434, 0.33408132, 0.94239527, -0.016758254, -0.9366655, 0.32996237, -0.117399186, 0.27558768, -0.34384918, 0)

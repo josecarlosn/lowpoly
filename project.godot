@@ -32,12 +32,12 @@ Global="*res://Globals/Scripts/Global.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/initial_position_type=3
 window/size/initial_screen=1
 window/size/resizable=false
 window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+window/vsync/vsync_mode=0
 
 [editor_plugins]
 
@@ -55,6 +55,10 @@ import/custom_font="uid://de4qdcjkcxdjq"
 
 wood_floor=""
 player=""
+
+[gui]
+
+theme/custom_font="uid://de4qdcjkcxdjq"
 
 [importer_defaults]
 

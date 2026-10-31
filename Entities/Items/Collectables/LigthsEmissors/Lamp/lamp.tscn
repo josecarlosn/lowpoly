@@ -116,7 +116,6 @@ skeleton = NodePath("")
 [node name="Cube" type="MeshInstance3D" parent="LampRigidBody/lamp" unique_id=1283071709]
 transform = Transform3D(0.25, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, 0.0110088615, -0.0023155531)
 mesh = SubResource("ArrayMesh_el7a1")
-skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LampRigidBody" unique_id=720759990]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019779205, -0.037537605, -0.010343149)

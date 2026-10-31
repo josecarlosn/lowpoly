@@ -20,10 +20,11 @@ var _can_jump : bool = true
 var can_move : bool = true
 var is_paused = false
 var _was_on_floor: bool = true
+
 @onready var camera: PlayerCamera = $head/Camera3D
 @onready var head = $head
 @onready var player_movement: PlayerMovement = $PlayerMovement
-@onready var player_input: PlayerInput = $PlayerInput  # ← novo
+@onready var player_input: PlayerInput = $PlayerInput
 @onready var detected = null
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hand: Marker3D = %playerHand
@@ -39,52 +40,60 @@ func _ready() -> void:
 	Global.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+
 func _input(event: InputEvent) -> void:
 	if can_move:
 		if event is InputEventMouseMotion:
 			camera.handle_mouse_motion(event)
+
 		if Input.is_action_just_pressed("crouch"):
 			toggle_crouch()
+
 		if Input.is_action_just_pressed("jump"):
 			toggle_jump()
+
 		if Input.is_action_pressed("sprint"):
-			_is_sprinting = true	
+			_is_sprinting = true
 			handle_sprint()
+
 		if Input.is_action_just_released("sprint"):
-			_is_sprinting = false	
+			_is_sprinting = false
 			handle_sprint()
+
 	camera.handle_zoom()
-	
-	
+
 	if Input.is_action_just_pressed("ui_cancel"):
 		is_paused = !is_paused
+
 		if is_paused:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
+
 func _process(delta: float) -> void:
 	camera.smooth_rotation(delta)
-	
+
 	var just_landed = not _was_on_floor and is_on_floor()
+
 	if just_landed:
 		play_step_sounds()
 
 	_was_on_floor = is_on_floor()
-	#print("Pode correr? >", _can_sprint)
-	#print("Está correndo? > ", _is_sprinting)
+
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	# move_and_slide() saiu daqui — cada estado chama o seu
+
 	if _is_crouching == false and can_move:
 		camera.bob_on_time += delta * velocity.length() * float(is_on_floor())
 		head.transform.origin = camera.handle_bob(camera.bob_on_time, delta)
-	#ANTIGO SCRIPT DE EMPURRAR PORTA:
-	#handle_push()
+
 
 func toggle_crouch():
 	_is_crouching = !_is_crouching
+
 	if _is_crouching:
 		_can_sprint = false
 		_can_jump = false
@@ -96,6 +105,8 @@ func toggle_crouch():
 		_can_jump = true
 		camera.ANIMATION_PLAYER.play("crouch", -1, -CROUCH_ANIMATION_SPEED, true)
 		SPEED = DEFAULT_SPEED
+
+
 func handle_sprint():
 	if _is_sprinting == true and _can_sprint == true:
 		SPEED = SPRINT_SPEED
@@ -104,6 +115,8 @@ func handle_sprint():
 			SPEED = CROUCH_SPEED
 		else:
 			SPEED = DEFAULT_SPEED
+
+
 func toggle_jump():
 	if is_on_floor() and _can_jump:
 		velocity.y = JUMP_VELOCITY
@@ -114,15 +127,14 @@ func play_step_sounds():
 		var floor = floor_type_ray.get_collider()
 
 		if floor.is_in_group("wood_floor"):
-
 			wood_step.play()
+
 
 func handle_push() -> void:
 	for i in get_slide_collision_count():
 		var colisao := get_slide_collision(i)
 		var objeto := colisao.get_collider() as RigidBody3D
 
-		# Porta trancada (congelada) não deve receber força.
 		if objeto == null or objeto.freeze:
 			continue
 
