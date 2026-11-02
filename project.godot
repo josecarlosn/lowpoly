@@ -27,6 +27,7 @@ buses/default_bus_layout="uid://de1ebusacmkpt"
 [autoload]
 
 Global="*res://Globals/Scripts/Global.gd"
+InventoryManager="*uid://dl6otp17athy2"
 
 [display]
 
@@ -41,7 +42,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
 [filesystem]
 
@@ -58,7 +59,7 @@ player=""
 
 [gui]
 
-theme/custom_font="uid://de4qdcjkcxdjq"
+theme/custom_font="uid://clqscn52gr00p"
 
 [importer_defaults]
 
@@ -176,6 +177,11 @@ slot_5={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":53,"key_label":0,"unicode":53,"location":0,"echo":false,"script":null)
 ]
 }
+pause={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
 
 [input_devices]
 
@@ -193,6 +199,7 @@ sensors/enable_gravity=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/default_filters/use_nearest_mipmap_filter=true
 textures/default_filters/anisotropic_filtering_level=0
 global_illumination/use_physical_light_units=false
 global_illumination/rendering_method="gl_compatibility"

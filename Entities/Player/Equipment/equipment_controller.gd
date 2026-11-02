@@ -24,11 +24,40 @@ var action_locked: bool = false
 var base_item_rotation: Vector3
 var smoothed_camera_rotation: Vector3
 
+# Cache das cenas dos itens.
+var hand_scene_cache: Dictionary = {}
+
 
 func _ready() -> void:
 	if player_camera != null:
 		smoothed_camera_rotation = player_camera.global_rotation
 
+
+# =========================================================
+# CACHE DE CENAS
+# =========================================================
+
+func _get_hand_scene(path: String) -> PackedScene:
+	if path.is_empty():
+		return null
+
+	if hand_scene_cache.has(path):
+		return hand_scene_cache[path] as PackedScene
+
+	var packed_scene := load(path) as PackedScene
+
+	if packed_scene == null:
+		push_warning("Não foi possível carregar a cena: " + path)
+		return null
+
+	hand_scene_cache[path] = packed_scene
+
+	return packed_scene
+
+
+# =========================================================
+# EQUIPAR ITEM
+# =========================================================
 
 func equip_item(item_data: ItemData) -> void:
 	if item_data == null or is_transitioning or action_locked:
@@ -42,12 +71,14 @@ func equip_item(item_data: ItemData) -> void:
 		push_warning("O hand_anchor não foi configurado.")
 		return
 
-	var packed_scene := load(item_data.hand_scene_path) as PackedScene
+	# Recupera a cena do cache ou carrega pela primeira vez.
+	var packed_scene := _get_hand_scene(item_data.hand_scene_path)
 
 	if packed_scene == null:
 		push_warning("Não foi possível carregar a cena da mão.")
 		return
 
+	# Instancia o novo modelo.
 	var instance := packed_scene.instantiate()
 	var new_instance := instance as Node3D
 
@@ -76,6 +107,7 @@ func equip_item(item_data: ItemData) -> void:
 	hand_anchor.add_child(equipped_instance)
 	current_item = item_data
 
+	# Configura o comportamento do item.
 	if equipped_instance is EquippedItemBehavior:
 		(equipped_instance as EquippedItemBehavior).configure(
 			item_data,
@@ -106,8 +138,13 @@ func equip_item(item_data: ItemData) -> void:
 	)
 
 	await animation.finished
+
 	is_transitioning = false
 
+
+# =========================================================
+# DESEQUIPAR ITEM
+# =========================================================
 
 func unequip_item(allow_during_action: bool = false) -> void:
 	if is_transitioning or (action_locked and not allow_during_action):
@@ -132,6 +169,10 @@ func unequip_item(allow_during_action: bool = false) -> void:
 	is_transitioning = false
 
 
+# =========================================================
+# DROP DE ITEM
+# =========================================================
+
 # Remove o modelo da mão imediatamente ao dropar.
 func remove_equipped_for_drop(item_data: ItemData) -> bool:
 	if is_transitioning or action_locked:
@@ -153,6 +194,10 @@ func remove_equipped_for_drop(item_data: ItemData) -> bool:
 	return true
 
 
+# =========================================================
+# TRANSFERÊNCIA DE EQUIPAMENTO
+# =========================================================
+
 ## Limpa a referência ao modelo sem destruí-lo (para ações de transferência).
 func release_equipped_instance_for_transfer() -> void:
 	if is_instance_valid(equipped_instance):
@@ -163,9 +208,14 @@ func release_equipped_instance_for_transfer() -> void:
 	base_item_rotation = Vector3.ZERO
 
 
+# =========================================================
+# COMPORTAMENTO DO ITEM
+# =========================================================
+
 func get_current_behavior() -> EquippedItemBehavior:
 	if not is_instance_valid(equipped_instance):
 		return null
+
 	return equipped_instance as EquippedItemBehavior
 
 
@@ -173,6 +223,10 @@ func _notify_unequipped(item_instance: Node3D) -> void:
 	if item_instance is EquippedItemBehavior:
 		(item_instance as EquippedItemBehavior).on_unequipped()
 
+
+# =========================================================
+# ANIMAÇÃO DE DESEQUIPAR
+# =========================================================
 
 func _play_unequip_animation() -> void:
 	animation = create_tween()
@@ -186,6 +240,10 @@ func _play_unequip_animation() -> void:
 		unequip_duration
 	)
 
+
+# =========================================================
+# ITEM SWAY
+# =========================================================
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(equipped_instance):

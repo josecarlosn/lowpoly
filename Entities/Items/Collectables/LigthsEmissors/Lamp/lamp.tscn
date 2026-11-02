@@ -98,30 +98,26 @@ world_scene_path = "uid://tprojoiwtpi"
 hand_scene_path = "uid://bqo26dshn3duo"
 metadata/_custom_type_script = "uid://l425ibqu6anc"
 
-[node name="Lamp" type="Node3D" unique_id=1694274916]
-
-[node name="LampRigidBody" type="RigidBody3D" parent="." unique_id=1284994424]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+[node name="Lamp" type="RigidBody3D" unique_id=1258117570]
 collision_layer = 8
-collision_mask = 17
 
-[node name="lamp" type="Node3D" parent="LampRigidBody" unique_id=363581303]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.044757217, -0.054095417, 0)
+[node name="lamp" type="Node3D" parent="." unique_id=363581303]
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 1.9564002e-09, -0.054095417, 0.044757217)
 
-[node name="Cilindro" type="MeshInstance3D" parent="LampRigidBody/lamp" unique_id=1605986980]
+[node name="Cilindro" type="MeshInstance3D" parent="lamp" unique_id=1605986980]
 transform = Transform3D(0, -0.80985814, 0, 0.80985814, 0, 0, 0, 0, 0.80985814, 0.25588349, 0.03084232, -0.02917706)
 mesh = SubResource("ArrayMesh_kjips")
 skeleton = NodePath("")
 
-[node name="Cube" type="MeshInstance3D" parent="LampRigidBody/lamp" unique_id=1283071709]
+[node name="Cube" type="MeshInstance3D" parent="lamp" unique_id=1283071709]
 transform = Transform3D(0.25, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, 0.0110088615, -0.0023155531)
 mesh = SubResource("ArrayMesh_el7a1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LampRigidBody" unique_id=720759990]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019779205, -0.037537605, -0.010343149)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=720759990]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.010343149, -0.037537605, 0.001977921)
 shape = SubResource("BoxShape3D_wxpke")
 
-[node name="InteractionComponent" parent="LampRigidBody" unique_id=881712920 node_paths=PackedStringArray("collectable_ref") instance=ExtResource("1_e5hxc")]
+[node name="InteractionComponent" parent="." unique_id=881712920 node_paths=PackedStringArray("collectable_ref") instance=ExtResource("1_e5hxc")]
 script = ExtResource("2_mpom2")
 collectable_ref = NodePath("..")
 item_data = SubResource("Resource_je38n")

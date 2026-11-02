@@ -110,18 +110,16 @@ shader_parameter/emission_energy = 0.0
 [node name="Lamp" type="Node3D" unique_id=1694274916]
 script = ExtResource("1_3cawl")
 
-[node name="lamp" type="Node3D" parent="." unique_id=363581303]
-transform = Transform3D(-0.105106845, 0.054917756, 0.9929434, 0.33408132, 0.94239527, -0.016758254, -0.9366655, 0.32996237, -0.117399186, 0.27558768, -0.34384918, 0)
-
-[node name="Cilindro" type="MeshInstance3D" parent="lamp" unique_id=1605986980]
-transform = Transform3D(0, -0.80985814, 0, 0.80985814, 0, 0, 0, 0, 0.80985814, 0.25588349, 0.03084232, -0.02917706)
+[node name="Cilindro" type="MeshInstance3D" parent="." unique_id=1605986980]
+transform = Transform3D(0.044475593, 0.08512163, 0.8041433, 0.7632065, -0.27055848, -0.013571808, 0.2672227, 0.75856614, -0.09507669, 0.22141519, -0.22880867, -0.22607505)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_kjips")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_djafh")
 
-[node name="Cube" type="MeshInstance3D" parent="lamp" unique_id=1283071709]
-transform = Transform3D(0.25, 0, 0, 0, 0.135, 0, 0, 0, 0.135, 0, 0.0110088615, -0.0023155531)
+[node name="Cube" type="MeshInstance3D" parent="." unique_id=1283071709]
+transform = Transform3D(-0.026276711, 0.007413897, 0.13404736, 0.08352033, 0.12722337, -0.0022623644, -0.23416637, 0.04454492, -0.01584889, 0.27389306, -0.33343568, 0.003904354)
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_el7a1")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_s8cq0")

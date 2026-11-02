@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/Scripts/character_body_3d.gd" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/Scripts/player_camera_3d.gd" id="2_r8fok"]
+[ext_resource type="Shader" uid="uid://c2hvwdx1s58j0" path="res://Entities/Player/dreamcore.gdshader" id="4_01ng6"]
 [ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://q31x7k0403rg" path="res://Assets/Textures/Common/lamp.png" id="4_v7p16"]
 [ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="5_0poeq"]
@@ -36,22 +37,22 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 [sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
-shader = ExtResource("5_0poeq")
+shader = ExtResource("4_01ng6")
 shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/curvature = 0.08
-shader_parameter/vignette_strength = 0.4
-shader_parameter/phosphor_mode = 0
-shader_parameter/scanline_strength = 0.0400000019
-shader_parameter/mask_strength = 0.5830000276925
-shader_parameter/blur_width = 1.5540000738150002
-shader_parameter/bloom_amount = 0.5750000273125
-shader_parameter/bloom_radius = 3.370000112575
-shader_parameter/color_levels = 23.0
-shader_parameter/dither_strength = 1.5
-shader_parameter/brightness = 1.15
+shader_parameter/softness = 1.2
+shader_parameter/sharpen = 0.6
+shader_parameter/blur_radius = 2.5
+shader_parameter/block_size = 8.0
+shader_parameter/block_strength = 1.0
+shader_parameter/chroma_blur = 0.7
+shader_parameter/chroma_levels = 14.0
+shader_parameter/color_levels = 16.0
+shader_parameter/bloom = 0.35
+shader_parameter/desaturation = 0.25
+shader_parameter/cool_tint = 0.5
 shader_parameter/contrast = 1.05
-shader_parameter/grain = 0.025
-shader_parameter/flicker = 0.012
+shader_parameter/vignette_strength = 0.0
+shader_parameter/noise_amount = 0.08800000418
 
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
@@ -77,8 +78,8 @@ radius = 0.2
 height = 1.75
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
-random_pitch = 1.3671453
-random_volume_offset_db = 6.72
+random_pitch = 1.0905077
+random_volume_offset_db = 7.97
 streams_count = 3
 stream_0/stream = ExtResource("16_0poeq")
 stream_1/stream = ExtResource("17_ppdlg")
@@ -249,20 +250,29 @@ font_size = 30
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
 shader = ExtResource("5_0poeq")
 shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/curvature = 0.08
-shader_parameter/vignette_strength = 0.4
-shader_parameter/phosphor_mode = 0
-shader_parameter/scanline_strength = 0.45
-shader_parameter/mask_strength = 0.15
-shader_parameter/blur_width = 0.8
-shader_parameter/bloom_amount = 0.35
-shader_parameter/bloom_radius = 3.0
-shader_parameter/color_levels = 64.0
-shader_parameter/dither_strength = 0.5
+shader_parameter/luma_blur = 1.0
+shader_parameter/chroma_bleed = 5.0
+shader_parameter/chroma_shift = 2.0
+shader_parameter/chroma_saturation = 0.8
+shader_parameter/wobble = 0.6
+shader_parameter/line_jitter = 0.4
+shader_parameter/tracking_strength = 0.8
+shader_parameter/tracking_speed = 0.12
+shader_parameter/head_switching = 0.8
+shader_parameter/dropout_amount = 0.008
+shader_parameter/haze_amount = 0.5
+shader_parameter/haze_radius = 8.0
+shader_parameter/black_lift = 0.08
+shader_parameter/desaturation = 0.25
+shader_parameter/shadow_tint = Color(0.45, 0.35, 0.75, 1)
+shader_parameter/highlight_tint = Color(1, 0.82, 0.9, 1)
+shader_parameter/tint_strength = 0.35
 shader_parameter/brightness = 1.15
-shader_parameter/contrast = 1.05
-shader_parameter/grain = 0.025
-shader_parameter/flicker = 0.012
+shader_parameter/noise_amount = 0.06
+shader_parameter/scanline_strength = 0.45
+shader_parameter/vignette_strength = 0.4
+shader_parameter/curvature = 0.08
+shader_parameter/color_levels = 64.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqrof"]
 font_size = 12
@@ -271,7 +281,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
 collision_layer = 2
-collision_mask = 19
+collision_mask = 17
 floor_block_on_wall = false
 script = ExtResource("1_dqkch")
 CROUCH_ANIMATION_SPEED = 1.5
@@ -456,6 +466,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("22_avsg8")
+drop_throw_speed = 1.0
+drop_downward_speed = 1.0
 equipment_controller = NodePath("../../../EquipmentController")
 pickup_target = NodePath("../../../head/Camera3D/InventoryTarget")
 
@@ -556,10 +568,6 @@ material = SubResource("ShaderMaterial_xxysq")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 37.0
-offset_right = 3.0
-offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

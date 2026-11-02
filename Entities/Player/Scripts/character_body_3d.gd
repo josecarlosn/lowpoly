@@ -18,8 +18,15 @@ var _is_sprinting : bool = false
 var _can_sprint : bool = true
 var _can_jump : bool = true
 var can_move : bool = true
-var is_paused = false
 var _was_on_floor: bool = true
+
+# Defina como false para impedir o pause (cutscene, tutorial, etc.).
+var can_pause: bool = true
+
+# Compatibilidade: lê o estado real da árvore, então nunca desincroniza.
+var is_paused: bool:
+	get:
+		return get_tree().paused
 
 @onready var camera: PlayerCamera = $head/Camera3D
 @onready var head = $head
@@ -62,13 +69,7 @@ func _input(event: InputEvent) -> void:
 
 	camera.handle_zoom()
 
-	if Input.is_action_just_pressed("ui_cancel"):
-		is_paused = !is_paused
-
-		if is_paused:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	# O ESC / pause agora é tratado pelo script do PauseMenu.
 
 
 func _process(delta: float) -> void:
