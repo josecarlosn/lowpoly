@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="lowpoly"
-run/main_scene="uid://cv6y40cdyecmh"
+run/main_scene="uid://bhrf8ok2jt58i"
 config/features=PackedStringArray("4.7", "Forward Plus")
 boot_splash/bg_color=Color(0.05960223, 0.06409059, 0.08083167, 1)
 config/icon="res://icon.svg"
@@ -33,9 +33,8 @@ InventoryManager="*uid://dl6otp17athy2"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/initial_screen=1
+window/size/mode=4
 window/size/resizable=false
-window/size/borderless=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 window/vsync/vsync_mode=0
@@ -56,6 +55,7 @@ import/custom_font="uid://de4qdcjkcxdjq"
 
 wood_floor=""
 player=""
+grass_floor=""
 
 [gui]
 

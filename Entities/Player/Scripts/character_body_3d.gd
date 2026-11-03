@@ -36,9 +36,11 @@ var is_paused: bool:
 @onready var state_machine: StateMachine = $StateMachine
 @onready var hand: Marker3D = %playerHand
 @onready var inventory_target: Node3D = %InventoryTarget
-@onready var wood_step: AudioStreamPlayer3D = $PlayerSounds/WoodStep
-@onready var floor_type_ray: RayCast3D = $FloorTypeRay
 
+#-------- Steps --------------
+@onready var wood_step: AudioStreamPlayer3D = $PlayerSounds/WoodStep
+@onready var grass_step: AudioStreamPlayer3D = $PlayerSounds/GrassStep
+@onready var floor_type_ray: RayCast3D = $FloorTypeRay
 
 func _ready() -> void:
 	floor_snap_length = 0.3
@@ -126,9 +128,11 @@ func toggle_jump():
 func play_step_sounds():
 	if floor_type_ray.is_colliding():
 		var floor = floor_type_ray.get_collider()
-
 		if floor.is_in_group("wood_floor"):
 			wood_step.play()
+		elif floor.is_in_group("grass_floor"):
+			grass_step.play()
+
 
 
 func handle_push() -> void:

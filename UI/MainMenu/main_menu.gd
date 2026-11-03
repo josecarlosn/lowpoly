@@ -5,12 +5,15 @@ extends Control
 @onready var quit: Button = %QUIT
 @onready var quit_arrow: TextureRect = %QuitLabel
 
+@export_file("*.tscn")
+var start_scene: String
+
 func _ready() -> void:
 	start_arrow.hide()
 	quit_arrow.hide()
 	
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/Home/home_sweet_home.tscn")
+	get_tree().change_scene_to_file(start_scene)
 	
 func _on_quit_pressed() -> void:
 	get_tree().quit()
