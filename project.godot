@@ -33,7 +33,6 @@ InventoryManager="*uid://dl6otp17athy2"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/size/mode=4
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
