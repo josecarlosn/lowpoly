@@ -43,11 +43,11 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
 shader = ExtResource("4_01ng6")
-shader_parameter/aberration_strength = 3.0
-shader_parameter/blur_strength = 2.0
-shader_parameter/noise_strength = 0.048
+shader_parameter/aberration_strength = 0.0
+shader_parameter/blur_strength = 0.0
+shader_parameter/noise_strength = 0.0
 shader_parameter/vignette_strength = 0.0
-shader_parameter/scanline_strength = 0.016
+shader_parameter/scanline_strength = 0.0
 shader_parameter/distortion_strength = 0.0
 shader_parameter/ghost_strength = 0.0
 shader_parameter/flicker_strength = 0.005
@@ -362,6 +362,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
 [node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_ppdlg")
 anchors_preset = 15
@@ -579,6 +580,7 @@ text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre
 horizontal_alignment = 3
 
 [node name="InventoryShader" type="ColorRect" parent="InventoryController/InventoryCanvasLayer" unique_id=1922621707]
+visible = false
 material = SubResource("ShaderMaterial_xxysq")
 anchors_preset = 15
 anchor_right = 1.0
@@ -627,7 +629,7 @@ transparent_bg = true
 handle_input_locally = false
 vrs_mode = 1
 canvas_cull_mask = 4294967294
-size = Vector2i(960, 720)
+size = Vector2i(640, 480)
 render_target_update_mode = 0
 
 [node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]

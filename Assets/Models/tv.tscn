@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="1_lp7yl"]
 [ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://Assets/Shaders/object_ps1_shader.gdshader" id="2_o54a7"]
 [ext_resource type="Script" uid="uid://cvjga54hcpjl3" path="res://Entities/Player/Interaction/InteractableScripts/default_interaction.gd" id="4_oqk6l"]
+[ext_resource type="Script" uid="uid://b2ksfj1hdg1p7" path="res://Assets/Models/screen_view_port.gd" id="5_oqk6l"]
+[ext_resource type="PackedScene" uid="uid://q0ar8pvdweve" path="res://Scenes/EndRoom/room.tscn" id="5_pstkp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpv6o"]
 resource_name = "TV_01"
@@ -47,7 +49,7 @@ shadow_mesh = SubResource("ArrayMesh_0nkmv")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t7ju5"]
 render_priority = 0
 shader = ExtResource("2_o54a7")
-shader_parameter/u_jitter_resolution = 64.0
+shader_parameter/u_jitter_resolution = 128.0
 shader_parameter/u_affine_intensity = 0.249999994412
 shader_parameter/u_affine_z_bias = 0.0
 shader_parameter/texture_albedo = ExtResource("1_ag855")
@@ -58,6 +60,12 @@ shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wqkd6"]
 size = Vector3(1.3010864, 1.1513062, 1.0351563)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b20ek"]
+size = Vector2(1.05, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87heh"]
+shading_mode = 0
 
 [node name="TV" type="StaticBody3D" unique_id=769884634]
 collision_layer = 9
@@ -77,3 +85,21 @@ script = ExtResource("4_oqk6l")
 can_interact = true
 hover_label = "tv"
 click_label = "just a tv"
+
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=384190913]
+transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742175e-08, 0.0048354957, -0.9999884, 4.2272863e-10, -0.9999884, -0.0048354957, 0.01821968, 0.29712743, -0.7375768)
+mesh = SubResource("PlaneMesh_b20ek")
+surface_material_override/0 = SubResource("StandardMaterial3D_87heh")
+
+[node name="ScreenSystem" type="Node3D" parent="." unique_id=697773588]
+
+[node name="ScreenViewPort" type="SubViewport" parent="ScreenSystem" unique_id=2053567155 node_paths=PackedStringArray("tv_screen")]
+unique_name_in_owner = true
+own_world_3d = true
+size = Vector2i(320, 240)
+script = ExtResource("5_oqk6l")
+security_scene = ExtResource("5_pstkp")
+tv_screen = NodePath("../../Screen")
+
+[node name="EndRoom" parent="ScreenSystem/ScreenViewPort" unique_id=1513587001 instance=ExtResource("5_pstkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.953607, 0.7964549, 0.35812664)
