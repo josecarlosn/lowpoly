@@ -44,6 +44,7 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "r
 
 [filesystem]
 
+import/blender/enabled=false
 import/size/viewport_height=480
 import/size/viewport_width=640
 import/stretch/mode="viewport"
