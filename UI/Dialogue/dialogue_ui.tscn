@@ -1,12 +1,19 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://dbi14xlstoa4g"]
 
-[ext_resource type="Script" path="res://UI/Dialogue/dialogue_ui.gd" id="1_dialogue_ui"]
+[ext_resource type="Script" uid="uid://carowkkqsmly3" path="res://UI/Dialogue/dialogue_ui.gd" id="1_dialogue_ui"]
 
-[node name="DialogueUI" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qss7n"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.12156863, 0.11372549, 0.11372549, 0.72156864)
+
+[node name="DialogueUI" type="CanvasLayer" unique_id=1654084999]
 layer = 20
 script = ExtResource("1_dialogue_ui")
 
-[node name="Root" type="Control" parent="."]
+[node name="Root" type="Control" parent="." unique_id=1005340553]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,47 +22,52 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="DialoguePanel" type="PanelContainer" parent="Root"]
+[node name="DialoguePanel" type="PanelContainer" parent="Root" unique_id=1420226601]
+custom_maximum_size = Vector2(400, 150)
 layout_mode = 1
-anchors_preset = 10
-anchor_left = 0.06
-anchor_top = 0.72
-anchor_right = 0.94
-anchor_bottom = 0.96
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qss7n")
 
-[node name="Margin" type="MarginContainer" parent="Root/DialoguePanel"]
+[node name="Margin" type="MarginContainer" parent="Root/DialoguePanel" unique_id=1159639550]
 layout_mode = 2
 theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 14
 
-[node name="VBox" type="VBoxContainer" parent="Root/DialoguePanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Root/DialoguePanel/Margin" unique_id=468289285]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 
-[node name="CharacterName" type="Label" parent="Root/DialoguePanel/Margin/VBox"]
+[node name="CharacterName" type="Label" parent="Root/DialoguePanel/Margin/VBox" unique_id=1327597872]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.78, 0.62, 1)
 theme_override_font_sizes/font_size = 20
 text = "Personagem"
 
-[node name="DialogueText" type="RichTextLabel" parent="Root/DialoguePanel/Margin/VBox"]
+[node name="DialogueText" type="RichTextLabel" parent="Root/DialoguePanel/Margin/VBox" unique_id=1995255743]
 custom_minimum_size = Vector2(0, 82)
 layout_mode = 2
 size_flags_vertical = 3
-bbcode_enabled = false
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 19
+text = "Texto do diálogo"
 fit_content = true
 scroll_active = false
-mouse_filter = 2
-text = "Texto do diálogo"
 
-[node name="ContinueLabel" type="Label" parent="Root/DialoguePanel/Margin/VBox"]
+[node name="ContinueLabel" type="Label" parent="Root/DialoguePanel/Margin/VBox" unique_id=1219723862]
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.72, 0.72, 0.72, 1)
-theme_override_font_sizes/font_size = 13
-text = "CLIQUE PARA CONTINUAR  ▸"
+theme_override_font_sizes/font_size = 36
+text = "▸"
 horizontal_alignment = 2
