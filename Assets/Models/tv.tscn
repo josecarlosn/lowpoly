@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://c3qwcck3dr40v" path="res://Assets/Models/tv_texture.png" id="1_ag855"]
 [ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="1_lp7yl"]
-[ext_resource type="Script" uid="uid://cvjga54hcpjl3" path="res://Entities/Player/Interaction/InteractableScripts/default_interaction.gd" id="4_oqk6l"]
+[ext_resource type="Script" uid="uid://b7sjodr40vfhx" path="res://Entities/Player/Dialogue/dialogue_interaction.gd" id="3_n6cd8"]
+[ext_resource type="Script" uid="uid://ba4g8rr4ov7ao" path="res://Entities/Player/Dialogue/Resources/dialogue_line.gd" id="4_du5k6"]
+[ext_resource type="Script" uid="uid://cc4kq75yt000r" path="res://Entities/Player/Dialogue/Resources/dialogue_data.gd" id="5_njl7u"]
 [ext_resource type="Script" uid="uid://b2ksfj1hdg1p7" path="res://Assets/Models/screen_view_port.gd" id="5_oqk6l"]
 [ext_resource type="PackedScene" uid="uid://q0ar8pvdweve" path="res://Scenes/EndRoom/room.tscn" id="5_pstkp"]
 
@@ -50,6 +52,29 @@ shadow_mesh = SubResource("ArrayMesh_0nkmv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_wqkd6"]
 size = Vector3(1.3010864, 1.1513062, 1.0351563)
 
+[sub_resource type="Resource" id="Resource_vafbj"]
+script = ExtResource("4_du5k6")
+character_name = "Zao"
+text = "What is that? Its me?"
+metadata/_custom_type_script = "uid://ba4g8rr4ov7ao"
+
+[sub_resource type="Resource" id="Resource_n6cd8"]
+script = ExtResource("4_du5k6")
+character_name = "Zao"
+text = "Im awake, i'm sure."
+metadata/_custom_type_script = "uid://ba4g8rr4ov7ao"
+
+[sub_resource type="Resource" id="Resource_t7ju5"]
+script = ExtResource("4_du5k6")
+character_name = "Zao"
+text = "Na teoria pelo menos"
+metadata/_custom_type_script = "uid://ba4g8rr4ov7ao"
+
+[sub_resource type="Resource" id="Resource_r3jra"]
+script = ExtResource("5_njl7u")
+lines = Array[ExtResource("4_du5k6")]([SubResource("Resource_vafbj"), SubResource("Resource_n6cd8"), SubResource("Resource_t7ju5")])
+metadata/_custom_type_script = "uid://cc4kq75yt000r"
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_b20ek"]
 size = Vector2(1.1, 0.7)
 
@@ -69,10 +94,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024123192, 0.19701326, -0.2
 shape = SubResource("BoxShape3D_wqkd6")
 
 [node name="InteractionComponent" parent="." unique_id=881712920 instance=ExtResource("1_lp7yl")]
-script = ExtResource("4_oqk6l")
-can_interact = true
+script = ExtResource("3_n6cd8")
+dialogue_data = SubResource("Resource_r3jra")
 hover_label = "tv"
-click_label = "just a tv"
+interact_label = "click"
 
 [node name="Screen" type="MeshInstance3D" parent="." unique_id=384190913]
 transform = Transform3D(-1, 3.821371e-15, -8.742278e-08, 8.742175e-08, 0.0048354957, -0.9999884, 4.2272863e-10, -0.9999884, -0.0048354957, 0.025291651, 0.31680667, -0.66008586)

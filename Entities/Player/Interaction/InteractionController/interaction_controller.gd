@@ -55,8 +55,20 @@ func _physics_process(delta: float) -> void:
 		_clear_interaction()
 		return
 
-	# Durante o arrasto, mantém o objeto original,
-	# mas continua verificando a distância.
+	# O diálogo tem prioridade sobre todas as interações.
+	var dialogue_manager := player.get_node_or_null(
+		"DialogueManager"
+	) as DialogueManager
+
+	if is_instance_valid(dialogue_manager):
+		if (
+			dialogue_manager.is_dialogue_active
+			or dialogue_manager.waiting_for_interaction_release
+		):
+			_clear_interaction()
+			return
+
+	# Durante o arrasto, mantém o objeto original.
 	if press_interaction_active:
 		if (
 			not Input.is_action_pressed("primary")
@@ -75,7 +87,6 @@ func _physics_process(delta: float) -> void:
 	var action_controller := _get_item_action_controller()
 	var potential_object: Object = _get_closest_collider()
 
-	# Sem um objeto interativo válido.
 	if not potential_object is Node:
 		_clear_interaction()
 		return
@@ -88,13 +99,12 @@ func _physics_process(delta: float) -> void:
 		_clear_interaction()
 		return
 
-	# Verifica se o alvo mudou.
 	if current_object != null and current_object != potential_object:
 		_clear_interaction()
 
 	interact_component = candidate
 
-	# Mantém a conexão dos objetos coletáveis.
+	# Conexão dos objetos coletáveis.
 	if (
 		interact_component is CollectableInteraction
 		and not interact_component.is_connected(
@@ -107,17 +117,16 @@ func _physics_process(delta: float) -> void:
 			Callable(self, "_on_item_collected")
 		)
 
-	# Não interfere enquanto uma ação de item estiver em andamento.
+	# Não interfere durante ações de itens.
 	if action_controller != null and action_controller.action_in_progress:
 		return
 
-	# Mensagens temporárias têm prioridade.
 	if temporary_message_active:
 		return
 
 	_focus()
 
-	# Inicia a interação apenas no instante do clique.
+	# Inicia a interação somente no instante do clique.
 	if (
 		Input.is_action_just_pressed("primary")
 		and not player.player_input.in_inventory
@@ -143,18 +152,14 @@ func _physics_process(delta: float) -> void:
 			is_instance_valid(interact_component)
 			and interact_component.can_interact
 		):
-			# Executa a interação inicial uma única vez.
 			interact_component.interact()
 
 			if not interact_component.interact_label.is_empty():
 				_show_temporary_message(interact_component.interact_label)
 
-			# Inicia o arrasto somente em objetos compatíveis.
 			if interact_component.has_method("hold_interact"):
 				var hold_started: bool = true
 
-				# Entrega o ponto exato atingido pelo ShapeCast
-				# e o Marker3D da mão do jogador.
 				if interact_component.has_method("begin_hold_interact"):
 					var player_hand := player.hand as Marker3D
 

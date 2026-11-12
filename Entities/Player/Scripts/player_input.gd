@@ -16,8 +16,20 @@ var debug_request := false
 
 var in_inventory := false # Começa fechado (false)
 var in_debug := false
+var dialogue_locked: bool = false
 
 func poll(head_basis: Basis) -> void:
+	if dialogue_locked:
+		direction = Vector3.ZERO
+		is_sprinting = false
+		jump_requested = false
+		crouch_just_pressed = false
+		is_interacting = false
+		drop_request = false
+		equip_request = false
+		selected_slot_request = -1
+		debug_request = false
+		return
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = (head_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	

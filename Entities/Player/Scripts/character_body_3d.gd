@@ -51,6 +51,10 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var dialogue_manager := get_node_or_null("DialogueManager") as DialogueManager
+	if is_instance_valid(dialogue_manager) and dialogue_manager.is_dialogue_active:
+		return
+
 	if can_move:
 		if event is InputEventMouseMotion:
 			camera.handle_mouse_motion(event)

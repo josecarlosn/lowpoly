@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://bylg1gcrop1mr"]
+
+[ext_resource type="Script" uid="uid://b01aafnfh05ew" path="res://UI/MainMenu/main_menu.gd" id="1_06t4h"]
+[ext_resource type="Texture2D" uid="uid://rna2k3wmro5d" path="res://UI/arrow.png" id="2_7vrkn"]
+[ext_resource type="Shader" uid="uid://c0qvla10555ny" path="res://UI/MainMenu/main_menu.gdshader" id="2_fu7sn"]
+[ext_resource type="Texture2D" uid="uid://cu5x0vtkwf277" path="res://Assets/bg.jpg" id="4_jix8l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glbon"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fu7sn"]
+shader = ExtResource("2_fu7sn")
+shader_parameter/aberration_strength = 5.0
+shader_parameter/blur_strength = 3.0
+shader_parameter/noise_strength = 0.0870000041325
+shader_parameter/vignette_strength = 0.78
+shader_parameter/scanline_strength = 0.0
+shader_parameter/distortion_strength = 0.2810000133475
+shader_parameter/ghost_strength = 0.11200000532
+shader_parameter/flicker_strength = 0.0190000009025
+
+[node name="MainMenu" type="Control" unique_id=1942602342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_06t4h")
+start_scene = "uid://bhrf8ok2jt58i"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=891278161]
+material = SubResource("ShaderMaterial_glbon")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -100.0
+offset_right = 62.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="START" type="Button" parent="VBoxContainer" unique_id=1683410254]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "START"
+flat = true
+
+[node name="StartLabel" type="TextureRect" parent="VBoxContainer/START" unique_id=1856638831]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("2_7vrkn")
+expand_mode = 4
+
+[node name="QUIT" type="Button" parent="VBoxContainer" unique_id=1875195696]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "QUIT"
+flat = true
+
+[node name="QuitLabel" type="TextureRect" parent="VBoxContainer/QUIT" unique_id=207260238]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("2_7vrkn")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1234018310]
+z_index = 1
+material = SubResource("ShaderMaterial_fu7sn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1017370]
+visible = false
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=61163892]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_jix8l")
+
+[connection signal="mouse_entered" from="VBoxContainer/START" to="." method="_on_start_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/START" to="." method="_on_start_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/START" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QUIT" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/QUIT" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

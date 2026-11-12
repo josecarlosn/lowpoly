@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://dj5g7egpx7oca"]
+
+[ext_resource type="Script" uid="uid://dslvouywbk5e1" path="res://UI/Pause/pause.gd" id="1_1drdd"]
+[ext_resource type="Texture2D" uid="uid://rna2k3wmro5d" path="res://UI/arrow.png" id="2_r38e5"]
+[ext_resource type="Shader" uid="uid://c0qvla10555ny" path="res://UI/MainMenu/main_menu.gdshader" id="3_2in6j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_glbon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1drdd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfmje"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bynow"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fu7sn"]
+shader = ExtResource("3_2in6j")
+shader_parameter/aberration_strength = 5.0
+shader_parameter/blur_strength = 0.8530000405175
+shader_parameter/noise_strength = 0.0130000006175
+shader_parameter/vignette_strength = 0.78
+shader_parameter/scanline_strength = 0.016
+shader_parameter/distortion_strength = 0.1
+shader_parameter/ghost_strength = 0.12
+shader_parameter/flicker_strength = 0.005
+
+[node name="PuseMenu" type="Control" unique_id=1942602342]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_1drdd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=891278161]
+material = SubResource("ShaderMaterial_glbon")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.5
+offset_top = -100.0
+offset_right = 62.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="RESUME" type="Button" parent="VBoxContainer" unique_id=1683410254]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxFlat_1drdd")
+text = "RESUME"
+flat = true
+
+[node name="ResumeLabel" type="TextureRect" parent="VBoxContainer/RESUME" unique_id=1856638831]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("2_r38e5")
+expand_mode = 4
+
+[node name="MENU" type="Button" parent="VBoxContainer" unique_id=1303390553]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxFlat_pfmje")
+text = "MENU"
+flat = true
+
+[node name="MenuLabel" type="TextureRect" parent="VBoxContainer/MENU" unique_id=306869302]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("2_r38e5")
+expand_mode = 4
+
+[node name="QUIT" type="Button" parent="VBoxContainer" unique_id=1875195696]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_styles/focus = SubResource("StyleBoxFlat_bynow")
+text = "QUIT"
+flat = true
+
+[node name="QuitLabel" type="TextureRect" parent="VBoxContainer/QUIT" unique_id=207260238]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -5.0
+offset_right = 10.0
+offset_bottom = 5.0
+grow_vertical = 2
+texture = ExtResource("2_r38e5")
+expand_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1234018310]
+z_index = 1
+material = SubResource("ShaderMaterial_fu7sn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1017370]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=61163892]
+visible = false
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="mouse_entered" from="VBoxContainer/RESUME" to="." method="_on_resume_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/RESUME" to="." method="_on_resume_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/RESUME" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/MENU" to="." method="_on_menu_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/MENU" to="." method="_on_menu_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/MENU" to="." method="_on_menu_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/QUIT" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/QUIT" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="22_avsg8"]
 [ext_resource type="Script" uid="uid://5vm1gq0rop8e" path="res://Entities/Player/view_model_renderer.gd" id="24_dv6dp"]
 [ext_resource type="Script" uid="uid://cnn3t3p6jlxun" path="res://Entities/Player/Inventory/Actions/item_action_controller.gd" id="25_item_actions"]
+[ext_resource type="Script" uid="uid://djf3r5ynv5bx3" path="res://Entities/Player/Dialogue/dialogue_manager.gd" id="29_kx1i7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b20ek"]
 radius = 0.05
@@ -458,6 +459,9 @@ script = ExtResource("9_lub02")
 
 [node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
 script = ExtResource("10_x1y6q")
+
+[node name="DialogueManager" type="Node" parent="." unique_id=1950252413]
+script = ExtResource("29_kx1i7")
 
 [node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor", "player_camera")]
 script = ExtResource("16_avsg8")
