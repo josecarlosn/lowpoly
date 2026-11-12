@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://cc4kq75yt000r" path="res://Entities/Player/Dialogue/Resources/dialogue_data.gd" id="41_31drr"]
 [ext_resource type="Script" uid="uid://b2ksfj1hdg1p7" path="res://Assets/Models/screen_view_port.gd" id="42_wibgm"]
 [ext_resource type="PackedScene" uid="uid://q0ar8pvdweve" path="res://Scenes/EndRoom/room.tscn" id="43_j53u5"]
+[ext_resource type="Script" uid="uid://tw0sm0vg7rei" path="res://Scenes/Scene_1/dialogue_trigger.gd" id="44_dq7t0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b20ek"]
 radius = 0.05
@@ -440,8 +441,9 @@ size = Vector3(1.3010864, 1.1513062, 1.0351563)
 
 [sub_resource type="Resource" id="Resource_du5k6"]
 script = ExtResource("40_ut6ip")
-character_name = "Player"
-text = "Someone are slepping in my bad?!"
+character_name = "Cauã"
+text = "Valentin ta dormindo na mesma cama que Kaian??
+Não pode ser? Que ódio!"
 metadata/_custom_type_script = "uid://ba4g8rr4ov7ao"
 
 [sub_resource type="Resource" id="Resource_njl7u"]
@@ -460,6 +462,20 @@ size = Vector2(1.1, 0.7)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87heh"]
 shading_mode = 0
+
+[sub_resource type="Resource" id="Resource_o4kqj"]
+script = ExtResource("40_ut6ip")
+character_name = "Player"
+text = "Esse lugar parece estranh"
+metadata/_custom_type_script = "uid://ba4g8rr4ov7ao"
+
+[sub_resource type="Resource" id="Resource_4iuh2"]
+script = ExtResource("41_31drr")
+lines = Array[ExtResource("40_ut6ip")]([SubResource("Resource_o4kqj")])
+metadata/_custom_type_script = "uid://cc4kq75yt000r"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4iuh2"]
+size = Vector3(4.50354, 1.1414795, 1)
 
 [node name="StartScene" type="Node3D" unique_id=1398054293]
 
@@ -882,3 +898,13 @@ tv_screen = NodePath("../../Screen")
 
 [node name="EndRoom" parent="TV/ScreenSystem/ScreenViewPort" unique_id=1513587001 instance=ExtResource("43_j53u5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.953607, 0.7964549, 0.35812664)
+
+[node name="Triger" type="Area3D" parent="." unique_id=1748234417]
+transform = Transform3D(0.99999994, 8.797197e-10, -3.2271832e-10, 7.7320506e-10, 0.99999994, 0, -2.7666813e-11, -2.9802322e-08, 0.99999994, 6.3897147, 43.082935, 155.85103)
+collision_mask = 2
+script = ExtResource("44_dq7t0")
+dialogue_data = SubResource("Resource_4iuh2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Triger" unique_id=1357414302]
+transform = Transform3D(1, -9.617822e-18, 0, 3.1641356e-15, 1, 1.4734155e-24, 0, -2.0250468e-13, 1, 0.6292105, 0.070739746, 0)
+shape = SubResource("BoxShape3D_4iuh2")
