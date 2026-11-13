@@ -190,6 +190,7 @@ sensors/enable_gravity=true
 
 3d_render/layer_1="World"
 3d_render/layer_2="Hand"
+3d_render/layer_17="SimpleGrassTextured interactive layer"
 3d_physics/layer_1="wolrd"
 3d_physics/layer_2="player"
 3d_physics/layer_4="items"
