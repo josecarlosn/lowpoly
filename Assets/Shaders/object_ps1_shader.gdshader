@@ -11,6 +11,9 @@ uniform float u_jitter_resolution : hint_range(0.0, 1024.0, 1.0) = 128.0;
 uniform float u_affine_intensity : hint_range(0.0, 1.0, 0.01) = 0.0;
 uniform float u_affine_z_bias : hint_range(0.0, 0.01, 0.0001) = 0.0005;
 
+// Aplica vertex snapping também nas sombras.
+uniform bool u_jitter_shadows = false;
+
 
 // ==========================================
 // UNIFORMS DO OBJETO
@@ -52,45 +55,44 @@ void vertex() {
     // Projeção original
     vec4 clip_pos = PROJECTION_MATRIX * view_pos;
 
-
     // ======================================
     // IDENTIFICAÇÃO DA CÂMERA PRINCIPAL
     // ======================================
-
     bool is_main_camera_pass =
         distance(
             INV_VIEW_MATRIX[3].xyz,
             MAIN_CAM_INV_VIEW_MATRIX[3].xyz
         ) < 0.01;
 
-
     // ======================================
     // VERTEX SNAPPING
-    // SOMENTE NA CÂMERA PRINCIPAL
     // ======================================
 
-    vec4 snapped_pos = clip_pos;
+    // Mantém a projeção original em todas as passagens.
+    POSITION = clip_pos;
 
-    if (is_main_camera_pass) {
+    // Aplica snapping na câmera principal.
+    // Nas sombras, somente aplica se solicitado.
+    bool apply_jitter = is_main_camera_pass || u_jitter_shadows;
 
-        if (u_jitter_resolution > 0.0) {
+    if (apply_jitter && u_jitter_resolution > 0.0) {
 
-            snapped_pos.xyz /= snapped_pos.w;
+        vec4 snapped_pos = clip_pos;
 
-            snapped_pos.x =
-                floor(snapped_pos.x * u_jitter_resolution)
-                / u_jitter_resolution;
+        snapped_pos.xyz /= snapped_pos.w;
 
-            snapped_pos.y =
-                floor(snapped_pos.y * u_jitter_resolution)
-                / u_jitter_resolution;
+        snapped_pos.x =
+            floor(snapped_pos.x * u_jitter_resolution)
+            / u_jitter_resolution;
 
-            snapped_pos.xyz *= snapped_pos.w;
-        }
+        snapped_pos.y =
+            floor(snapped_pos.y * u_jitter_resolution)
+            / u_jitter_resolution;
+
+        snapped_pos.xyz *= snapped_pos.w;
 
         POSITION = snapped_pos;
     }
-
 
     // ======================================
     // AFFINE TEXTURE
@@ -103,10 +105,8 @@ void vertex() {
     v_w_correction = w_val + u_affine_z_bias;
     v_affine_intensity = u_affine_intensity;
 
-
     // ======================================
     // POSIÇÃO ORIGINAL
-    // PRESERVADA PARA ILUMINAÇÃO
     // ======================================
 
     VERTEX = view_pos.xyz;
@@ -131,13 +131,11 @@ void fragment() {
         v_affine_intensity
     );
 
-
     // ======================================
     // ESCALA E OFFSET
     // ======================================
 
     actual_uv = actual_uv * uv_scale + uv_offset;
-
 
     // ======================================
     // ALBEDO
@@ -152,7 +150,6 @@ void fragment() {
     if (final_color.a < 0.5) {
         discard;
     }
-
 
     // ======================================
     // NORMAL MAP
