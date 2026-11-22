@@ -1,4 +1,3 @@
-
 shader_type spatial;
 render_mode skip_vertex_transform, diffuse_lambert, specular_schlick_ggx;
 
@@ -8,7 +7,7 @@ render_mode skip_vertex_transform, diffuse_lambert, specular_schlick_ggx;
 group_uniforms PS1_Effects;
 
 uniform float u_jitter_resolution : hint_range(0.0, 1024.0, 1.0) = 128.0;
-uniform float u_affine_intensity : hint_range(0.0, 1.0, 0.01) = 0.0;
+uniform float u_affine_intensity : hint_range(0.0, 1.0, 0.001) = 0.0;
 uniform float u_affine_z_bias : hint_range(0.0, 0.01, 0.0001) = 0.0005;
 
 // Aplica vertex snapping também nas sombras.
@@ -125,10 +124,14 @@ void fragment() {
     vec2 uv_perspective = v_uv;
     vec2 uv_affine = v_uv_affine / v_w_correction;
 
+    // Curva de controle para maior precisão
+    // nas intensidades baixas do efeito.
+    float affine_strength = pow(v_affine_intensity, 2.0);
+
     vec2 actual_uv = mix(
         uv_perspective,
         uv_affine,
-        v_affine_intensity
+        affine_strength
     );
 
     // ======================================

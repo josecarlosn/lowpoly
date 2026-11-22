@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="2_7qqrg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
-bg_color = Color(0, 0.1882353, 1, 1)
+bg_color = Color(0.002788387, 0.006436824, 0.028922757, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
 line_spacing = 0.0
@@ -15,20 +15,29 @@ font_size = 30
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
 shader = ExtResource("2_7qqrg")
 shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/curvature = 0.08
-shader_parameter/vignette_strength = 0.4
-shader_parameter/phosphor_mode = 0
-shader_parameter/scanline_strength = 0.45
-shader_parameter/mask_strength = 0.15
-shader_parameter/blur_width = 0.8
-shader_parameter/bloom_amount = 0.35
-shader_parameter/bloom_radius = 3.0
-shader_parameter/color_levels = 64.0
-shader_parameter/dither_strength = 0.5
+shader_parameter/luma_blur = 1.0
+shader_parameter/chroma_bleed = 5.0
+shader_parameter/chroma_shift = 2.0
+shader_parameter/chroma_saturation = 0.8
+shader_parameter/wobble = 0.6
+shader_parameter/line_jitter = 0.4
+shader_parameter/tracking_strength = 0.8
+shader_parameter/tracking_speed = 0.12
+shader_parameter/head_switching = 0.8
+shader_parameter/dropout_amount = 0.008
+shader_parameter/haze_amount = 0.5
+shader_parameter/haze_radius = 8.0
+shader_parameter/black_lift = 0.08
+shader_parameter/desaturation = 0.25
+shader_parameter/shadow_tint = Color(0.45, 0.35, 0.75, 1)
+shader_parameter/highlight_tint = Color(1, 0.82, 0.9, 1)
+shader_parameter/tint_strength = 0.35
 shader_parameter/brightness = 1.15
-shader_parameter/contrast = 1.05
-shader_parameter/grain = 0.025
-shader_parameter/flicker = 0.012
+shader_parameter/noise_amount = 0.06
+shader_parameter/scanline_strength = 0.45
+shader_parameter/vignette_strength = 0.4
+shader_parameter/curvature = 0.08
+shader_parameter/color_levels = 64.0
 
 [node name="InventoryController" type="Node" unique_id=889977702]
 
@@ -135,6 +144,7 @@ text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre
 horizontal_alignment = 3
 
 [node name="InventoryShader" type="ColorRect" parent="InventoryCanvasLayer" unique_id=1922621707]
+visible = false
 material = SubResource("ShaderMaterial_xxysq")
 anchors_preset = 15
 anchor_right = 1.0
