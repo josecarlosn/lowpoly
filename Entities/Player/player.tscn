@@ -1,36 +1,35 @@
 [gd_scene format=3 uid="uid://b3efs8ifbmvv2"]
 
-[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/Scripts/character_body_3d.gd" id="1_dqkch"]
-[ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/Scripts/player_camera_3d.gd" id="2_r8fok"]
-[ext_resource type="Shader" uid="uid://c2hvwdx1s58j0" path="res://Entities/Player/dreamcore.gdshader" id="4_01ng6"]
-[ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="4_fjrip"]
-[ext_resource type="Texture2D" uid="uid://q31x7k0403rg" path="res://Assets/Textures/Common/lamp.png" id="4_v7p16"]
-[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="5_0poeq"]
-[ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="5_5c2io"]
-[ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="6_4wf4l"]
-[ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="7_01a4e"]
-[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="7_7a1se"]
-[ext_resource type="Script" uid="uid://c7l43s7fph0vr" path="res://Entities/Player/hand.gd" id="7_a8wow"]
-[ext_resource type="Script" uid="uid://ibump470bcjh" path="res://Entities/Player/Scripts/debug_controller.gd" id="7_ppdlg"]
-[ext_resource type="AudioStream" uid="uid://d0wa8ss6u8jpk" path="res://Assets/Audio/FootSteps/Grass/grass_step_1.mp3" id="8_01ng6"]
-[ext_resource type="AudioStream" uid="uid://i46yxekq4v2g" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_001.wav" id="8_v27kq"]
-[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="9_lub02"]
-[ext_resource type="AudioStream" uid="uid://clp80o87nth4k" path="res://Assets/Audio/FootSteps/Grass/grass_step_2.mp3" id="9_ui1ln"]
-[ext_resource type="AudioStream" uid="uid://jnpp1sqf5lgm" path="res://Assets/Audio/FootSteps/Grass/grass_step_3.mp3" id="10_og23y"]
-[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="10_x1y6q"]
-[ext_resource type="AudioStream" uid="uid://b2oh5kmpby1sj" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_005.wav" id="12_kx1i7"]
-[ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="13_owvpp"]
-[ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/Scripts/player_input.gd" id="14_xr8lj"]
-[ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/Scripts/player_move.gd" id="15_r8fok"]
-[ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_002.wav" id="16_0poeq"]
-[ext_resource type="Script" uid="uid://dsot0oomfhl7y" path="res://Entities/Player/Equipment/equipment_controller.gd" id="16_avsg8"]
-[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/Interaction/InteractionController/interaction_controller.tscn" id="17_3wlsy"]
-[ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_003.wav" id="17_ppdlg"]
-[ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_004.wav" id="18_v7p16"]
-[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="22_avsg8"]
-[ext_resource type="Script" uid="uid://5vm1gq0rop8e" path="res://Entities/Player/view_model_renderer.gd" id="24_dv6dp"]
-[ext_resource type="Script" uid="uid://cnn3t3p6jlxun" path="res://Entities/Player/Inventory/Actions/item_action_controller.gd" id="25_item_actions"]
-[ext_resource type="Script" uid="uid://djf3r5ynv5bx3" path="res://Entities/Player/Dialogue/dialogue_manager.gd" id="29_kx1i7"]
+[ext_resource type="Script" uid="uid://be7642hn6rurx" path="res://Entities/Player/Scripts/character_body_3d.gd" id="1_v27kq"]
+[ext_resource type="Script" uid="uid://dxgfkydmmb2l7" path="res://Entities/Player/Scripts/player_camera_3d.gd" id="2_kx1i7"]
+[ext_resource type="Script" uid="uid://bk4wlhgivchd5" path="res://UI/CrossHair/crosshair.gd" id="3_w51ui"]
+[ext_resource type="Shader" uid="uid://c2hvwdx1s58j0" path="res://Entities/Player/dreamcore.gdshader" id="4_slvv8"]
+[ext_resource type="Script" uid="uid://c7l43s7fph0vr" path="res://Entities/Player/hand.gd" id="5_l3oqu"]
+[ext_resource type="PackedScene" uid="uid://bkc1ju50eqte1" path="res://Scenes/snow_particles.tscn" id="6_53w1c"]
+[ext_resource type="AudioStream" uid="uid://i46yxekq4v2g" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_001.wav" id="7_siu7b"]
+[ext_resource type="AudioStream" uid="uid://ca55bkiouihsq" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_002.wav" id="8_c0fwy"]
+[ext_resource type="AudioStream" uid="uid://doqndtlmxwpxu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_003.wav" id="9_fe32i"]
+[ext_resource type="AudioStream" uid="uid://dwvais5s4nuu" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_004.wav" id="10_rkx17"]
+[ext_resource type="AudioStream" uid="uid://b2oh5kmpby1sj" path="res://Assets/Audio/FootSteps/Wood/WoodFootSteps_005.wav" id="11_gds62"]
+[ext_resource type="AudioStream" uid="uid://clp80o87nth4k" path="res://Assets/Audio/FootSteps/Grass/grass_step_2.mp3" id="12_qv8uv"]
+[ext_resource type="AudioStream" uid="uid://jnpp1sqf5lgm" path="res://Assets/Audio/FootSteps/Grass/grass_step_3.mp3" id="13_1ii4q"]
+[ext_resource type="AudioStream" uid="uid://d0wa8ss6u8jpk" path="res://Assets/Audio/FootSteps/Grass/grass_step_1.mp3" id="14_520x1"]
+[ext_resource type="Script" uid="uid://douit1scy43ov" path="res://Entities/Player/Scripts/player_input.gd" id="15_mycwr"]
+[ext_resource type="Script" uid="uid://cmgcv8c2gwa00" path="res://Entities/Player/Scripts/player_move.gd" id="16_0bw0x"]
+[ext_resource type="Script" uid="uid://0qlbvyrbht73" path="res://Entities/Player/PlayerStateMachine/state_machine.gd" id="17_d17g3"]
+[ext_resource type="Script" uid="uid://cofub5lvu3148" path="res://Entities/Player/PlayerStateMachine/PlayerStates/idle_player_state.gd" id="18_23o0h"]
+[ext_resource type="Script" uid="uid://dmuk6on08wedr" path="res://Entities/Player/PlayerStateMachine/PlayerStates/sprinting_player_state.gd" id="19_pagiw"]
+[ext_resource type="Script" uid="uid://xj1wabl4vgw2" path="res://Entities/Player/PlayerStateMachine/PlayerStates/walking_player_state.gd" id="20_fyltw"]
+[ext_resource type="Script" uid="uid://34bv41ixyv8x" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_idle_player_state.gd" id="21_1birn"]
+[ext_resource type="Script" uid="uid://bh8v14mnuugw6" path="res://Entities/Player/PlayerStateMachine/PlayerStates/crouching_walking_player_state.gd" id="22_58aja"]
+[ext_resource type="Script" uid="uid://dsot0oomfhl7y" path="res://Entities/Player/Equipment/equipment_controller.gd" id="23_mr25g"]
+[ext_resource type="Script" uid="uid://cnn3t3p6jlxun" path="res://Entities/Player/Inventory/Actions/item_action_controller.gd" id="24_vjwoo"]
+[ext_resource type="Script" uid="uid://bh7xgf4tyq3s" path="res://Entities/Player/Inventory/inventory_controller.gd" id="25_bs7lp"]
+[ext_resource type="Shader" uid="uid://dlolwf3hbhwu2" path="res://Assets/Shaders/vcr_shader.gdshader" id="26_d3nw5"]
+[ext_resource type="PackedScene" uid="uid://cng4fsx4uqlcj" path="res://Entities/Player/Interaction/InteractionController/interaction_controller.tscn" id="27_lqb8y"]
+[ext_resource type="Script" uid="uid://djf3r5ynv5bx3" path="res://Entities/Player/Dialogue/dialogue_manager.gd" id="28_718ys"]
+[ext_resource type="Script" uid="uid://ibump470bcjh" path="res://Entities/Player/Scripts/debug_controller.gd" id="29_8ogvp"]
+[ext_resource type="Script" uid="uid://5vm1gq0rop8e" path="res://Entities/Player/view_model_renderer.gd" id="30_keg2n"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b20ek"]
 radius = 0.05
@@ -43,15 +42,21 @@ shadow_color = Color(0.11372549, 0.11372549, 0.11372549, 0.41960785)
 [sub_resource type="PlaneMesh" id="PlaneMesh_vskfa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppdlg"]
-shader = ExtResource("4_01ng6")
-shader_parameter/aberration_strength = 0.0
-shader_parameter/blur_strength = 0.0
-shader_parameter/noise_strength = 0.0
-shader_parameter/vignette_strength = 0.0
-shader_parameter/scanline_strength = 0.0
-shader_parameter/distortion_strength = 0.0
-shader_parameter/ghost_strength = 0.0
-shader_parameter/flicker_strength = 0.005
+shader = ExtResource("4_slvv8")
+shader_parameter/levels_all = 256
+shader_parameter/separate_channels = false
+shader_parameter/levels_r = 16
+shader_parameter/levels_g = 16
+shader_parameter/levels_b = 16
+shader_parameter/rounding_mode = 0
+shader_parameter/crush_mix = 1.0
+shader_parameter/brightness = 0.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+shader_parameter/gamma = 1.0
+shader_parameter/dither_enabled = false
+shader_parameter/dither_strength = 0.5
+shader_parameter/dither_pixel_size = 1.0
 
 [sub_resource type="Animation" id="Animation_vskfa"]
 length = 0.001
@@ -76,24 +81,24 @@ custom_solver_bias = 1.0
 radius = 0.2
 height = 1.75
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w51ui"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wkp8f"]
 random_pitch = 1.0905077
 random_volume_offset_db = 7.97
 streams_count = 5
-stream_0/stream = ExtResource("8_v27kq")
-stream_1/stream = ExtResource("16_0poeq")
-stream_2/stream = ExtResource("17_ppdlg")
-stream_3/stream = ExtResource("18_v7p16")
-stream_4/stream = ExtResource("12_kx1i7")
+stream_0/stream = ExtResource("7_siu7b")
+stream_1/stream = ExtResource("8_c0fwy")
+stream_2/stream = ExtResource("9_fe32i")
+stream_3/stream = ExtResource("10_rkx17")
+stream_4/stream = ExtResource("11_gds62")
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_avsg8"]
-random_pitch = 1.2080387
-random_volume_offset_db = 2.92
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sfw5q"]
+random_pitch = 1.0905077
+random_volume_offset_db = 3.6
 streams_count = 3
-stream_0/stream = ExtResource("9_ui1ln")
-stream_1/stream = ExtResource("10_og23y")
-stream_2/stream = ExtResource("8_01ng6")
-stream_2/weight = 0.2
+stream_0/stream = ExtResource("12_qv8uv")
+stream_1/stream = ExtResource("13_1ii4q")
+stream_2/stream = ExtResource("14_520x1")
+stream_2/weight = 0.1
 
 [sub_resource type="Animation" id="Animation_u3cyc"]
 length = 0.001
@@ -112,14 +117,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("head:position")
+tracks/1/path = NodePath("PlayerCollision:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [1.75]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -136,14 +141,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerCollision:shape:height")
+tracks/3/path = NodePath("head:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.75]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_y2354"]
@@ -179,26 +184,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("head:position")
+tracks/1/path = NodePath("PlayerCollision:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
+"values": [1.75, 0.9]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerCollision:shape:height")
+tracks/2/path = NodePath("head:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.75, 0.9]
+"values": [Vector3(0, 0, 0), Vector3(0, -0.75, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_m7jmp"]
@@ -206,26 +211,26 @@ resource_name = "standup"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerCollision:scale")
+tracks/0/path = NodePath("PlayerCollision:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.613, 0.55, 0.643), Vector3(0.612684, 0.9165557, 0.6431235)]
+"values": [Vector3(0, 0.55, 0), Vector3(0, 0.94802094, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayerCollision:position")
+tracks/1/path = NodePath("PlayerCollision:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0.55, 0), Vector3(0, 0.94802094, 0)]
+"values": [Vector3(0.613, 0.55, 0.643), Vector3(0.612684, 0.9165557, 0.6431235)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -249,7 +254,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwek"]
-bg_color = Color(0, 0.1882353, 1, 1)
+bg_color = Color(0.05490196, 0.05490196, 0.0627451, 0.44313726)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gpkcq"]
 line_spacing = 0.0
@@ -258,7 +263,7 @@ font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_7qqrg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xxysq"]
-shader = ExtResource("5_0poeq")
+shader = ExtResource("26_d3nw5")
 shader_parameter/resolution = Vector2(640, 480)
 shader_parameter/luma_blur = 1.0
 shader_parameter/chroma_bleed = 5.0
@@ -289,32 +294,34 @@ font_size = 12
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=418249368 groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=284166851 groups=["player"]]
 collision_layer = 2
 collision_mask = 17
 floor_block_on_wall = false
-script = ExtResource("1_dqkch")
+script = ExtResource("1_v27kq")
+SPRINT_SPEED = 5
 CROUCH_ANIMATION_SPEED = 1.5
 
-[node name="head" type="Node3D" parent="." unique_id=1886020297]
+[node name="head" type="Node3D" parent="." unique_id=992523641]
 
-[node name="Camera3D" type="Camera3D" parent="head" unique_id=554054527]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.090173215)
+[node name="Camera3D" type="Camera3D" parent="head" unique_id=867595117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5576072, 0.09017944)
 cull_mask = 1
-script = ExtResource("2_r8fok")
+current = true
+script = ExtResource("2_kx1i7")
 cam_limit_up = 80.0
 camera_smooth_speed = 15.0
 head_smooth_speed = 15.0
-bob_freq = 4.0
+bob_freq = 3.0
 
-[node name="interactRay" type="ShapeCast3D" parent="head/Camera3D" unique_id=1258692125]
+[node name="interactRay" type="ShapeCast3D" parent="head/Camera3D" unique_id=759915708]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, 0)
 shape = SubResource("SphereShape3D_b20ek")
 target_position = Vector3(0, 0, 1.75)
 collision_mask = 25
 
-[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=740255568]
+[node name="Crosshair" type="Control" parent="head/Camera3D/interactRay" unique_id=408875547]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -323,10 +330,11 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_fjrip")
+script = ExtResource("3_w51ui")
+radius = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=846702407]
+[node name="Label" type="Label" parent="head/Camera3D/interactRay" unique_id=1280453759]
 unique_name_in_owner = true
 visible = false
 texture_filter = 1
@@ -346,23 +354,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=1661565795]
+[node name="playerHand" type="Marker3D" parent="head/Camera3D/interactRay" unique_id=385715308]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2483012e-07, 0, 1.4889826)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="head/Camera3D/interactRay/playerHand" unique_id=1769194412]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head/Camera3D/interactRay/playerHand" unique_id=776320332]
 transform = Transform3D(0.05, 0, 0, 0, -2.1855695e-09, 0.05, 0, -0.05, -2.1855695e-09, 0, 0, 0)
 layers = 2
 mesh = SubResource("PlaneMesh_vskfa")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=247782548]
+[node name="AudioListener3D" type="AudioListener3D" parent="head/Camera3D" unique_id=1973100015]
 
-[node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=990342070]
+[node name="InventoryTarget" type="Node3D" parent="head/Camera3D" unique_id=2096699618]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5576072, 0.4098268)
 
-[node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1253189097]
+[node name="PlayerShader" type="ColorRect" parent="head/Camera3D" unique_id=1431649222]
+visible = false
 z_index = 2
 texture_filter = 1
 material = SubResource("ShaderMaterial_ppdlg")
@@ -372,126 +381,120 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=996386164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, -0.1, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="head/Camera3D" unique_id=1519037850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000038, -0.100000024, -0.25343132)
 visible = false
-light_color = Color(1, 0.8631991, 0.6085637, 1)
-light_energy = 10.0
-light_indirect_energy = 8.0
-light_volumetric_fog_energy = 16.0
-light_projector = ExtResource("4_v7p16")
+light_energy = 16.0
 shadow_enabled = true
 shadow_bias = 1.0
 distance_fade_begin = 280.8
 distance_fade_shadow = 4096.0
 distance_fade_length = 4096.0
-spot_range = 9.642
-spot_angle = 17.5
+spot_range = 100.0
+spot_angle = 17.0
 
-[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=501199106]
+[node name="LightAnimation" type="AnimationPlayer" parent="head/Camera3D/SpotLight3D" unique_id=1553365036]
 libraries/ = SubResource("AnimationLibrary_0poeq")
 autoplay = &"light_animation"
 
-[node name="ItemHand" type="Marker3D" parent="head/Camera3D" unique_id=354981468]
+[node name="ItemHand" type="Marker3D" parent="head/Camera3D" unique_id=1276339146]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.25, -0.6)
-script = ExtResource("7_a8wow")
+script = ExtResource("5_l3oqu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=332987328]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="head" unique_id=1376051083]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2409587, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_iplt1")
 
-[node name="SnowParticles" parent="head" unique_id=487372938 instance=ExtResource("13_owvpp")]
+[node name="SnowParticles" parent="head" unique_id=487372938 instance=ExtResource("6_53w1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1513386, 0, 0)
 visible = false
 
-[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=1387597552]
+[node name="PlayerCollision" type="CollisionShape3D" parent="." unique_id=406160459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94802094, 0)
 shape = SubResource("CapsuleShape3D_iplt1")
 debug_color = Color(0.9348867, 0.23057985, 0.28304783, 1)
 
-[node name="PlayerSounds" type="Node3D" parent="." unique_id=843719486]
+[node name="PlayerSounds" type="Node3D" parent="." unique_id=775512676]
 
-[node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=683862867]
-stream = SubResource("AudioStreamRandomizer_w51ui")
+[node name="WoodStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=1298027584]
+stream = SubResource("AudioStreamRandomizer_wkp8f")
 volume_db = 46.355
 pitch_scale = 0.82
 bus = &"Steps"
 
-[node name="GrassStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=494709464]
-stream = SubResource("AudioStreamRandomizer_avsg8")
+[node name="GrassStep" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=358834514]
+stream = SubResource("AudioStreamRandomizer_sfw5q")
 volume_db = -20.0
 pitch_scale = 0.72
 bus = &"Steps"
 
-[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=311161243]
+[node name="Jump" type="AudioStreamPlayer3D" parent="PlayerSounds" unique_id=1931292631]
 
-[node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=2126515346]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=806651215]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=431517288]
 libraries/ = SubResource("AnimationLibrary_m7jmp")
 
-[node name="PlayerInput" type="Node" parent="." unique_id=1525634305]
-script = ExtResource("14_xr8lj")
+[node name="FloorTypeRay" type="RayCast3D" parent="." unique_id=1788866288]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 
-[node name="PlayerMovement" type="Node" parent="." unique_id=1913735012]
-script = ExtResource("15_r8fok")
+[node name="PlayerInput" type="Node" parent="." unique_id=1172537037]
+script = ExtResource("15_mycwr")
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=271124038]
+script = ExtResource("16_0bw0x")
 move_delay = 0.1
 
-[node name="PlayerStateMachine" type="Node" parent="." unique_id=186113698 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
-script = ExtResource("5_5c2io")
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1747528983 node_paths=PackedStringArray("CURRENT_STATE", "PREVIOUS_STATE")]
+script = ExtResource("17_d17g3")
 CURRENT_STATE = NodePath("IdlePlayerState")
 PREVIOUS_STATE = NodePath("IdlePlayerState")
 
-[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1401070449]
-script = ExtResource("6_4wf4l")
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=1353683556]
+script = ExtResource("18_23o0h")
 
-[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1492343580]
-script = ExtResource("7_7a1se")
+[node name="SprintingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=383051586]
+script = ExtResource("19_pagiw")
 
-[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=150470411]
-script = ExtResource("7_01a4e")
+[node name="WalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=2073445368]
+script = ExtResource("20_fyltw")
 
-[node name="CrouchingIdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=656496806]
-script = ExtResource("9_lub02")
+[node name="CrouchingIdlePlayerState" type="Node" parent="PlayerStateMachine" unique_id=220910492]
+script = ExtResource("21_1birn")
 
-[node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=1227047633]
-script = ExtResource("10_x1y6q")
+[node name="CrouchingWalkingPlayerState" type="Node" parent="PlayerStateMachine" unique_id=846892365]
+script = ExtResource("22_58aja")
 
-[node name="DialogueManager" type="Node" parent="." unique_id=1950252413]
-script = ExtResource("29_kx1i7")
-
-[node name="EquipmentController" type="Node" parent="." unique_id=609361426 node_paths=PackedStringArray("hand_anchor", "player_camera")]
-script = ExtResource("16_avsg8")
+[node name="EquipmentController" type="Node" parent="." unique_id=261454124 node_paths=PackedStringArray("hand_anchor", "player_camera")]
+script = ExtResource("23_mr25g")
 hand_anchor = NodePath("../head/Camera3D/ItemHand")
 player_camera = NodePath("../head/Camera3D")
 sway_strength = 0.15
 sway_smoothness = 3.0
 
-[node name="ItemActionController" type="Node" parent="." unique_id=1032496541]
-script = ExtResource("25_item_actions")
+[node name="ItemActionController" type="Node" parent="." unique_id=1093057564]
+script = ExtResource("24_vjwoo")
 
-[node name="InventoryController" type="Node" parent="." unique_id=889977702]
+[node name="InventoryController" type="Node" parent="." unique_id=1146406052]
 unique_name_in_owner = true
 
-[node name="InventoryCanvasLayer" type="CanvasLayer" parent="InventoryController" unique_id=1505330638]
+[node name="InventoryCanvasLayer" type="CanvasLayer" parent="InventoryController" unique_id=2102037773]
+visible = false
 
-[node name="PlayerInventoryUI" type="Control" parent="InventoryController/InventoryCanvasLayer" unique_id=2140140693 node_paths=PackedStringArray("equipment_controller", "pickup_target")]
+[node name="PlayerInventoryUI" type="Control" parent="InventoryController/InventoryCanvasLayer" unique_id=2121827653 node_paths=PackedStringArray("equipment_controller", "pickup_target")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("22_avsg8")
+script = ExtResource("25_bs7lp")
 drop_throw_speed = 1.0
 drop_downward_speed = 1.0
 equipment_controller = NodePath("../../../EquipmentController")
 pickup_target = NodePath("../../../head/Camera3D/InventoryTarget")
 
-[node name="Panel" type="Panel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=360962781]
+[node name="Panel" type="Panel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=1095325670]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -501,7 +504,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eqwek")
 
-[node name="InventoryTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=338487523]
+[node name="InventoryTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=825572112]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -515,7 +518,7 @@ label_settings = SubResource("LabelSettings_gpkcq")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1469894456]
+[node name="MarginContainer" type="MarginContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=297121295]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -529,14 +532,14 @@ offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=281649815]
+[node name="GridContainer" type="GridContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel/MarginContainer" unique_id=752681243]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(800, 250)
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 5
 
-[node name="Tools" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1461083166]
+[node name="Tools" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/Panel" unique_id=1795901088]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -554,7 +557,7 @@ text = "[E]:EQUIP     [G]:DROP
 label_settings = SubResource("LabelSettings_gpkcq")
 horizontal_alignment = 1
 
-[node name="ItemContent" type="VBoxContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=696196513]
+[node name="ItemContent" type="VBoxContainer" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI" unique_id=1640788299]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -569,21 +572,21 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
 
-[node name="ItemTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=982580367]
+[node name="ItemTitle" type="Label" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=1155920830]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Chave"
 label_settings = SubResource("LabelSettings_7qqrg")
 horizontal_alignment = 1
 
-[node name="ItemDescription" type="RichTextLabel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=957432693]
+[node name="ItemDescription" type="RichTextLabel" parent="InventoryController/InventoryCanvasLayer/PlayerInventoryUI/ItemContent" unique_id=1326223155]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Chave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamenteChave da casa que abre a porta da casa, obviamente"
 horizontal_alignment = 3
 
-[node name="InventoryShader" type="ColorRect" parent="InventoryController/InventoryCanvasLayer" unique_id=1922621707]
+[node name="InventoryShader" type="ColorRect" parent="InventoryController/InventoryCanvasLayer" unique_id=693816357]
 visible = false
 material = SubResource("ShaderMaterial_xxysq")
 anchors_preset = 15
@@ -593,16 +596,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("17_3wlsy")]
+[node name="InteractionController" parent="." unique_id=1813039684 instance=ExtResource("27_lqb8y")]
 unique_name_in_owner = true
 
-[node name="Debug" type="CanvasLayer" parent="." unique_id=113745747]
+[node name="DialogueManager" type="Node" parent="." unique_id=370051208]
+script = ExtResource("28_718ys")
+
+[node name="Debug" type="CanvasLayer" parent="." unique_id=1430028740]
 unique_name_in_owner = true
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
-script = ExtResource("7_ppdlg")
+script = ExtResource("29_8ogvp")
 
-[node name="Title" type="Label" parent="Debug" unique_id=131475504]
+[node name="Title" type="Label" parent="Debug" unique_id=1033655477]
 unique_name_in_owner = true
 offset_right = 83.0
 offset_bottom = 17.0
@@ -613,13 +619,13 @@ theme_override_font_sizes/font_size = 12
 text = "Debug Center:"
 label_settings = SubResource("LabelSettings_yqrof")
 
-[node name="EquipmentViewModel" type="CanvasLayer" parent="." unique_id=121120098 node_paths=PackedStringArray("main_camera")]
+[node name="EquipmentViewModel" type="CanvasLayer" parent="." unique_id=754885233 node_paths=PackedStringArray("main_camera")]
 layer = -1
 visible = false
-script = ExtResource("24_dv6dp")
+script = ExtResource("30_keg2n")
 main_camera = NodePath("../head/Camera3D")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="EquipmentViewModel" unique_id=1238909209]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="EquipmentViewModel" unique_id=1509213342]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -628,7 +634,7 @@ grow_vertical = 2
 mouse_filter = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="EquipmentViewModel/SubViewportContainer" unique_id=608536241]
+[node name="SubViewport" type="SubViewport" parent="EquipmentViewModel/SubViewportContainer" unique_id=237407445]
 transparent_bg = true
 handle_input_locally = false
 vrs_mode = 1
@@ -636,6 +642,7 @@ canvas_cull_mask = 4294967294
 size = Vector2i(640, 480)
 render_target_update_mode = 0
 
-[node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=82085723]
+[node name="ViewModelCamera" type="Camera3D" parent="EquipmentViewModel/SubViewportContainer/SubViewport" unique_id=633588241]
+visible = false
 cull_mask = 2
 near = 0.01

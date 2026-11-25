@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://0636mce2j4g3"]
+
+[ext_resource type="PackedScene" uid="uid://bnebect815yll" path="res://Scenes/room/room.glb" id="1_mt3lf"]
+
+[node name="RoomStructure" type="Node3D" unique_id=183071020]
+
+[node name="room" parent="." unique_id=2107773137 instance=ExtResource("1_mt3lf")]

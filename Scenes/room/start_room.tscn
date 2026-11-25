@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bv8lw7jwuxyd5"]
+
+[ext_resource type="PackedScene" uid="uid://dj5g7egpx7oca" path="res://UI/Pause/pause.tscn" id="1_0h4c5"]
+[ext_resource type="PackedScene" uid="uid://bnebect815yll" path="res://Scenes/room/room.glb" id="1_4n2fd"]
+[ext_resource type="PackedScene" uid="uid://b3efs8ifbmvv2" path="res://Entities/Player/player.tscn" id="1_puwco"]
+
+[sub_resource type="Environment" id="Environment_rcj4k"]
+ambient_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.2
+tonemap_white = 16.0
+fog_light_color = Color(0.97565275, 0.97821397, 0.9822032, 1)
+
+[node name="StartRoom" type="Node3D" unique_id=1664994486]
+
+[node name="room" parent="." unique_id=2107773137 instance=ExtResource("1_4n2fd")]
+
+[node name="PuseMenu" parent="." unique_id=1942602342 instance=ExtResource("1_0h4c5")]
+
+[node name="Player" parent="." unique_id=284166851 instance=ExtResource("1_puwco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1787511, 0.39331782, -1.1855953)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1088769451]
+transform = Transform3D(-0.8790852, 0.22296442, -0.42130297, -0.458641, -0.15490063, 0.87501675, 0.12983751, 0.962441, 0.23843145, 0.16286385, 2.278388, -1.5098674)
+light_color = Color(0.84974074, 0.84974074, 0.70849323, 1)
+light_energy = 3.988
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.668
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=188935256]
+environment = SubResource("Environment_rcj4k")

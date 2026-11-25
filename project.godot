@@ -37,7 +37,6 @@ window/size/mode=4
 window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
-window/vsync/vsync_mode=0
 
 [editor_plugins]
 
