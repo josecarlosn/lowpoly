@@ -87,6 +87,7 @@ func _physics_process(delta: float) -> void:
 	var action_controller := _get_item_action_controller()
 	var potential_object: Object = _get_closest_collider()
 
+
 	if not potential_object is Node:
 		_clear_interaction()
 		return

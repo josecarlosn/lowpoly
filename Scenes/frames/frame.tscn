@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dfwa8s142k461"]
+
+[ext_resource type="PackedScene" uid="uid://w3ebldat2r63" path="res://Scenes/frames/frame.glb" id="1_3vef6"]
+[ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://Assets/Shaders/object_ps1_shader.gdshader" id="2_texdx"]
+[ext_resource type="Texture2D" uid="uid://bxga53tpmm12q" path="res://Scenes/frames/frame_paint.png" id="4_44bfq"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="5_io2tm"]
+[ext_resource type="Texture2D" uid="uid://ciucjhwh7jukb" path="res://Assets/Models/Testes/textures/wood_fancy_04.jpg" id="5_texdx"]
+[ext_resource type="Script" uid="uid://cvjga54hcpjl3" path="res://Entities/Player/Interaction/InteractableScripts/default_interaction.gd" id="6_5lvtp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcj4k"]
+size = Vector3(1.7983093, 2.1574707, 0.15045166)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vef6"]
+render_priority = 0
+shader = ExtResource("2_texdx")
+shader_parameter/u_jitter_resolution = 512.0
+shader_parameter/u_affine_intensity = 0.3
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("4_44bfq")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cw8p3"]
+render_priority = 0
+shader = ExtResource("2_texdx")
+shader_parameter/u_jitter_resolution = 256.0
+shader_parameter/u_affine_intensity = 0.3
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("5_texdx")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="frame" unique_id=479510896 instance=ExtResource("1_3vef6")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0" unique_id=414260377]
+collision_layer = 8
+collision_mask = 0
+
+[node name="InteractionComponent" parent="StaticBody3D" index="0" unique_id=881712920 instance=ExtResource("5_io2tm")]
+script = ExtResource("6_5lvtp")
+can_interact = true
+hover_label = "The Cyclops, Odilon Redon"
+click_label = "Surrealismo é meu genero artistico favorito"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1130936707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02571106, 1.4490967, -0.96261597)
+shape = SubResource("BoxShape3D_rcj4k")
+
+[node name="Frame" parent="." index="1" unique_id=622939714]
+surface_material_override/0 = SubResource("ShaderMaterial_3vef6")
+surface_material_override/1 = SubResource("ShaderMaterial_cw8p3")

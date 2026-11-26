@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://ba4g8rr4ov7ao" path="res://Entities/Player/Dialogue/Resources/dialogue_line.gd" id="4_du5k6"]
 [ext_resource type="Script" uid="uid://cc4kq75yt000r" path="res://Entities/Player/Dialogue/Resources/dialogue_data.gd" id="5_njl7u"]
 [ext_resource type="Script" uid="uid://b2ksfj1hdg1p7" path="res://Assets/Models/screen_view_port.gd" id="5_oqk6l"]
-[ext_resource type="PackedScene" uid="uid://q0ar8pvdweve" path="res://Scenes/EndRoom/room.tscn" id="5_pstkp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpv6o"]
 resource_name = "TV_01"
@@ -81,8 +80,11 @@ size = Vector2(1.1, 0.7)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87heh"]
 shading_mode = 0
 
+[sub_resource type="Resource" id="Resource_oqk6l"]
+metadata/__load_path__ = "res://Scenes/EndRoom/room.tscn"
+
 [node name="TV" type="StaticBody3D" unique_id=769884634]
-collision_layer = 9
+collision_layer = 8
 
 [node name="Cube_171" type="MeshInstance3D" parent="." unique_id=471922763]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.024047405, 0.21122012, -0.24196059)
@@ -111,8 +113,5 @@ unique_name_in_owner = true
 own_world_3d = true
 size = Vector2i(320, 240)
 script = ExtResource("5_oqk6l")
-security_scene = ExtResource("5_pstkp")
+security_scene = SubResource("Resource_oqk6l")
 tv_screen = NodePath("../../Screen")
-
-[node name="EndRoom" parent="ScreenSystem/ScreenViewPort" unique_id=1513587001 instance=ExtResource("5_pstkp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.953607, 0.7964549, 0.35812664)

@@ -1,7 +1,55 @@
 [gd_scene format=3 uid="uid://0636mce2j4g3"]
 
-[ext_resource type="PackedScene" uid="uid://bnebect815yll" path="res://Scenes/room/room.glb" id="1_mt3lf"]
+[ext_resource type="PackedScene" uid="uid://d4e5lkbyoxc23" path="res://Scenes/room/room.blend" id="1_5aocs"]
+[ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://Assets/Shaders/object_ps1_shader.gdshader" id="2_h8jfl"]
+[ext_resource type="Texture2D" uid="uid://do7fru2msc0ll" path="res://Scenes/room/door_ceiling.png" id="3_qxafg"]
+[ext_resource type="Texture2D" uid="uid://r3nfx0gc8vh" path="res://Scenes/room/door_walltexture.png" id="4_3uppy"]
 
-[node name="RoomStructure" type="Node3D" unique_id=183071020]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gnusp"]
+render_priority = 0
+shader = ExtResource("2_h8jfl")
+shader_parameter/u_jitter_resolution = 128.0
+shader_parameter/u_affine_intensity = 0.3
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("3_qxafg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
-[node name="room" parent="." unique_id=2107773137 instance=ExtResource("1_mt3lf")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pf5li"]
+render_priority = 0
+shader = ExtResource("2_h8jfl")
+shader_parameter/u_jitter_resolution = 256.0
+shader_parameter/u_affine_intensity = 0.3
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("4_3uppy")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jyjhc"]
+render_priority = 0
+shader = ExtResource("2_h8jfl")
+shader_parameter/u_jitter_resolution = 256.0
+shader_parameter/u_affine_intensity = 0.3
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("3_qxafg")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="room" unique_id=1810602907 instance=ExtResource("1_5aocs")]
+
+[node name="floor" parent="." index="0" unique_id=1363933078]
+surface_material_override/0 = SubResource("ShaderMaterial_gnusp")
+
+[node name="room" parent="." index="1" unique_id=1574710393]
+transform = Transform3D(1.6680028, 0, 0, 0, 1, 0, 0, 0, 1, -2.5408573, -0.0200575, -0.007857561)
+surface_material_override/0 = SubResource("ShaderMaterial_pf5li")
+surface_material_override/1 = SubResource("ShaderMaterial_jyjhc")

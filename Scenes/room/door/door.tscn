@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://veyh7d22gtwc"]
+
+[ext_resource type="PackedScene" uid="uid://bvmjoivnwctns" path="res://Scenes/room/door/door.glb" id="1_ri5vx"]
+[ext_resource type="Shader" uid="uid://dn2wf012kfp64" path="res://Assets/Shaders/object_ps1_shader.gdshader" id="2_jbcx8"]
+[ext_resource type="PackedScene" uid="uid://v5bpdc5qesj" path="res://Entities/Player/Interaction/interaction_component.tscn" id="2_wv1l1"]
+[ext_resource type="Texture2D" uid="uid://sj0o4fv4qsy2" path="res://Scenes/room/door/door_door.png" id="3_gwldy"]
+[ext_resource type="Script" uid="uid://b7sjodr40vfhx" path="res://Entities/Player/Dialogue/dialogue_interaction.gd" id="4_sn6em"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwldy"]
+render_priority = 0
+shader = ExtResource("2_jbcx8")
+shader_parameter/u_jitter_resolution = 256.0
+shader_parameter/u_affine_intensity = 0.5
+shader_parameter/u_affine_z_bias = 0.0005
+shader_parameter/u_jitter_shadows = false
+shader_parameter/texture_albedo = ExtResource("3_gwldy")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsnwr"]
+size = Vector3(1.0653687, 2.0081787, 0.15778637)
+
+[node name="door" unique_id=1218642308 instance=ExtResource("1_ri5vx")]
+
+[node name="Door" parent="." index="0" unique_id=194190834]
+surface_material_override/0 = SubResource("ShaderMaterial_gwldy")
+
+[node name="Door_Frame" parent="." index="1" unique_id=895333549]
+surface_material_override/0 = SubResource("ShaderMaterial_gwldy")
+
+[node name="Macaneta" parent="." index="2" unique_id=1018563614]
+surface_material_override/0 = SubResource("ShaderMaterial_gwldy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=176937929]
+
+[node name="InteractionComponent" parent="StaticBody3D" index="0" unique_id=881712920 instance=ExtResource("2_wv1l1")]
+script = ExtResource("4_sn6em")
+dialogue_data = null
+hover_label = "door"
+interact_label = "nao tenho nada pra fazer lá fora"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=685492364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.551178, 1.1115112, -0.009797573)
+shape = SubResource("BoxShape3D_qsnwr")
